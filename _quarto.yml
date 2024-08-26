@@ -26,7 +26,7 @@ book:
       Nicholas Harbour Second year progress review
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
-  repo-url: https://github.com/hadley/r4ds/
+  repo-url: https://github.com/Harbour-N/Second-year-report
   repo-actions: [edit, issue]
 
 bibliography: references.bib
