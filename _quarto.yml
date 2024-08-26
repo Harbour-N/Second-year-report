@@ -42,4 +42,5 @@ format:
   docx: default
 
 
-
+comments:
+  hypothesis: true
