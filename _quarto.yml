@@ -1,0 +1,44 @@
+project:
+  type: book
+
+book:
+  title: "Second year progress review"
+  author:
+  - name: Nicholas Harbour
+    orcid: 0009-0008-2424-4516
+    corresponding: true
+    email: nicholas.harbour@nottingham.ac.uk
+    roles: []
+    affiliations:
+      - Centre for Mathematical Medicine and Biology, School of Mathematical Sciences, University of Nottingham, Nottingham, NG7 2RD, UK
+  date: today
+  chapters:
+    - index.qmd
+    - Lit_review.qmd
+    - summary.qmd
+    - preprint.qmd
+    - references.qmd
+  page-navigation: true
+  cover-image: cover.png
+  downloads: [pdf, docx]
+  page-footer:
+    left: |
+      Nicholas Harbour Second year progress review
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
+  repo-url: https://github.com/hadley/r4ds/
+  repo-actions: [edit, issue]
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+    link-citations: true
+    
+  docx: default
+
+
+

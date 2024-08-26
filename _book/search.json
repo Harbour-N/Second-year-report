@@ -1,0 +1,52 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Second year progress review",
+    "section": "",
+    "text": "Preface\nThanks to my supervisors: Markus Owen and Matthew Hubbard!!\nThis is a Quarto book.\nExample reference (Knuth 1984)\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "Lit_review.html",
+    "href": "Lit_review.html",
+    "title": "1  Literature review",
+    "section": "",
+    "text": "This is the literature review section.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Literature review</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "This is the summary of main results and plan for thesis",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "preprint.html",
+    "href": "preprint.html",
+    "title": "3  Preprint",
+    "section": "",
+    "text": "This is the preprint it constitutes a substantial piece of work that will contribute to my thesis.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Preprint</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
+  }
+]
