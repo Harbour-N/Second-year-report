@@ -11,7 +11,7 @@ book:
     email: nicholas.harbour@nottingham.ac.uk
     roles: []
     affiliations:
-      - Centre for Mathematical Medicine and Biology, School of Mathematical Sciences, University of Nottingham, Nottingham, NG7 2RD, UK
+      - "Centre for Mathematical Medicine and Biology, School of Mathematical Sciences, University of Nottingham, Nottingham, NG7 2RD, UK"
   date: today
   chapters:
     - index.qmd
@@ -30,15 +30,24 @@ book:
   repo-url: https://github.com/Harbour-N/Second-year-report
   repo-actions: [edit, issue]
 
+
+
 bibliography: references.bib
+
+supervisors:
+  - name: Markus Owen
+  - name: Matthew Hubbard
+
 
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
-    link-citations: true
-    
+  pdf: 
+    theme: default
+    template-partials:
+      - before-body.tex
+
+
   docx: default
 
 
