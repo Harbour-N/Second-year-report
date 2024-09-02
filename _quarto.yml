@@ -44,6 +44,12 @@ format:
     theme: cosmo
   pdf: 
     theme: default
+    link-citations: true
+    margin-left: 2cm
+    margin-right: 2cm
+    margin-top: 3cm
+    margin-bottom: 3cm
+    keep-tex: true
     template-partials:
       - before-body.tex
 

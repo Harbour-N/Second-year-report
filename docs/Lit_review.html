@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -75,6 +95,35 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -167,15 +216,39 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-introduction" id="toc-sec-introduction" class="nav-link active" data-scroll-target="#sec-introduction"><span class="header-section-number">1.1</span> Introduction</a></li>
+  <li><a href="#sec-stem-cells-in-cancer" id="toc-sec-stem-cells-in-cancer" class="nav-link" data-scroll-target="#sec-stem-cells-in-cancer"><span class="header-section-number">1.2</span> Stem cells in cancer</a></li>
+  <li><a href="#sec-cancer-stem-cells-and-treatment-resistance" id="toc-sec-cancer-stem-cells-and-treatment-resistance" class="nav-link" data-scroll-target="#sec-cancer-stem-cells-and-treatment-resistance"><span class="header-section-number">1.3</span> Cancer stem cells and treatment resistance</a></li>
+  <li><a href="#sec-mathematical-models-of-cancer-stem-cell-dynamics" id="toc-sec-mathematical-models-of-cancer-stem-cell-dynamics" class="nav-link" data-scroll-target="#sec-mathematical-models-of-cancer-stem-cell-dynamics"><span class="header-section-number">1.4</span> Mathematical models of cancer stem cell dynamics</a>
+  <ul class="collapse">
+  <li><a href="#sec-agent-based-model" id="toc-sec-agent-based-model" class="nav-link" data-scroll-target="#sec-agent-based-model"><span class="header-section-number">1.4.1</span> Agent-based model</a></li>
+  <li><a href="#sec-integro-differential-model" id="toc-sec-integro-differential-model" class="nav-link" data-scroll-target="#sec-integro-differential-model"><span class="header-section-number">1.4.2</span> Integro-differential model</a></li>
+  <li><a href="#sec-ode-model-reduction" id="toc-sec-ode-model-reduction" class="nav-link" data-scroll-target="#sec-ode-model-reduction"><span class="header-section-number">1.4.3</span> ODE model reduction</a></li>
+  <li><a href="#sec-stochastic-model" id="toc-sec-stochastic-model" class="nav-link" data-scroll-target="#sec-stochastic-model"><span class="header-section-number">1.4.4</span> Stochastic model of CSC dynamics</a></li>
+  <li><a href="#a-multispecies-model-of-cell-lineagessec-multispecies-model-of-cell-lineages" id="toc-a-multispecies-model-of-cell-lineagessec-multispecies-model-of-cell-lineages" class="nav-link" data-scroll-target="#a-multispecies-model-of-cell-lineagessec-multispecies-model-of-cell-lineages"><span class="header-section-number">1.4.5</span> A multispecies model of cell lineages[#sec-multispecies-model-of-cell-lineages]</a></li>
+  </ul></li>
+  <li><a href="#sec-models-of-differentiation-therapy" id="toc-sec-models-of-differentiation-therapy" class="nav-link" data-scroll-target="#sec-models-of-differentiation-therapy"><span class="header-section-number">1.5</span> Models of differentiation therapy</a>
+  <ul class="collapse">
+  <li><a href="#differentiation-promoter-and-self-renewal-promoter" id="toc-differentiation-promoter-and-self-renewal-promoter" class="nav-link" data-scroll-target="#differentiation-promoter-and-self-renewal-promoter"><span class="header-section-number">1.5.1</span> Differentiation promoter and self-renewal promoter</a></li>
+  <li><a href="#no-self-renewal-promoter" id="toc-no-self-renewal-promoter" class="nav-link" data-scroll-target="#no-self-renewal-promoter"><span class="header-section-number">1.5.2</span> No self-renewal promoter</a></li>
+  <li><a href="#bmp4-in-glioma" id="toc-bmp4-in-glioma" class="nav-link" data-scroll-target="#bmp4-in-glioma"><span class="header-section-number">1.5.3</span> BMP4 in glioma</a></li>
+  <li><a href="#summary-of-differentaition-therpay-results" id="toc-summary-of-differentaition-therpay-results" class="nav-link" data-scroll-target="#summary-of-differentaition-therpay-results"><span class="header-section-number">1.5.4</span> Summary of differentaition therpay results</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">2</span> Conclusion</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/Harbour-N/Second-year-report/edit/main/Lit_review.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Harbour-N/Second-year-report/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Literature review</span></h1>
+<h1 class="title"><span id="sec-lit-review" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Literature review</span></span></h1>
 </div>
 
 
@@ -192,9 +265,334 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is the literature review section.</p>
+<p>In this chapter we present a brief literature review of stem cells in cancer and the modeling approaches that have been used.</p>
+<section id="sec-introduction" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="sec-introduction"><span class="header-section-number">1.1</span> Introduction</h2>
+<p>Stem cells are defined as cells that have the ability to perpetuate themselves through self-renewal and to generate mature cells of a particular tissue through differentiation <span class="citation" data-cites="reya2001">(<a href="references.html#ref-reya2001" role="doc-biblioref">Reya et al. 2001</a>)</span>. Stem cells are fundamental to tissue maintenance and repair; they also play a critical role in cancer development and in determining the outcomes of cancer treatment <span class="citation" data-cites="weiss2017a">(<a href="references.html#ref-weiss2017a" role="doc-biblioref">Weiss, Komarova, and Rodriguez-Brenes 2017</a>)</span>.</p>
+</section>
+<section id="sec-stem-cells-in-cancer" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="sec-stem-cells-in-cancer"><span class="header-section-number">1.2</span> Stem cells in cancer</h2>
+<p>Perhaps the most important and useful property of stem cells is that of self-renewal. Self-renewal is crucial to stem cell function, because it is required by the majority of stem cells to persist for the lifetime of the animal. Moreover, whereas stem cells from different organs may vary in their developmental potential, all stem cells must self-renew and regulate the relative balance between self-renewal and differentiation. Understanding the regulation of normal stem cell self-renewal is also fundamental to understanding the regulation of cancer cell proliferation, because cancer can be considered to be a disease of unregulated self-renewal <span class="citation" data-cites="reya2001">(<a href="references.html#ref-reya2001" role="doc-biblioref">Reya et al. 2001</a>)</span>.</p>
+<p>Numerous arguments suggest a stem-cell origin for human cancers. First, it is worth noting that stem cells possess many of the features that constitute the tumour phenotype, including self-renewal and essentially unlimited replicative potential <span class="citation" data-cites="hanahan2000">(<a href="references.html#ref-hanahan2000" role="doc-biblioref">Hanahan and Weinberg 2000</a>)</span>. Second, the mutations that initiate tumour formation seem to accumulate in cells that persist throughout life, as suggested by the exponential increase of cancer incidence with age <span class="citation" data-cites="meza2008">(<a href="references.html#ref-meza2008" role="doc-biblioref">Meza et al. 2008</a>)</span>. This is thought to reflect a requirement for between four and seven mutations in a single cell to effect malignant transformation <span class="citation" data-cites="hanahan2000">(<a href="references.html#ref-hanahan2000" role="doc-biblioref">Hanahan and Weinberg 2000</a>)</span>. Similarly, cancer formation from cells that persist throughout life is suggested by an increased incidence in adults of skin tumours such as melanoma after higher childhood exposure to a mutagenic agent such as ultraviolet solar radiation <span class="citation" data-cites="balk2011">(<a href="references.html#ref-balk2011" role="doc-biblioref">Balk 2011</a>)</span>. Normal somatic stem cells are strong candidates for such persistent cells. An alternative explanation would be that mutation within a more differentiated cell might break the normal growth-regulatory mechanisms that limit its proliferative capacity and result in a persistent clone of proliferating cells. However, this seems less likely because non-stem cells are generally destined for terminal differentiation within a time window too short for acquisition of sequential mutations that must affect two copies of a wild-type tumour suppressor <span class="citation" data-cites="reya2001">(<a href="references.html#ref-reya2001" role="doc-biblioref">Reya et al. 2001</a>)</span>.</p>
+<p>The identification of a stem cell origin for human cancers was first identified in leukaemia’s, perhaps because the hight fraction of stem cells in haematopoietic system, when it was discovered that some, but not all, cancer cells where able to initiate tumours of the blood <span class="citation" data-cites="taipale2001 lapidot1994 bonnet1997">(<a href="references.html#ref-taipale2001" role="doc-biblioref">Taipale and Beachy 2001</a>; <a href="references.html#ref-lapidot1994" role="doc-biblioref">Lapidot et al. 1994</a>; <a href="references.html#ref-bonnet1997" role="doc-biblioref">Bonnet and Dick 1997</a>)</span>. More recently CSCs have been identified in many solid tumours including breast, colon and brain <span class="citation" data-cites="al-hajj2003 ricci-vitiani2007 ignatova2002 hemmati2003 singh2004 galli2004">(<a href="references.html#ref-al-hajj2003" role="doc-biblioref">Al-Hajj et al. 2003</a>; <a href="references.html#ref-ricci-vitiani2007" role="doc-biblioref">Ricci-Vitiani et al. 2007</a>; <a href="references.html#ref-ignatova2002" role="doc-biblioref">Ignatova et al. 2002</a>; <a href="references.html#ref-hemmati2003" role="doc-biblioref">Hemmati et al. 2003</a>; <a href="references.html#ref-singh2004" role="doc-biblioref">Singh et al. 2004</a>; <a href="references.html#ref-galli2004" role="doc-biblioref">Galli et al. 2004</a>)</span>. In GBM, cells expressing the CD133 cell surface protein marker (also found on neural stem cells) have been identified as having stem cell properties <em>in vitro</em> <span class="citation" data-cites="singh2003">(<a href="references.html#ref-singh2003" role="doc-biblioref">Singh et al. 2003</a>)</span>. Furthermore, when tested using a xenograft assay, it was found that injection of as few as 100 CD133+ cells produced a tumour that could be serially transplanted and was phenotypically similar to the patients original tumour, while injection of <span class="math inline">\(10^5\)</span> CD133- cells engrafted but did not cause a tumour <span class="citation" data-cites="singh2004">(<a href="references.html#ref-singh2004" role="doc-biblioref">Singh et al. 2004</a>)</span>. This provides strong evidence that there is a small subpopulation of glioma stem cells that have the unique ability to initiate tumours, while the majority of cells cannot.</p>
+</section>
+<section id="sec-cancer-stem-cells-and-treatment-resistance" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sec-cancer-stem-cells-and-treatment-resistance"><span class="header-section-number">1.3</span> Cancer stem cells and treatment resistance</h2>
+<p>Radiation therapy is the most common form of treatment across all cancers, with around 50% of all cancer patients receiving radiotherapy at some point in their treatment <span class="citation" data-cites="baskar2012">(<a href="references.html#ref-baskar2012" role="doc-biblioref">Baskar et al. 2012</a>)</span>. However, in addition to being tumor initiating, CSCs are highly resistant to both radio- and chemo-therapy through preferential activation of the DNA damage checkpoint response and an increase in DNA repair capacity <span class="citation" data-cites="bao2006 tang2021 rich2007 schonberg2014">(<a href="references.html#ref-bao2006" role="doc-biblioref">Bao et al. 2006</a>; <a href="references.html#ref-tang2021" role="doc-biblioref">Tang et al. 2021</a>; <a href="references.html#ref-rich2007" role="doc-biblioref">Rich 2007</a>; <a href="references.html#ref-schonberg2014" role="doc-biblioref">Schonberg et al. 2014</a>)</span>. In glioma, experimental results have shown that both in culture and mouse models CD133-expressing stem cells survive radiation in larger proportions than the majority of tumour cells which lack CD133 expression; these results suggest that CSC confer radio-resistance in GBM and ultimately are the source of tumour recurrence after radiation <span class="citation" data-cites="bao2006">(<a href="references.html#ref-bao2006" role="doc-biblioref">Bao et al. 2006</a>)</span>.</p>
+<p>In addition to being resistant to treatment CSCs also engage in a synergistic relationship with the surrounding tumor microenvironment (TME) to promote angiogenesis, proliferation, migration, tumor survival, and immune evasion <span class="citation" data-cites="ma2018 rich2007">(<a href="references.html#ref-ma2018" role="doc-biblioref">Ma et al. 2018</a>; <a href="references.html#ref-rich2007" role="doc-biblioref">Rich 2007</a>)</span>. Taken together this highlights the important role CSC play in determining tumour response to therapy. There is a desperate need for targeted therapies that either directly kill CSCs or sensitize CSCs to cytotoxic therapies in order to improve treatment outcomes.</p>
+</section>
+<section id="sec-mathematical-models-of-cancer-stem-cell-dynamics" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="sec-mathematical-models-of-cancer-stem-cell-dynamics"><span class="header-section-number">1.4</span> Mathematical models of cancer stem cell dynamics</h2>
+<p>Many different mathematical models have been developed to model stem cell dynamics. Understanding CSC kinetics and interaction with their non-stem counterparts is still spares and theoretic/mathematical models may help elucidate their role in cancer progression and treatment response. Here we focus on a small subset of models that are used in the literature that cover a wide range of modelling techniques.</p>
+<p>Many of the following models use slightly different terminology to refer to the non-stem cell population such as cancer cell, progenitor cells or tumour cells, for clarity we will refer to non-stem cells always as tumour cells (TCs) throughout this review.</p>
+<section id="sec-agent-based-model" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="sec-agent-based-model"><span class="header-section-number">1.4.1</span> Agent-based model</h3>
+<p>in <span class="citation" data-cites="enderling2009">(<a href="references.html#ref-enderling2009" role="doc-biblioref">Enderling et al. 2009</a>)</span> and <span class="citation" data-cites="gao2013">(<a href="references.html#ref-gao2013" role="doc-biblioref">Gao et al. 2013</a>)</span> the authors develop an agent-based model (ABM) to study the dynamics of CSCs and TCs in a tumour. It is assumed that tumours are a heterogenous mix of CSCs and TCs. Cells are considered as individual entities with a cell cycle and limited proliferation capacity <span class="math inline">\(\rho = [0,\rho_\text{max}]\)</span>. CSCs have unlimited self-renewal, hence <span class="math inline">\(\rho_\text{max} = \infty\)</span>. At each cell division CSCs can undergo symmetric division with probability <span class="math inline">\(\delta\)</span> or asymmetric division with probability <span class="math inline">\(1-\delta\)</span>. The proliferation capacity <span class="math inline">\(\rho\)</span> is decremented at each TC division and inherited by both daughter cells.</p>
+<p>Simulations of the ABM model revealed the following key results</p>
+<ul>
+<li>Tumours developing solely from TCs will inevitably die out, due to their limited proliferation capacity. Hence, CSCs are necessary for malignant tumour growth. This is consistent with experimental results showing only CSCs can initiate tumours <span class="citation" data-cites="lapidot1994 singh2004">(<a href="references.html#ref-lapidot1994" role="doc-biblioref">Lapidot et al. 1994</a>; <a href="references.html#ref-singh2004" role="doc-biblioref">Singh et al. 2004</a>)</span>.</li>
+<li>Tumour started without CSCs could still persist for a long time as long-term dormant lesions, but due to space limited growth remain small well below the potential maximum size of <span class="math inline">\(2^{\rho_\text{max}}\)</span>. This is consistent with the observation that many tumours remain dormant for many years before they start to grow <span class="citation" data-cites="sweeney1995 neves-e-castro2006 folkman2004">(<a href="references.html#ref-sweeney1995" role="doc-biblioref">Sweeney 1995</a>; <a href="references.html#ref-neves-e-castro2006" role="doc-biblioref">Neves-E-Castro 2006</a>; <a href="references.html#ref-folkman2004" role="doc-biblioref">Folkman and Kalluri 2004</a>)</span>.</li>
+<li>A high rate of spontaneous death of TCs actually enables room for sufficient stem cell divisions to enrich the stem cell pool and drive tumour growth. This lead to what they call the “tumour growth paradox”, where counterintuitively while an increase in the death rate of TCs decreases the total number of cancer cells in the short term, in the long run it leads to an increase in the total tumour size as the tumour contains more CSCs.</li>
+</ul>
+<p>Mathematically the tumour growth paradox is defined as follows.</p>
+<div id="def-tumor-growth-paradox" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 1.1 (Tumour growth paradox)</strong></span> Let <span class="math inline">\(N_\alpha (t)\)</span> denote a total tumour population with death rate <span class="math inline">\(\alpha\)</span> for TCs. The population exhibits a tumour growth paradox if there exist death rates <span class="math inline">\(\alpha_1 &lt; \alpha_2\)</span> and times <span class="math inline">\(t_1,t_2\)</span> and <span class="math inline">\(T_0\)</span> such that</p>
+<p><span id="eq-tumour-growth-paradox"><span class="math display">\[
+\begin{aligned}
+N_{\alpha_1}(t_1) = N_{\alpha_2}(t_2)&amp; \quad \text{and} \quad N_{\alpha_1}(t_1 + T) &lt; N_{\alpha_2}(t_2 + T) \\
+&amp;\text{for} \quad (0&lt;T&lt;T_0)
+\end{aligned}
+\tag{1.1}\]</span></span></p>
+</div>
+</section>
+<section id="sec-integro-differential-model" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="sec-integro-differential-model"><span class="header-section-number">1.4.2</span> Integro-differential model</h3>
+<p>Following on from the ABM developed in <span class="citation" data-cites="enderling2009 gao2013">(<a href="references.html#ref-enderling2009" role="doc-biblioref">Enderling et al. 2009</a>; <a href="references.html#ref-gao2013" role="doc-biblioref">Gao et al. 2013</a>)</span> in <span class="citation" data-cites="hillen2013">(<a href="references.html#ref-hillen2013" role="doc-biblioref">Hillen, Enderling, and Hahnfeldt 2013</a>)</span> the authors develop an integro-differential equation version of the model. The model is based on the same assumptions as in <span class="citation" data-cites="enderling2009 gao2013">(<a href="references.html#ref-enderling2009" role="doc-biblioref">Enderling et al. 2009</a>; <a href="references.html#ref-gao2013" role="doc-biblioref">Gao et al. 2013</a>)</span>, but this time takes the form of an integro-differential equation model. Let <span class="math inline">\(u(x,t)\)</span> denote the density (in cells per unit space i.e., the fraction of the interval <span class="math inline">\((x,x+dx)\)</span> physically occupied by cells), and let <span class="math inline">\(v(x,t)\)</span> denote the density of TCs. Hence, the total tumor density is denoted <span class="math inline">\(N(x,t) = u(x,t) + v(x,t)\)</span>. For this analysis cells are assumed to be very small compared to the size of the tissue domain <span class="math inline">\(\Omega\)</span> (which we take without loss of generality to have unit volume), and are small even compared to integration increments <span class="math inline">\(dx\)</span> and <span class="math inline">\(dy\)</span>. It is also assumed that cells cannot pile on top of each other so there is a maximum density of one cell per unit space, this implies <span class="math inline">\(N(x,t) \leq 1\)</span>. Cells can only proliferate if there is space to place the daughter cell, otherwise reproduction is inhibited (cellular quiescence). To model the spatial search for space, they define a nonlinear integral term, and inline with the ABM <span class="citation" data-cites="enderling2009 gao2013">(<a href="references.html#ref-enderling2009" role="doc-biblioref">Enderling et al. 2009</a>; <a href="references.html#ref-gao2013" role="doc-biblioref">Gao et al. 2013</a>)</span> they assume that all cells can migrate randomly, which is model by simple diffusion. These assumptions lead to the following system of equations to describe CSC and TC dynamics:</p>
+<p><span id="eq-integro-differential-CSC-model"><span class="math display">\[
+\begin{aligned}
+    \underbrace{\frac{\partial u(x,t)}{\partial t}}_\text{ROC CSCs} &amp;= \underbrace{D_u \nabla^2 u}_\text{Diffusion of CSCs} + \underbrace{\delta \gamma \int_{\Omega} k(x,y,N(x,t))u(y,t) dy}_\text{Self-renewal of CSCs} \\
+    \underbrace{\frac{\partial v(x,t)}{\partial t}}_\text{ROC TCs} &amp;= \underbrace{D_v \nabla^2 v}_\text{Diffusion of TCs} + \underbrace{(1-\delta) \gamma \int_{\Omega} k(x,y,N(x,t))u(y,t) dy}_\text{Differentiation of CSCs} + \\
+    &amp; \underbrace{\rho \int_{\Omega} k(x,y,N(x,t))v(y,t) dy}_\text{Proliferation of TCs} - \underbrace{\alpha v}_\text{Apoptosis of TCs}.
+\end{aligned}
+\tag{1.2}\]</span></span></p>
+<p>The spatial distribution kernel <span class="math inline">\(k(x,y,N)\)</span> describes the rate of progeny contribution to location x for a cell at location y per “cell cycle time” i.e., the defined period between divisions of a freely cycling cell. Since greater density at <span class="math inline">\(x\)</span> would be expected to hinder progeny occupation it is assumed that <span class="math inline">\(k\)</span> is monotonically decreasing in <span class="math inline">\(N\)</span>, with <span class="math inline">\(k(x,y,N(x,t))=0\)</span> at <span class="math inline">\(N=1\)</span>. The number of cell cycle times per unit time of CSCs and TCs are denoted by <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(\rho\)</span>, respectively and for simplicity it is assumed that <span class="math inline">\(\gamma = \rho = 1\)</span> throughout. The parameter <span class="math inline">\(\delta\)</span> with <span class="math inline">\(0 \leq \delta \leq 1\)</span> denotes the fraction of CSC divisions that are symmetric, while <span class="math inline">\(1-\delta\)</span> is the fraction of asymmetric divisions. The parameter <span class="math inline">\(\alpha\)</span> denotes the spontaneous death rate of TCs. Background cell motility is modelled by the diffusion coefficients <span class="math inline">\(D_u\)</span> and <span class="math inline">\(D_v\)</span> for CSCs and TCs, respectively. The system is considered to hold in a smooth bounded domain <span class="math inline">\(\Omega\)</span>, with homogenous Neumann or Dirichlet boundary conditions.</p>
+<p>Homogeneous Neumann boundary conditions correspond to a boundary that is impenetrable by cells this could for example represent, a tissue surrounded by membranes, smooth muscle tissue, or bone, and are given by</p>
+<p><span id="eq-homogeneous-neumann-boundary-conditions"><span class="math display">\[
+\frac{\partial u}{\partial n} = 0, \quad \frac{\partial v}{\partial n} = 0 \quad \text{on} \quad \partial \Omega,
+\tag{1.3}\]</span></span></p>
+<p>where <span class="math inline">\(\partial / \partial n\)</span> is the normal derivative at the boundary. The redistribution kernel can only redistribute cells within this domain <span class="math inline">\(\Omega\)</span>, hence we impose</p>
+<p><span id="eq-redistribution-kernel-neumann-BC"><span class="math display">\[
+k(x,y,N) = 0 \quad \text{for} \quad x \notin \Omega.
+\tag{1.4}\]</span></span></p>
+<p>Homogeneous Dirichlet boundary conditions correspond to a boundary that cells can freely leave but not reenter again, for example this could represent intravasation into adjacent blood vessels, and are given by</p>
+<p><span id="eq-homogeneous-dirichlet-boundary-conditions"><span class="math display">\[
+u = 0, \quad v = 0 \quad \text{on} \quad \partial \Omega.
+\tag{1.5}\]</span></span></p>
+<p>The redistribution kernel describes transport of cells out of the domain but does not allow entering from the outside if, hence</p>
+<p><span id="eq-redistribution-kernel-dirichlet-BC"><span class="math display">\[
+k(x,y,N) = 0 \quad \text{for} \quad y \notin \Omega.
+\tag{1.6}\]</span></span></p>
+<p>Based on these two boundary conditions we can model any combination of domains such as partially covered by membranes, partially permeable membranes and adjacent blood vessels.</p>
+</section>
+<section id="sec-ode-model-reduction" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="sec-ode-model-reduction"><span class="header-section-number">1.4.3</span> ODE model reduction</h3>
+<p>In order to analyses this model analytically the authors reduce the system of integro-differential equations (<a href="#eq-integro-differential-CSC-model" class="quarto-xref">Equation&nbsp;<span>1.2</span></a>) to a system of ordinary differential equations in the following way.</p>
+<p><strong>Reduction 1: Progeny placement depends only on the density at the destination</strong><br>
+In this case <span class="math inline">\(k(x,y,N(x,t)) = k(N(x,t))\)</span>. Introducing mean densities which given that the domain <span class="math inline">\(\Omega\)</span> has unit volume, can be written as</p>
+<p><span id="eq-density-mean"><span class="math display">\[
+\bar{u}(t) = \int_{\Omega} u(y,t) dy, \quad \bar{v}(t) = \int_{\Omega} v(y,t) dy, \quad \bar{N}(t) = \bar{u}(t) + \bar{v}(t).
+\tag{1.7}\]</span></span></p>
+<p>Then <a href="#eq-integro-differential-CSC-model" class="quarto-xref">Equation&nbsp;<span>1.2</span></a> becomes:</p>
+<p><span id="eq-first-reduction-ODE-CSC-model"><span class="math display">\[
+\begin{aligned}
+u_t(x,t) &amp;= D_u \nabla^2 u(x,t) + \delta   k(N(x,t))\bar{u}(t), \\
+v_t(x,t) &amp;= D_v \nabla^2 v(x,t) + (1-\delta)   k(N(x,t))\bar{u}(t) + k(N(x,t))\bar{v}(t) - \alpha v(x,t).
+\end{aligned}
+\tag{1.8}\]</span></span></p>
+<p><strong>Reduction 2: Density is uniform across the domain</strong><br>
+If tumour growth is assumed uniform across the domain then, <span class="math inline">\(k(N(x,t)) = k(\bar{N}(t))\)</span> and <span class="math inline">\(u(x,t)\)</span> and <span class="math inline">\(v(x,t)\)</span> can be replaced with their spatially averaged values (<span class="math inline">\(\bar{u}(t)\)</span> and <span class="math inline">\(\bar{v}(t)\)</span>) and diffusion is zero everywhere. Therefore, <a href="#eq-first-reduction-ODE-CSC-model" class="quarto-xref">Equation&nbsp;<span>1.8</span></a> becomes:</p>
+<p><span id="eq-ODE-CSC-model"><span class="math display">\[
+\begin{aligned}
+    \frac{d \bar{u}}{dt} &amp;= \delta  k(\bar{N}(t)) \bar{u}, \\
+    \frac{d \bar{v}}{dt} &amp;= (1-\delta)  k(\bar{N}(t)) \bar{u} + k(\bar{N}(t)) \bar{v} - \alpha \bar{v}(t),
+\end{aligned}
+\tag{1.9}\]</span></span></p>
+<p>where the volume filling constraint <span class="math inline">\(k(\bar{N})\)</span> is taken to be</p>
+<p><span id="eq-volume-filling-constraint"><span class="math display">\[
+k(\bar{N}) = \text{max} \left\{0, 1 - \bar{N}^\sigma \right\}. \quad \text{for} \quad \sigma &gt; 1.
+\tag{1.10}\]</span></span></p>
+<p>An exponent of <span class="math inline">\(\sigma = 1\)</span> corresponds to a linearly decreasing rate of occupancy for newborn cells as the total density <span class="math inline">\(\bar{N}\)</span> increases. Since cells are nonrigid, deformable and able to squeeze into available spaces the authors argue that <span class="math inline">\(\sigma &gt; 1\)</span> is appropriate and take it to be <span class="math inline">\(\sigma = 4\)</span>, in all their simulations.</p>
+<p>Without a CSCs population <span class="math inline">\(\bar{u}(t)\)</span>, the density of TCs <span class="math inline">\(\bar{v}(t)\)</span> satisfies the equation</p>
+<p><span id="eq-ODE-TC-only-model"><span class="math display">\[
+\frac{d\bar{v}}{dt}  =K(\bar{v}(t))\bar{v}(t) - \alpha \bar{v}(t).
+\tag{1.11}\]</span></span></p>
+<p>Since <span class="math inline">\(K(\bar{v}(t))\)</span> is a decreasing function of <span class="math inline">\(\bar{v}(t)\)</span> the TC population will die out when <span class="math inline">\(\alpha &gt; k(0)\)</span>.</p>
+<p>This simpler ODE model allows for analytical analysis of the steady states, from which it can be shown that the pure stem cell steady state <span class="math inline">\((u,v)= (1,0)\)</span> is a global attractor. Therefore, this model predicts that for long times the tumour will consist of only stem cells. Intermediate tumor consistency and steady state time are dependent on cell death rate <span class="math inline">\(\alpha\)</span>. The convergence to <span class="math inline">\((1,0)\)</span> is somewhat surprising as typically the CSC compartment is considered small comprising only 1-3% of the tumour <span class="citation" data-cites="bao2006">(<a href="references.html#ref-bao2006" role="doc-biblioref">Bao et al. 2006</a>)</span>. However, the authors argue that this does not interfere with our analysis, since we are not interested in the long time dynamics (<span class="math inline">\(t \rightarrow \infty\)</span>), but rather in the intermediate time dynamics of the tumor.</p>
+</section>
+<section id="sec-stochastic-model" class="level3" data-number="1.4.4">
+<h3 data-number="1.4.4" class="anchored" data-anchor-id="sec-stochastic-model"><span class="header-section-number">1.4.4</span> Stochastic model of CSC dynamics</h3>
+<p>In <span class="citation" data-cites="turner2009">(<a href="references.html#ref-turner2009" role="doc-biblioref">Turner et al. 2009</a>)</span>, the authors first develop a stochastic model for the dynamics of CSCs and TCs, particularly for the case of brain cancer. This stochastic model is particular appropriate for situations in which small numbers of cells are present such as <em>in vitro</em> or in the early stages of tumour formation. In these cases stochastic fluctuations may have significant effects and cannot be neglected. To study larger populations the authors then derive a deterministic ODE model, based on the stochastic master equation, that describes the average number of CSCs and TCs.</p>
+<p>The model assumptions on CSCs and TCs are largely similar as those given previously in <a href="#sec-agent-based-model" class="quarto-xref"><span>Section 1.4.1</span></a>. However, it is assumed that CSCs are not immortal so have some probability of death. Defining <span class="math inline">\(p(n_s, n_p,t)\)</span> as the probability that there are exactly <span class="math inline">\(n_s\)</span> CSCs and <span class="math inline">\(n_p\)</span> TCs at time <span class="math inline">\(t\)</span>, The stochastic master equation is given by</p>
+<p><span id="eq-stochastic-master-equation"><span class="math display">\[
+\begin{aligned}
+\frac{dp(n_s,n_p,t)}{dt} = &amp; \ \rho_s \left[r_1 (n_s - 1) p(n_s - 1, n_p, t) \right. \\
+&amp; + r_2 n_p p(n_s, n_p - 1, t) \\
+&amp; + r_3 (n_s + 1) p(n_s + 1, n_p - 2, t) \\
+&amp; \left. - n_s p(n_s, n_p, t) \right] \\
+&amp; + \Gamma_s \left[ (n_s + 1) p(n_s + 1, n_p, t) - n_s p(n_s, n_p, t) \right] \\
+&amp; + \Gamma_p \left[ (n_p + 1) p(n_s, n_p + 1, t) - n_p p(n_s, n_p, t) \right].
+\end{aligned}
+\tag{1.12}\]</span></span></p>
+<p>The parameters <span class="math inline">\(\Gamma_s\)</span> and <span class="math inline">\(\Gamma_p\)</span> represent the rate of apoptosis for CSCs and TCs respectively. Due to the models stochastic nature, and the inclusion of a death rate for CSCs, it can be shown that The model predictions that the occurrence of a single cancer stem cell will not necessarily result in a tumour, even if the probability of self-renewal is greater than the probability of differentiation. This is in contrast to the previous models discussed <span class="citation" data-cites="enderling2009 hillen2013">(<a href="references.html#ref-enderling2009" role="doc-biblioref">Enderling et al. 2009</a>; <a href="references.html#ref-hillen2013" role="doc-biblioref">Hillen, Enderling, and Hahnfeldt 2013</a>)</span> and to a deterministic version of this model (<a href="#eq-deterministic-master-equation" class="quarto-xref">Equation&nbsp;<span>1.13</span></a>) that would predict exponential growth of the tumour from a single CSC.</p>
+<p>For larger cellular populations it becomes more challenging to simulate such a stochastic model and it becomes pertinent to consider the equations for the average number of CSCs and TCs. Defining the mean cellular populations <span class="math inline">\(S = &lt;n_s&gt;\)</span>, <span class="math inline">\(P = &lt;n_p&gt;\)</span> and <span class="math inline">\(r = r_1 - r_3\)</span>, the deterministic model is given by</p>
+<p><span id="eq-deterministic-master-equation"><span class="math display">\[
+\begin{aligned}
+\frac{dS}{dt} &amp;= \rho_s r S - \Gamma_s S, \\
+\frac{dP}{dt} &amp;= \rho_s (1-r) S - \Gamma_p P.
+\end{aligned}
+\tag{1.13}\]</span></span></p>
+<p>This model is largely similar to the ODE model presented in <span class="citation" data-cites="hillen2013">(<a href="references.html#ref-hillen2013" role="doc-biblioref">Hillen, Enderling, and Hahnfeldt 2013</a>)</span>, the slight differences that CSCs have a spontaneous death rate and TCs cannot themselves proliferate reflect the slightly different underlying assumptions of CSC dynamics between the two models.</p>
+</section>
+<section id="a-multispecies-model-of-cell-lineagessec-multispecies-model-of-cell-lineages" class="level3" data-number="1.4.5">
+<h3 data-number="1.4.5" class="anchored" data-anchor-id="a-multispecies-model-of-cell-lineagessec-multispecies-model-of-cell-lineages"><span class="header-section-number">1.4.5</span> A multispecies model of cell lineages[#sec-multispecies-model-of-cell-lineages]</h3>
+<p>In <span class="citation" data-cites="youssefpour2012">(<a href="references.html#ref-youssefpour2012" role="doc-biblioref">Youssefpour et al. 2012</a>)</span> the authors develop a multispecies PDE model for CSCs lineage dynamics, for a review of general multispecies models for modelling tumour dynamics see <span class="citation" data-cites="lowengrub2010">(<a href="references.html#ref-lowengrub2010" role="doc-biblioref">Lowengrub et al. 2010</a>)</span>. This is the first model we have looked at that considers more than two cells types CSCs and TCs. Here the model is more complex and accounts for CSCs, committed progenitor cells, terminal cells, and dead cells. As with the previous models we have looked at it is assumed that differentiation and feedback processes link the cells lineage through self-renewal fractions and mitosis rates. However, in contrast to the previous models it contains endogenous production of differentiation promoter, denoted <span class="math inline">\(T\)</span>, which is produced by the terminal cells and taken up by the CSCs. Additionally, endogenous production of self-renewal promoter, denoted <span class="math inline">\(W\)</span>, and an its inhibitor, denoted <span class="math inline">\(WI\)</span>, are assumed to be produced by all viable tumour cells (CSCs, progenitor cells, terminal cells). This allows for feedback mechanisms to that maintain the CSC population. The dependent variables in the model are the local volume fractions of the cell species <span class="math inline">\(\phi_\text{CSC}, \phi_\text{CP}, \phi_\text{TC}, \phi_\text{DC}, as well as healthy cells and water \phi_\text{H}, \phi_\text{W}\)</span>. Assuming there are no voids the sum of the volume fractions equals 1 and each cell type follows a conservation equation of the form</p>
+<p><span id="eq-youssefpour-multispecies"><span class="math display">\[
+\frac{\partial \phi}{\partial t} = - \nabla \cdot J - \nabla \cdot (u_s \phi) + S
+\tag{1.14}\]</span></span></p>
+<p>where <span class="math inline">\(\psi\)</span> denotes the volume fraction of the cell type, <span class="math inline">\(J\)</span> is generalized diffusion, <span class="math inline">\(u_s\)</span> is the mass-averaged velocity of the solid components, <span class="math inline">\(S\)</span> denotes the mass-exchange terms.</p>
+</section>
+</section>
+<section id="sec-models-of-differentiation-therapy" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="sec-models-of-differentiation-therapy"><span class="header-section-number">1.5</span> Models of differentiation therapy</h2>
+<p>If, as with normal tissues, cellular phenotypic heterogeneity within tumors can be explained by a hierarchy of differentiation, with only a subset of stem-like cells capable of long-term self-renewal, this raises the prospect that signals promoting differentiation could be effective at driving malignant cells to a less aggressive and ideally post-mitotic differentiated state <span class="citation" data-cites="carén2016">(<a href="references.html#ref-carén2016" role="doc-biblioref">Carén, Beck, and Pollard 2016</a>)</span>. This differentiation therapy approach has seen success in acute promyelocytic leukemia (APL) where all-trans-retinoic acid (ATRA) can promote differentiation of CSCs and lead to complete remission <span class="citation" data-cites="yan2016 dethé2018">(<a href="references.html#ref-yan2016" role="doc-biblioref">Yan and Liu 2016</a>; <a href="references.html#ref-dethé2018" role="doc-biblioref">De Thé 2018</a>)</span>. In GBM, bone morphogenetic protein 4 (BMP4), a member of the TGF-<span class="math inline">\(\beta\)</span> superfamily, has shown potential as a differentiation therapeutic agent. BMP4 has been shown to drive differentiation of GSCs towards a predominantly glial (astrocytic) fate, to reduce GBM tumor burden in vivo and to improve survival in a mouse model of GBM <span class="citation" data-cites="nayak2020 piccirillo2006">(<a href="references.html#ref-nayak2020" role="doc-biblioref">Nayak et al. 2020</a>; <a href="references.html#ref-piccirillo2006" role="doc-biblioref">Piccirillo et al. 2006</a>)</span>. Despite its potential as a treatment option relatively few mathematical models have considered its possible effects on tumour growth <span class="citation" data-cites="youssefpour2012 bachman2013 turner2009">(<a href="references.html#ref-youssefpour2012" role="doc-biblioref">Youssefpour et al. 2012</a>; <a href="references.html#ref-bachman2013" role="doc-biblioref">Bachman and Hillen 2013</a>; <a href="references.html#ref-turner2009" role="doc-biblioref">Turner et al. 2009</a>)</span>.</p>
+<section id="differentiation-promoter-and-self-renewal-promoter" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="differentiation-promoter-and-self-renewal-promoter"><span class="header-section-number">1.5.1</span> Differentiation promoter and self-renewal promoter</h3>
+<p>In <span class="citation" data-cites="youssefpour2012">(<a href="references.html#ref-youssefpour2012" role="doc-biblioref">Youssefpour et al. 2012</a>)</span> they follow <span class="citation" data-cites="lander2009">(<a href="references.html#ref-lander2009" role="doc-biblioref">Lander et al. 2009</a>)</span> and assume that the proliferation and differentiation of CSCs are regulated by factors in the tumour microenvironemnt that feedback on self-renewal fractions and mitosis rates. In particular, they denote the differentiation promoter <span class="math inline">\(T\)</span> (for TGF-beta superfamily members) that reduces the probability of self-renewal for CSCs. They also account for self-renewal promoter <span class="math inline">\(W\)</span> which increases the probability of self-renewal of CSCs, as well as an inhibitor of <span class="math inline">\(W\)</span> denoted <span class="math inline">\(WI\)</span>, possible self-renewal promoters include WNTs, Notch and Shh <span class="citation" data-cites="pannuti2010 bailey2007">(<a href="references.html#ref-pannuti2010" role="doc-biblioref">Pannuti et al. 2010</a>; <a href="references.html#ref-bailey2007" role="doc-biblioref">Bailey, Singh, and Hollingsworth 2007</a>)</span>, they therefore define the CSC self-renewal fraction as</p>
+<p><span id="eq-youssefpour-Ps"><span class="math display">\[
+P_s = P_\text{min} + (P_\text{max} - P_\text{min}) \left( \frac{\xi C_w}{1 + \xi C_W} \right)\left( \frac{1}{1 + \psi C_T} \right),
+\tag{1.15}\]</span></span></p>
+<p>where <span class="math inline">\(P_\text{min}\)</span> and <span class="math inline">\(P_\text{max}\)</span> are the minimum and maximum probability of CSC self-renewal, taken to be <span class="math inline">\(0.2\)</span> and <span class="math inline">\(1\)</span> respectively. <span class="math inline">\(C_W\)</span> and <span class="math inline">\(C_T\)</span> represent the concentrations of the self-renewal promoter and differentiation promoter respectively. The parameters <span class="math inline">\(\xi\)</span> and <span class="math inline">\(\psi\)</span> quantify the sensitivity of CSCs to the regulating proteins.</p>
+<p>The concentration of differentiation promoter and self-renewal promoter are then modeled as follows. It is assumed that <span class="math inline">\(T\)</span> is more diffuse than either <span class="math inline">\(W\)</span> or <span class="math inline">\(WI\)</span>. Therefore, on the time scale of cellular proliferation they make the quasi-steady-state assumption that time derivatives and advection of <span class="math inline">\(T\)</span> can be neglected. Thus, the quasi-steady reaction-diffusion equation for <span class="math inline">\(T\)</span> is given by</p>
+<p><span id="eq-youssefpour-T"><span class="math display">\[
+0 = \nabla \cdot (D_T \nabla C_T) - \left( \nu_{UT} \phi + \nu_{DT} \right) C_T + \nu_{PT}\phi_{TC}
+\tag{1.16}\]</span></span></p>
+<p>where <span class="math inline">\(D_T\)</span> is the diffusion coefficient, <span class="math inline">\(\nu_{UT}\)</span>, <span class="math inline">\(\nu_{DT}\)</span> and <span class="math inline">\(\nu_\text{PT}\)</span> are the uptake rate by CSCs, the rate of decay and the rate of production by the TCs, respectively.</p>
+<p>To model the self-renewal promoter <span class="math inline">\(W\)</span> and its inhibitor <span class="math inline">\(WI\)</span> a generalized Gierer-Meinhard-Turing system of reaction diffusion equations is used, given by</p>
+<p><span id="eq-youssefpour-W-WI"><span class="math display">\[
+\begin{aligned}
+&amp;\frac{\partial C_W}{\partial t} + \nabla \cdot (u_s C_W) = \nabla \cdot (D_W \nabla C_W) + f(C_W, C_{WI}), \\
+&amp;\frac{\partial C_{WI}}{\partial t} + \nabla \cdot (u_s C_{WI}) = \nabla \cdot (D_{WI} \nabla C_{WI}) + g(C_W, C_{WI}),
+\end{aligned}
+\tag{1.17}\]</span></span></p>
+<p>where</p>
+<p><span id="eq-youssefpour-f-g"><span class="math display">\[
+\begin{aligned}
+f(C_W, C_{WI}) &amp;= \nu_{PW} \frac{C^2_W}{C_{WI}}C_0 \phi_\text{CSC} - \nu_{DW} C_W + u_0C_0 (\phi_\text{CSC} + \phi_\text{CP} + \phi_\text{TC}), \\
+g(C_W, C_{WI}) &amp;= \nu_\text{PWI}C^2_W C_0 \phi_\text{CSC} - \nu_\text{DWI} C_{WI}.
+\end{aligned}
+\tag{1.18}\]</span></span></p>
+<p>The parameters <span class="math inline">\(D_W\)</span> and <span class="math inline">\(D_{WI}\)</span> are the difusion coefficeints, <span class="math inline">\(\nu_\text{PW}\)</span>, <span class="math inline">\(\nu_\text{DW}\)</span> and <span class="math inline">\(\nu_\text{PWI}\)</span>, <span class="math inline">\(\nu_\text{DWI}\)</span> are the production and decay rates of <span class="math inline">\(W\)</span> and <span class="math inline">\(WI\)</span> respectively. The parameter <span class="math inline">\(u_0\)</span> represnts a low-level source of <span class="math inline">\(W\)</span> from all the tumour cells.</p>
+<p>To model differentiation therapy they fix <span class="math inline">\(\psi = 0.5\)</span> and introduce an external source of <span class="math inline">\(T\)</span> i.e., a constant source term is added to <a href="#eq-youssefpour-T" class="quarto-xref">Equation&nbsp;<span>1.16</span></a>.</p>
+</section>
+<section id="no-self-renewal-promoter" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="no-self-renewal-promoter"><span class="header-section-number">1.5.2</span> No self-renewal promoter</h3>
+<p>In <span class="citation" data-cites="bachman2013">(<a href="references.html#ref-bachman2013" role="doc-biblioref">Bachman and Hillen 2013</a>)</span> they follow <span class="citation" data-cites="youssefpour2012">(<a href="references.html#ref-youssefpour2012" role="doc-biblioref">Youssefpour et al. 2012</a>)</span> and model differentiation therapy through a relationship between the average level of differentiation promoter, which they denote <span class="math inline">\(C_F\)</span> and the probability of CSC self-renewal <span class="math inline">\(P_s\)</span>. But hey do not include the effects of a CSC self-renewal promoting factor, thus</p>
+<p><span id="eq-bachman-Ps"><span class="math display">\[
+P_s(t) = P_\text{min} + (P_\text{max} - P_\text{min}) \left( \frac{1}{1 + \psi C_F(t)} \right),
+\tag{1.19}\]</span></span></p>
+<p>where the notation is the same as in <a href="#eq-youssefpour-Ps" class="quarto-xref">Equation&nbsp;<span>1.15</span></a>. Since <span class="citation" data-cites="bachman2013">(<a href="references.html#ref-bachman2013" role="doc-biblioref">Bachman and Hillen 2013</a>)</span> do not model endogenous production of differentiation promoter, <span class="math inline">\(C_F\)</span> solely represents the level of differentiation promoter prescribed during differentiation therpay. To address this lack of endogenous differentiation promoters they take <span class="math inline">\(P_\text{max} = 0.505\)</span> (which is equivalent to setting <span class="math inline">\(\delta = 0.01\)</span> as was done in <span class="citation" data-cites="hillen2013">(<a href="references.html#ref-hillen2013" role="doc-biblioref">Hillen, Enderling, and Hahnfeldt 2013</a>)</span>) and <span class="math inline">\(P_\text{min} = 0.2\)</span>, as is done in <span class="citation" data-cites="youssefpour2012">(<a href="references.html#ref-youssefpour2012" role="doc-biblioref">Youssefpour et al. 2012</a>)</span>.</p>
+<p>As <span class="citation" data-cites="bachman2013">(<a href="references.html#ref-bachman2013" role="doc-biblioref">Bachman and Hillen 2013</a>)</span> use the ODE model developed in <span class="citation" data-cites="hillen2013">(<a href="references.html#ref-hillen2013" role="doc-biblioref">Hillen, Enderling, and Hahnfeldt 2013</a>)</span> they must also develop a submodel for the average level of differentiation promoter. As it is an ODE model they consider the average level of differentiation promoter within a spatially homogeous tumour <span class="math inline">\(C_F(t)\)</span>. It is assumed that the tumour resides within a spherical region of tissue and that differentiation promoter enters this area through the boundary. The differentaition promoter enters the region from the boundary and will diffuse very quickly and attain a steady state disttibution over this region. To compute the value of <span class="math inline">\(C_F(t)\)</span> they solve the problem of diffusion over a sphere of radius <span class="math inline">\(R\)</span> and avergae the solution over the volume of the sphere. We use the lower case letter to describ the radial symmetric solution <span class="math inline">\(c_F(r,t)\)</span> of the follwoing boundary value probalem</p>
+<p><span id="eq-bachman-CF"><span class="math display">\[
+\begin{aligned}
+\frac{\partial c_F}{\partial t} &amp;= \omega \left( \frac{\partial}{\partial r} \left(\frac{\partial c_F}{\partial r} \right) + \frac{2}{r} \frac{\partial c_f}{\partial r}   \right) \\
+c_F(R,t) &amp;= C_{F0}(t).
+\end{aligned}
+\tag{1.20}\]</span></span></p>
+<p>Where <span class="math inline">\(\omega\)</span> is the effective diffusivity of the differentiation promoter. Before differentation therapy begins <span class="math inline">\(C_{F0}(t)\)</span> is 0, when differnetiation therapy begins the boundary condition on the sphere is set to <span class="math inline">\(C_{F0}(t) = 1\)</span>, and the promoter diffuses into the sphere. When differentaition therapy ends, the bounayry condition is simply set to 0 and the promoter diffusies out of the sphere. They then set</p>
+<p><span id="eq-bachman-CF2"><span class="math display">\[
+C_F(t) = \frac{3}{R^3} = \int^R_0 c_F (r,t) r^2 dr.
+\tag{1.21}\]</span></span></p>
+</section>
+<section id="bmp4-in-glioma" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="bmp4-in-glioma"><span class="header-section-number">1.5.3</span> BMP4 in glioma</h3>
+<p>In the previous models <span class="citation" data-cites="youssefpour2012 hillen2013">(<a href="references.html#ref-youssefpour2012" role="doc-biblioref">Youssefpour et al. 2012</a>; <a href="references.html#ref-hillen2013" role="doc-biblioref">Hillen, Enderling, and Hahnfeldt 2013</a>)</span> they considered a gneral differentaition promoter, in <span class="citation" data-cites="turner2009">(<a href="references.html#ref-turner2009" role="doc-biblioref">Turner et al. 2009</a>)</span> they consider a the specific differentaiton promter, BMP4 in GBM. As in the case for the general differentaiton promoter they interprest the effects of BMP4 as decrreasing the net symmetric division rate <span class="math inline">\(r\)</span> (following the notatiomn used in <a href="#sec-stochastic-model" class="quarto-xref"><span>Section 1.4.4</span></a>). Based on <span class="citation" data-cites="piccirillo2006">(<a href="references.html#ref-piccirillo2006" role="doc-biblioref">Piccirillo et al. 2006</a>)</span> they estimate that from a pre-treatment value of <span class="math inline">\(r = 0.1\)</span> the effect of BMP4 is to reduce <span class="math inline">\(r\)</span> to <span class="math inline">\(-0.1\)</span>, note that following the notation used in <a href="#sec-stochastic-model" class="quarto-xref"><span>Section 1.4.4</span></a> <span class="math inline">\(r\)</span> is defined as <span class="math inline">\(r = r_1-r_3\)</span> so a change of <span class="math inline">\(r\)</span> to negative represnts a both an increaese in the proportion of symmetric differentaiton divisions and a decrease in symetric slef-renewal divisions. To model differentaiton therapy the parameter value <span class="math inline">\(r\)</span> is simply swtiched beteen these two values for the duratio nof BMP4 exposure.</p>
+</section>
+<section id="summary-of-differentaition-therpay-results" class="level3" data-number="1.5.4">
+<h3 data-number="1.5.4" class="anchored" data-anchor-id="summary-of-differentaition-therpay-results"><span class="header-section-number">1.5.4</span> Summary of differentaition therpay results</h3>
+<p>All the models compare 3 different tretament cases radiation alone, differentaition therapy alone and combination therpay. Importantly, as has been shown, all models assume that CSCs are less senstavie to radiation than TCs <span class="citation" data-cites="bao2006">(<a href="references.html#ref-bao2006" role="doc-biblioref">Bao et al. 2006</a>)</span>. Despite the slight differences in implementation of the models, all models find similar result. Radiotherpy alone fails as some CSCs survive and are able to repopulate the tumour. In fact all models show an extention of the “tumour growth paradox” which we term the “tumour treatment paradox”. When treating with radiation alone the fraction of CSCs increases and since the TCs die there is more room for CSCs this allows much more rapid re-grwoth of the tumour. This suggests that current standard of care treatment selects for the more resistant and turmourogenic CSCs thus treatment often fasicilitates more rapid and agressive tumour recurrace. Diffenrentiation therpy alone can succesfuly iradicate the tumour, however, given all models assume that CSCs can only transform into TCs through (asymmetric) cellualr divison, rather than direct transition, large intermediate values of total tumour size may be reached using this approach. Combination of differentiation and radiothery out perfomred eith single therapies often showing that the tumour can be driven to much smaller sizes and potentially extinction. This is because the differentiation agent induces CSCs to turn into TCs which then can be killed by traditional radiation therapy. This combination therapy can be considered a new class of strategies for cancer therapy known as evolutionary steeringvappraoches. Rather than reactively altering treatment as resitance is aqured we proactively slecet our treamtent to minimise resistantce and increase chance of extinction <span class="citation" data-cites="enriquez-navas2015 acar2020">(<a href="references.html#ref-enriquez-navas2015" role="doc-biblioref">Enriquez-Navas, Wojtkowiak, and Gatenby 2015</a>; <a href="references.html#ref-acar2020" role="doc-biblioref">Acar et al. 2020</a>)</span>.</p>
+</section>
+</section>
+<section id="conclusion" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Conclusion</h1>
+<p>None of the models attempt to parameterise senstaitvit of cell lines to differentiation promoter. None model a specific feasible delivery strategy for differntiation promoter. None consider effects on cohorts of virtual populations and interactions between other parameters and differentiation therapy. In all cases it was assumed that CSCs can only transform into TCs through asymetric divison rather than any direct traistions from CSCs to TCs.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-acar2020" class="csl-entry" role="listitem">
+Acar, Ahmet, Daniel Nichol, Javier Fernandez-Mateos, George D. Cresswell, Iros Barozzi, Sung Pil Hong, Nicholas Trahearn, et al. 2020. <span>“Exploiting Evolutionary Steering to Induce Collateral Drug Sensitivity in Cancer.”</span> <em>Nature Communications</em> 11 (1): 1923. <a href="https://doi.org/10.1038/s41467-020-15596-z">https://doi.org/10.1038/s41467-020-15596-z</a>.
+</div>
+<div id="ref-al-hajj2003" class="csl-entry" role="listitem">
+Al-Hajj, Muhammad, Max S. Wicha, Adalberto Benito-Hernandez, Sean J. Morrison, and Michael F. Clarke. 2003. <span>“Prospective Identification of Tumorigenic Breast Cancer Cells.”</span> <em>Proceedings of the National Academy of Sciences</em> 100 (7): 3983–88. <a href="https://doi.org/10.1073/pnas.0530291100">https://doi.org/10.1073/pnas.0530291100</a>.
+</div>
+<div id="ref-bachman2013" class="csl-entry" role="listitem">
+Bachman, Jeff W. N., and Thomas Hillen. 2013. <span>“Mathematical Optimization of the Combination of Radiation and Differentiation Therapies for Cancer.”</span> <em>Frontiers in Oncology</em> 3. <a href="https://doi.org/10.3389/fonc.2013.00052">https://doi.org/10.3389/fonc.2013.00052</a>.
+</div>
+<div id="ref-bailey2007" class="csl-entry" role="listitem">
+Bailey, Jennifer M., Pankaj K. Singh, and Michael A. Hollingsworth. 2007. <span>“Cancer Metastasis Facilitated by Developmental Pathways: Sonic Hedgehog, Notch, and Bone Morphogenic Proteins.”</span> <em>Journal of Cellular Biochemistry</em> 102 (4): 829–39. <a href="https://doi.org/10.1002/jcb.21509">https://doi.org/10.1002/jcb.21509</a>.
+</div>
+<div id="ref-balk2011" class="csl-entry" role="listitem">
+Balk, Sophie J. 2011. <span>“Ultraviolet Radiation: A Hazard to Children and Adolescents.”</span> <em>Pediatrics</em> 127 (3): e791–817. <a href="https://doi.org/10.1542/peds.2010-3502">https://doi.org/10.1542/peds.2010-3502</a>.
+</div>
+<div id="ref-bao2006" class="csl-entry" role="listitem">
+Bao, Shideng, Qiulian Wu, Roger E. McLendon, Yueling Hao, Qing Shi, Anita B. Hjelmeland, Mark W. Dewhirst, Darell D. Bigner, and Jeremy N. Rich. 2006. <span>“Glioma Stem Cells Promote Radioresistance by Preferential Activation of the DNA Damage Response.”</span> <em>Nature</em> 444 (7120): 756–60. <a href="https://doi.org/10.1038/nature05236">https://doi.org/10.1038/nature05236</a>.
+</div>
+<div id="ref-baskar2012" class="csl-entry" role="listitem">
+Baskar, Rajamanickam, Kuo Ann Lee, Richard Yeo, and Kheng-Wei Yeoh. 2012. <span>“Cancer and Radiation Therapy: Current Advances and Future Directions.”</span> <em>International Journal of Medical Sciences</em> 9 (3): 193–99. <a href="https://doi.org/10.7150/ijms.3635">https://doi.org/10.7150/ijms.3635</a>.
+</div>
+<div id="ref-bonnet1997" class="csl-entry" role="listitem">
+Bonnet, Dominique, and John E. Dick. 1997. <span>“Human Acute Myeloid Leukemia Is Organized as a Hierarchy That Originates from a Primitive Hematopoietic Cell.”</span> <em>Nature Medicine</em> 3 (7): 730–37. <a href="https://doi.org/10.1038/nm0797-730">https://doi.org/10.1038/nm0797-730</a>.
+</div>
+<div id="ref-carén2016" class="csl-entry" role="listitem">
+Carén, Helena, Stephan Beck, and Steven M. Pollard. 2016. <span>“Differentiation Therapy for Glioblastoma <span></span> Too Many Obstacles?”</span> <em>Molecular &amp; Cellular Oncology</em> 3 (2): e1124174. <a href="https://doi.org/10.1080/23723556.2015.1124174">https://doi.org/10.1080/23723556.2015.1124174</a>.
+</div>
+<div id="ref-dethé2018" class="csl-entry" role="listitem">
+De Thé, Hugues. 2018. <span>“Differentiation Therapy Revisited.”</span> <em>Nature Reviews Cancer</em> 18 (2): 117–27. <a href="https://doi.org/10.1038/nrc.2017.103">https://doi.org/10.1038/nrc.2017.103</a>.
+</div>
+<div id="ref-enderling2009" class="csl-entry" role="listitem">
+Enderling, Heiko, Alexander R. A. Anderson, Mark A. J. Chaplain, Afshin Beheshti, Lynn Hlatky, and Philip Hahnfeldt. 2009. <span>“Paradoxical Dependencies of Tumor Dormancy and Progression on Basic Cell Kinetics.”</span> <em>Cancer Research</em> 69 (22): 8814–21. <a href="https://doi.org/10.1158/0008-5472.CAN-09-2115">https://doi.org/10.1158/0008-5472.CAN-09-2115</a>.
+</div>
+<div id="ref-enriquez-navas2015" class="csl-entry" role="listitem">
+Enriquez-Navas, Pedro M., Jonathan W. Wojtkowiak, and Robert A. Gatenby. 2015. <span>“Application of Evolutionary Principles to Cancer Therapy.”</span> <em>Cancer Research</em> 75 (22): 4675–80. <a href="https://doi.org/10.1158/0008-5472.CAN-15-1337">https://doi.org/10.1158/0008-5472.CAN-15-1337</a>.
+</div>
+<div id="ref-folkman2004" class="csl-entry" role="listitem">
+Folkman, Judah, and Raghu Kalluri. 2004. <span>“Cancer Without Disease.”</span> <em>Nature</em> 427 (6977): 787–87. <a href="https://doi.org/10.1038/427787a">https://doi.org/10.1038/427787a</a>.
+</div>
+<div id="ref-galli2004" class="csl-entry" role="listitem">
+Galli, Rossella, Elena Binda, Ugo Orfanelli, Barbara Cipelletti, Angela Gritti, Simona De Vitis, Roberta Fiocco, Chiara Foroni, Francesco Dimeco, and Angelo Vescovi. 2004. <span>“Isolation and Characterization of Tumorigenic, Stem-Like Neural Precursors from Human Glioblastoma.”</span> <em>Cancer Research</em> 64 (19): 7011–21. <a href="https://doi.org/10.1158/0008-5472.CAN-04-1364">https://doi.org/10.1158/0008-5472.CAN-04-1364</a>.
+</div>
+<div id="ref-gao2013" class="csl-entry" role="listitem">
+Gao, Xuefeng, J. Tyson McDonald, Lynn Hlatky, and Heiko Enderling. 2013. <span>“Acute and Fractionated Irradiation Differentially Modulate Glioma Stem Cell Division Kinetics.”</span> <em>Cancer Research</em> 73 (5): 1481–90. <a href="https://doi.org/10.1158/0008-5472.CAN-12-3429">https://doi.org/10.1158/0008-5472.CAN-12-3429</a>.
+</div>
+<div id="ref-hanahan2000" class="csl-entry" role="listitem">
+Hanahan, Douglas, and Robert A Weinberg. 2000. <span>“The Hallmarks of Cancer.”</span> <em>Cell</em> 100 (1): 57–70. <a href="https://doi.org/10.1016/S0092-8674(00)81683-9">https://doi.org/10.1016/S0092-8674(00)81683-9</a>.
+</div>
+<div id="ref-hemmati2003" class="csl-entry" role="listitem">
+Hemmati, Houman D., Ichiro Nakano, Jorge A. Lazareff, Michael Masterman-Smith, Daniel H. Geschwind, Marianne Bronner-Fraser, and Harley I. Kornblum. 2003. <span>“Cancerous Stem Cells Can Arise from Pediatric Brain Tumors.”</span> <em>Proceedings of the National Academy of Sciences</em> 100 (25): 15178–83. <a href="https://doi.org/10.1073/pnas.2036535100">https://doi.org/10.1073/pnas.2036535100</a>.
+</div>
+<div id="ref-hillen2013" class="csl-entry" role="listitem">
+Hillen, Thomas, Heiko Enderling, and Philip Hahnfeldt. 2013. <span>“The Tumor Growth Paradox and Immune System-Mediated Selection for Cancer Stem Cells.”</span> <em>Bulletin of Mathematical Biology</em> 75 (1): 161–84. <a href="https://doi.org/10.1007/s11538-012-9798-x">https://doi.org/10.1007/s11538-012-9798-x</a>.
+</div>
+<div id="ref-ignatova2002" class="csl-entry" role="listitem">
+Ignatova, Tatyana N., Valery G. Kukekov, Eric D. Laywell, Oleg N. Suslov, Frank D. Vrionis, and Dennis A. Steindler. 2002. <span>“Human Cortical Glial Tumors Contain Neural Stem<span>-</span>Like Cells Expressing Astroglial and Neuronal Markers in Vitro.”</span> <em>Glia</em> 39 (3): 193–206. <a href="https://doi.org/10.1002/glia.10094">https://doi.org/10.1002/glia.10094</a>.
+</div>
+<div id="ref-lander2009" class="csl-entry" role="listitem">
+Lander, Arthur D, Kimberly K Gokoffski, Frederic Y. M Wan, Qing Nie, and Anne L Calof. 2009. <span>“Cell Lineages and the Logic of Proliferative Control.”</span> Edited by Charles F Stevens. <em>PLoS Biology</em> 7 (1): e1000015. <a href="https://doi.org/10.1371/journal.pbio.1000015">https://doi.org/10.1371/journal.pbio.1000015</a>.
+</div>
+<div id="ref-lapidot1994" class="csl-entry" role="listitem">
+Lapidot, Tsvee, Christian Sirard, Josef Vormoor, Barbara Murdoch, Trang Hoang, Julio Caceres-Cortes, Mark Minden, Bruce Paterson, Michael A. Caligiuri, and John E. Dick. 1994. <span>“A Cell Initiating Human Acute Myeloid Leukaemia After Transplantation into SCID Mice.”</span> <em>Nature</em> 367 (6464): 645–48. <a href="https://doi.org/10.1038/367645a0">https://doi.org/10.1038/367645a0</a>.
+</div>
+<div id="ref-lowengrub2010" class="csl-entry" role="listitem">
+Lowengrub, J S, H B Frieboes, F Jin, Y-L Chuang, X Li, P Macklin, S M Wise, and V Cristini. 2010. <span>“Nonlinear Modelling of Cancer: Bridging the Gap Between Cells and Tumours.”</span> <em>Nonlinearity</em> 23 (1): R1–91. <a href="https://doi.org/10.1088/0951-7715/23/1/R01">https://doi.org/10.1088/0951-7715/23/1/R01</a>.
+</div>
+<div id="ref-ma2018" class="csl-entry" role="listitem">
+Ma, Qianquan, Wenyong Long, Changsheng Xing, Junjun Chu, Mei Luo, Helen Y. Wang, Qing Liu, and Rong-Fu Wang. 2018. <span>“Cancer Stem Cells and Immunosuppressive Microenvironment in Glioma.”</span> <em>Frontiers in Immunology</em> 9 (December): 2924. <a href="https://doi.org/10.3389/fimmu.2018.02924">https://doi.org/10.3389/fimmu.2018.02924</a>.
+</div>
+<div id="ref-meza2008" class="csl-entry" role="listitem">
+Meza, Rafael, Jihyoun Jeon, Suresh H. Moolgavkar, and E. Georg Luebeck. 2008. <span>“Age-Specific Incidence of Cancer: Phases, Transitions, and Biological Implications.”</span> <em>Proceedings of the National Academy of Sciences</em> 105 (42): 16284–89. <a href="https://doi.org/10.1073/pnas.0801151105">https://doi.org/10.1073/pnas.0801151105</a>.
+</div>
+<div id="ref-nayak2020" class="csl-entry" role="listitem">
+Nayak, Sonali, Ashorne Mahenthiran, Yongyong Yang, Mark McClendon, Barbara Mania-Farnell, Charles David James, John A. Kessler, et al. 2020. <span>“Bone Morphogenetic Protein 4 Targeting Glioma Stem-Like Cells for Malignant Glioma Treatment: Latest Advances and Implications for Clinical Application.”</span> <em>Cancers</em> 12 (2): 516. <a href="https://doi.org/10.3390/cancers12020516">https://doi.org/10.3390/cancers12020516</a>.
+</div>
+<div id="ref-neves-e-castro2006" class="csl-entry" role="listitem">
+Neves-E-Castro, Manuel. 2006. <span>“Why Do Some Breast Cancer Cells Remain Dormant?”</span> <em>Gynecological Endocrinology</em> 22 (4): 190–97. <a href="https://doi.org/10.1080/09513590600624374">https://doi.org/10.1080/09513590600624374</a>.
+</div>
+<div id="ref-pannuti2010" class="csl-entry" role="listitem">
+Pannuti, Antonio, Kimberly Foreman, Paola Rizzo, Clodia Osipo, Todd Golde, Barbara Osborne, and Lucio Miele. 2010. <span>“Targeting Notch to Target Cancer Stem Cells.”</span> <em>Clinical Cancer Research</em> 16 (12): 3141–52. <a href="https://doi.org/10.1158/1078-0432.CCR-09-2823">https://doi.org/10.1158/1078-0432.CCR-09-2823</a>.
+</div>
+<div id="ref-piccirillo2006" class="csl-entry" role="listitem">
+Piccirillo, S. G. M., B. A. Reynolds, N. Zanetti, G. Lamorte, E. Binda, G. Broggi, H. Brem, A. Olivi, F. Dimeco, and A. L. Vescovi. 2006. <span>“Bone Morphogenetic Proteins Inhibit the Tumorigenic Potential of Human Brain Tumour-Initiating Cells.”</span> <em>Nature</em> 444 (7120): 761–65. <a href="https://doi.org/10.1038/nature05349">https://doi.org/10.1038/nature05349</a>.
+</div>
+<div id="ref-reya2001" class="csl-entry" role="listitem">
+Reya, Tannishtha, Sean J. Morrison, Michael F. Clarke, and Irving L. Weissman. 2001. <span>“Stem Cells, Cancer, and Cancer Stem Cells.”</span> <em>Nature</em> 414 (6859): 105–11. <a href="https://doi.org/10.1038/35102167">https://doi.org/10.1038/35102167</a>.
+</div>
+<div id="ref-ricci-vitiani2007" class="csl-entry" role="listitem">
+Ricci-Vitiani, Lucia, Dario G. Lombardi, Emanuela Pilozzi, Mauro Biffoni, Matilde Todaro, Cesare Peschle, and Ruggero De Maria. 2007. <span>“Identification and Expansion of Human Colon-Cancer-Initiating Cells.”</span> <em>Nature</em> 445 (7123): 111–15. <a href="https://doi.org/10.1038/nature05384">https://doi.org/10.1038/nature05384</a>.
+</div>
+<div id="ref-rich2007" class="csl-entry" role="listitem">
+Rich, Jeremy N. 2007. <span>“Cancer Stem Cells in Radiation Resistance.”</span> <em>Cancer Research</em> 67 (19): 8980–84. <a href="https://doi.org/10.1158/0008-5472.CAN-07-0895">https://doi.org/10.1158/0008-5472.CAN-07-0895</a>.
+</div>
+<div id="ref-schonberg2014" class="csl-entry" role="listitem">
+Schonberg, David L., Daniel Lubelski, Tyler E. Miller, and Jeremy N. Rich. 2014. <span>“Brain Tumor Stem Cells: Molecular Characteristics and Their Impact on Therapy.”</span> <em>Molecular Aspects of Medicine</em> 39 (October): 82–101. <a href="https://doi.org/10.1016/j.mam.2013.06.004">https://doi.org/10.1016/j.mam.2013.06.004</a>.
+</div>
+<div id="ref-singh2003" class="csl-entry" role="listitem">
+Singh, Sheila K., Ian D. Clarke, Mizuhiko Terasaki, Victoria E. Bonn, Cynthia Hawkins, Jeremy Squire, and Peter B. Dirks. 2003. <span>“Identification of a Cancer Stem Cell in Human Brain Tumors.”</span> <em>Cancer Research</em> 63 (18): 5821–28.
+</div>
+<div id="ref-singh2004" class="csl-entry" role="listitem">
+Singh, Sheila K., Cynthia Hawkins, Ian D. Clarke, Jeremy A. Squire, Jane Bayani, Takuichiro Hide, R. Mark Henkelman, Michael D. Cusimano, and Peter B. Dirks. 2004. <span>“Identification of Human Brain Tumour Initiating Cells.”</span> <em>Nature</em> 432 (7015): 396–401. <a href="https://doi.org/10.1038/nature03128">https://doi.org/10.1038/nature03128</a>.
+</div>
+<div id="ref-sweeney1995" class="csl-entry" role="listitem">
+Sweeney, Eamon. 1995. <span>“Dormant Cells in Columnar Cell Carcinoma of the Thyroid.”</span> <em>Human Pathology</em> 26 (6): 691–92. <a href="https://doi.org/10.1016/0046-8177(95)90180-9">https://doi.org/10.1016/0046-8177(95)90180-9</a>.
+</div>
+<div id="ref-taipale2001" class="csl-entry" role="listitem">
+Taipale, Jussi, and Philip A. Beachy. 2001. <span>“The Hedgehog and Wnt Signalling Pathways in Cancer.”</span> <em>Nature</em> 411 (6835): 349–54. <a href="https://doi.org/10.1038/35077219">https://doi.org/10.1038/35077219</a>.
+</div>
+<div id="ref-tang2021" class="csl-entry" role="listitem">
+Tang, Xuejia, Chenghai Zuo, Pengchao Fang, Guojing Liu, Yongyi Qiu, Yi Huang, and Rongrui Tang. 2021. <span>“Targeting Glioblastoma Stem Cells: A Review on Biomarkers, Signal Pathways and Targeted Therapy.”</span> <em>Frontiers in Oncology</em> 11 (July): 701291. <a href="https://doi.org/10.3389/fonc.2021.701291">https://doi.org/10.3389/fonc.2021.701291</a>.
+</div>
+<div id="ref-turner2009" class="csl-entry" role="listitem">
+Turner, C., A. R. Stinchcombe, M. Kohandel, S. Singh, and S. Sivaloganathan. 2009. <span>“Characterization of Brain Cancer Stem Cells: A Mathematical Approach.”</span> <em>Cell Proliferation</em> 42 (4): 529–40. <a href="https://doi.org/10.1111/j.1365-2184.2009.00619.x">https://doi.org/10.1111/j.1365-2184.2009.00619.x</a>.
+</div>
+<div id="ref-weiss2017a" class="csl-entry" role="listitem">
+Weiss, Lora D., Natalia L. Komarova, and Ignacio A. Rodriguez-Brenes. 2017. <span>“Mathematical Modeling of Normal and Cancer Stem Cells.”</span> <em>Current Stem Cell Reports</em> 3 (3): 232–39. <a href="https://doi.org/10.1007/s40778-017-0094-4">https://doi.org/10.1007/s40778-017-0094-4</a>.
+</div>
+<div id="ref-yan2016" class="csl-entry" role="listitem">
+Yan, Min, and Quentin Liu. 2016. <span>“Differentiation Therapy: A Promising Strategy for Cancer Treatment.”</span> <em>Chinese Journal of Cancer</em> 35 (1): 3. <a href="https://doi.org/10.1186/s40880-015-0059-x">https://doi.org/10.1186/s40880-015-0059-x</a>.
+</div>
+<div id="ref-youssefpour2012" class="csl-entry" role="listitem">
+Youssefpour, H., X. Li, A. D. Lander, and J. S. Lowengrub. 2012. <span>“Multispecies Model of Cell Lineages and Feedback Control in Solid Tumors.”</span> <em>Journal of Theoretical Biology</em> 304 (July): 39–59. <a href="https://doi.org/10.1016/j.jtbi.2012.02.030">https://doi.org/10.1016/j.jtbi.2012.02.030</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -637,7 +1035,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/Harbour-N/Second-year-report/edit/main/Lit_review.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Harbour-N/Second-year-report/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Harbour-N/Second-year-report/edit/main/Lit_review.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Harbour-N/Second-year-report/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

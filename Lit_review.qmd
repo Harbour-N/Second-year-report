@@ -1,3 +1,261 @@
-# Literature review
+# Literature review {#sec-lit-review}
 
-This is the literature review section. 
+In this chapter we present a brief literature review of stem cells in cancer and the modeling approaches that have been used.
+
+## Introduction {#sec-introduction}
+
+Stem cells are defined as cells that have the ability to perpetuate themselves through self-renewal and to generate mature cells of a particular tissue through differentiation [@reya2001]. Stem cells are fundamental to tissue maintenance and repair; they also play a critical role in cancer development and in determining the outcomes of cancer treatment [@weiss2017a].
+
+## Stem cells in cancer {#sec-stem-cells-in-cancer}
+
+Perhaps the most important and useful property of stem cells is that of self-renewal. Self-renewal is crucial to stem cell function, because it is required by the majority of stem cells to persist for the lifetime of the animal. Moreover, whereas stem cells from different organs may vary in their developmental potential, all stem cells must self-renew and regulate the relative balance between self-renewal and differentiation. Understanding the regulation of normal stem cell self-renewal is also fundamental to understanding the regulation of cancer cell proliferation, because cancer can be considered to be a disease of unregulated self-renewal [@reya2001].
+
+Numerous arguments suggest a stem-cell origin for human cancers. First, it is worth noting that stem cells possess many of the features that constitute the tumour phenotype, including self-renewal and essentially unlimited replicative potential [@hanahan2000]. Second, the mutations that initiate tumour formation seem to accumulate in cells that persist throughout life, as suggested by the exponential increase of cancer incidence with age [@meza2008]. This is thought to reflect a requirement for between four and seven mutations in a single cell to effect malignant transformation [@hanahan2000]. Similarly, cancer formation from cells that persist throughout life is suggested by an increased incidence in adults of skin tumours such as melanoma after higher childhood exposure to a mutagenic agent such as ultraviolet solar radiation [@balk2011]. Normal somatic stem cells are strong candidates for such persistent cells. An alternative explanation would be that mutation within a more differentiated cell might break the normal growth-regulatory mechanisms that limit its proliferative capacity and result in a persistent clone of proliferating cells. However, this seems less likely because non-stem cells are generally destined for terminal differentiation within a time window too short for acquisition of sequential mutations that must affect two copies of a wild-type tumour suppressor [@reya2001].
+
+The identification of a stem cell origin for human cancers was first identified in leukaemia's, perhaps because the hight fraction of stem cells in haematopoietic system, when it was discovered that some, but not all, cancer cells where able to initiate tumours of the blood [@taipale2001; @lapidot1994; @bonnet1997]. More recently CSCs have been identified in many solid tumours including breast, colon and brain [@al-hajj2003; @ricci-vitiani2007; @ignatova2002; @hemmati2003; @singh2004; @galli2004]. In GBM, cells expressing the CD133 cell surface protein marker (also found on neural stem cells) have been identified as having stem cell properties *in vitro* [@singh2003]. Furthermore, when tested using a xenograft assay, it was found that injection of as few as 100 CD133+ cells produced a tumour that could be serially transplanted and was phenotypically similar to the patients original tumour, while injection of $10^5$ CD133- cells engrafted but did not cause a tumour [@singh2004]. This provides strong evidence that there is a small subpopulation of glioma stem cells that have the unique ability to initiate tumours, while the majority of cells cannot.
+
+## Cancer stem cells and treatment resistance {#sec-cancer-stem-cells-and-treatment-resistance}
+
+Radiation therapy is the most common form of treatment across all cancers, with around 50% of all cancer patients receiving radiotherapy at some point in their treatment [@baskar2012]. However, in addition to being tumor initiating, CSCs are highly resistant to both radio- and chemo-therapy through preferential activation of the DNA damage checkpoint response and an increase in DNA repair capacity [@bao2006; @tang2021; @rich2007; @schonberg2014]. In glioma, experimental results have shown that both in culture and mouse models CD133-expressing stem cells survive radiation in larger proportions than the majority of tumour cells which lack CD133 expression; these results suggest that CSC confer radio-resistance in GBM and ultimately are the source of tumour recurrence after radiation [@bao2006].
+
+In addition to being resistant to treatment CSCs also engage in a synergistic relationship with the surrounding tumor microenvironment (TME) to promote angiogenesis, proliferation, migration, tumor survival, and immune evasion [@ma2018; @rich2007]. Taken together this highlights the important role CSC play in determining tumour response to therapy. There is a desperate need for targeted therapies that either directly kill CSCs or sensitize CSCs to cytotoxic therapies in order to improve treatment outcomes.
+
+## Mathematical models of cancer stem cell dynamics {#sec-mathematical-models-of-cancer-stem-cell-dynamics}
+
+Many different mathematical models have been developed to model stem cell dynamics. Understanding CSC kinetics and interaction with their non-stem counterparts is still spares and theoretic/mathematical models may help elucidate their role in cancer progression and treatment response. Here we focus on a small subset of models that are used in the literature that cover a wide range of modelling techniques.
+
+Many of the following models use slightly different terminology to refer to the non-stem cell population such as cancer cell, progenitor cells or tumour cells, for clarity we will refer to non-stem cells always as tumour cells (TCs) throughout this review.
+
+### Agent-based model {#sec-agent-based-model}
+
+in [@enderling2009] and [@gao2013] the authors develop an agent-based model (ABM) to study the dynamics of CSCs and TCs in a tumour. It is assumed that tumours are a heterogenous mix of CSCs and TCs. Cells are considered as individual entities with a cell cycle and limited proliferation capacity $\rho = [0,\rho_\text{max}]$. CSCs have unlimited self-renewal, hence $\rho_\text{max} = \infty$. At each cell division CSCs can undergo symmetric division with probability $\delta$ or asymmetric division with probability $1-\delta$. The proliferation capacity $\rho$ is decremented at each TC division and inherited by both daughter cells.
+
+Simulations of the ABM model revealed the following key results
+
+-   Tumours developing solely from TCs will inevitably die out, due to their limited proliferation capacity. Hence, CSCs are necessary for malignant tumour growth. This is consistent with experimental results showing only CSCs can initiate tumours [@lapidot1994; @singh2004].
+-   Tumour started without CSCs could still persist for a long time as long-term dormant lesions, but due to space limited growth remain small well below the potential maximum size of $2^{\rho_\text{max}}$. This is consistent with the observation that many tumours remain dormant for many years before they start to grow [@sweeney1995; @neves-e-castro2006; @folkman2004].
+-   A high rate of spontaneous death of TCs actually enables room for sufficient stem cell divisions to enrich the stem cell pool and drive tumour growth. This lead to what they call the "tumour growth paradox", where counterintuitively while an increase in the death rate of TCs decreases the total number of cancer cells in the short term, in the long run it leads to an increase in the total tumour size as the tumour contains more CSCs.
+
+Mathematically the tumour growth paradox is defined as follows.
+
+::: {#def-tumor-growth-paradox}
+# Tumour growth paradox
+
+Let $N_\alpha (t)$ denote a total tumour population with death rate $\alpha$ for TCs. The population exhibits a tumour growth paradox if there exist death rates $\alpha_1 < \alpha_2$ and times $t_1,t_2$ and $T_0$ such that
+
+$$
+\begin{aligned}
+N_{\alpha_1}(t_1) = N_{\alpha_2}(t_2)& \quad \text{and} \quad N_{\alpha_1}(t_1 + T) < N_{\alpha_2}(t_2 + T) \\
+&\text{for} \quad (0<T<T_0) 
+\end{aligned}
+$$ {#eq-tumour-growth-paradox}
+:::
+
+### Integro-differential model {#sec-integro-differential-model}
+
+Following on from the ABM developed in [@enderling2009; @gao2013] in [@hillen2013] the authors develop an integro-differential equation version of the model. The model is based on the same assumptions as in [@enderling2009; @gao2013], but this time takes the form of an integro-differential equation model. Let $u(x,t)$ denote the density (in cells per unit space i.e., the fraction of the interval $(x,x+dx)$ physically occupied by cells), and let $v(x,t)$ denote the density of TCs. Hence, the total tumor density is denoted $N(x,t) = u(x,t) + v(x,t)$. For this analysis cells are assumed to be very small compared to the size of the tissue domain $\Omega$ (which we take without loss of generality to have unit volume), and are small even compared to integration increments $dx$ and $dy$. It is also assumed that cells cannot pile on top of each other so there is a maximum density of one cell per unit space, this implies $N(x,t) \leq 1$. Cells can only proliferate if there is space to place the daughter cell, otherwise reproduction is inhibited (cellular quiescence). To model the spatial search for space, they define a nonlinear integral term, and inline with the ABM [@enderling2009; @gao2013] they assume that all cells can migrate randomly, which is model by simple diffusion. These assumptions lead to the following system of equations to describe CSC and TC dynamics:
+
+$$
+\begin{aligned}
+    \underbrace{\frac{\partial u(x,t)}{\partial t}}_\text{ROC CSCs} &= \underbrace{D_u \nabla^2 u}_\text{Diffusion of CSCs} + \underbrace{\delta \gamma \int_{\Omega} k(x,y,N(x,t))u(y,t) dy}_\text{Self-renewal of CSCs} \\
+    \underbrace{\frac{\partial v(x,t)}{\partial t}}_\text{ROC TCs} &= \underbrace{D_v \nabla^2 v}_\text{Diffusion of TCs} + \underbrace{(1-\delta) \gamma \int_{\Omega} k(x,y,N(x,t))u(y,t) dy}_\text{Differentiation of CSCs} + \\
+    & \underbrace{\rho \int_{\Omega} k(x,y,N(x,t))v(y,t) dy}_\text{Proliferation of TCs} - \underbrace{\alpha v}_\text{Apoptosis of TCs}.
+\end{aligned}
+$$ {#eq-integro-differential-CSC-model}
+
+The spatial distribution kernel $k(x,y,N)$ describes the rate of progeny contribution to location x for a cell at location y per "cell cycle time" i.e., the defined period between divisions of a freely cycling cell. Since greater density at $x$ would be expected to hinder progeny occupation it is assumed that $k$ is monotonically decreasing in $N$, with $k(x,y,N(x,t))=0$ at $N=1$. The number of cell cycle times per unit time of CSCs and TCs are denoted by $\gamma$ and $\rho$, respectively and for simplicity it is assumed that $\gamma = \rho = 1$ throughout. The parameter $\delta$ with $0 \leq \delta \leq 1$ denotes the fraction of CSC divisions that are symmetric, while $1-\delta$ is the fraction of asymmetric divisions. The parameter $\alpha$ denotes the spontaneous death rate of TCs. Background cell motility is modelled by the diffusion coefficients $D_u$ and $D_v$ for CSCs and TCs, respectively. The system is considered to hold in a smooth bounded domain $\Omega$, with homogenous Neumann or Dirichlet boundary conditions.
+
+Homogeneous Neumann boundary conditions correspond to a boundary that is impenetrable by cells this could for example represent, a tissue surrounded by membranes, smooth muscle tissue, or bone, and are given by
+
+$$
+\frac{\partial u}{\partial n} = 0, \quad \frac{\partial v}{\partial n} = 0 \quad \text{on} \quad \partial \Omega,
+$$ {#eq-homogeneous-neumann-boundary-conditions}
+
+where $\partial / \partial n$ is the normal derivative at the boundary. The redistribution kernel can only redistribute cells within this domain $\Omega$, hence we impose
+
+$$
+k(x,y,N) = 0 \quad \text{for} \quad x \notin \Omega. 
+$$ {#eq-redistribution-kernel-neumann-BC}
+
+Homogeneous Dirichlet boundary conditions correspond to a boundary that cells can freely leave but not reenter again, for example this could represent intravasation into adjacent blood vessels, and are given by
+
+$$
+u = 0, \quad v = 0 \quad \text{on} \quad \partial \Omega.
+$$ {#eq-homogeneous-dirichlet-boundary-conditions}
+
+The redistribution kernel describes transport of cells out of the domain but does not allow entering from the outside if, hence
+
+$$
+k(x,y,N) = 0 \quad \text{for} \quad y \notin \Omega.
+$$ {#eq-redistribution-kernel-dirichlet-BC}
+
+Based on these two boundary conditions we can model any combination of domains such as partially covered by membranes, partially permeable membranes and adjacent blood vessels.
+
+### ODE model reduction {#sec-ode-model-reduction}
+
+In order to analyses this model analytically the authors reduce the system of integro-differential equations (@eq-integro-differential-CSC-model) to a system of ordinary differential equations in the following way.
+
+**Reduction 1: Progeny placement depends only on the density at the destination**\
+In this case $k(x,y,N(x,t)) = k(N(x,t))$. Introducing mean densities which given that the domain $\Omega$ has unit volume, can be written as
+
+$$
+\bar{u}(t) = \int_{\Omega} u(y,t) dy, \quad \bar{v}(t) = \int_{\Omega} v(y,t) dy, \quad \bar{N}(t) = \bar{u}(t) + \bar{v}(t).
+$$ {#eq-density-mean}
+
+Then @eq-integro-differential-CSC-model becomes:
+
+$$
+\begin{aligned}
+u_t(x,t) &= D_u \nabla^2 u(x,t) + \delta   k(N(x,t))\bar{u}(t), \\
+v_t(x,t) &= D_v \nabla^2 v(x,t) + (1-\delta)   k(N(x,t))\bar{u}(t) + k(N(x,t))\bar{v}(t) - \alpha v(x,t).
+\end{aligned}
+$$ {#eq-first-reduction-ODE-CSC-model}
+
+**Reduction 2: Density is uniform across the domain**\
+If tumour growth is assumed uniform across the domain then, $k(N(x,t)) = k(\bar{N}(t))$ and $u(x,t)$ and $v(x,t)$ can be replaced with their spatially averaged values ($\bar{u}(t)$ and $\bar{v}(t)$) and diffusion is zero everywhere. Therefore, @eq-first-reduction-ODE-CSC-model becomes:
+
+$$
+\begin{aligned}
+    \frac{d \bar{u}}{dt} &= \delta  k(\bar{N}(t)) \bar{u}, \\
+    \frac{d \bar{v}}{dt} &= (1-\delta)  k(\bar{N}(t)) \bar{u} + k(\bar{N}(t)) \bar{v} - \alpha \bar{v}(t),
+\end{aligned}
+$$ {#eq-ODE-CSC-model}
+
+where the volume filling constraint $k(\bar{N})$ is taken to be
+
+$$
+k(\bar{N}) = \text{max} \left\{0, 1 - \bar{N}^\sigma \right\}. \quad \text{for} \quad \sigma > 1.
+$$ {#eq-volume-filling-constraint}
+
+An exponent of $\sigma = 1$ corresponds to a linearly decreasing rate of occupancy for newborn cells as the total density $\bar{N}$ increases. Since cells are nonrigid, deformable and able to squeeze into available spaces the authors argue that $\sigma > 1$ is appropriate and take it to be $\sigma = 4$, in all their simulations.
+
+Without a CSCs population $\bar{u}(t)$, the density of TCs $\bar{v}(t)$ satisfies the equation
+
+$$
+\frac{d\bar{v}}{dt}  =K(\bar{v}(t))\bar{v}(t) - \alpha \bar{v}(t).
+$$ {#eq-ODE-TC-only-model}
+
+Since $K(\bar{v}(t))$ is a decreasing function of $\bar{v}(t)$ the TC population will die out when $\alpha > k(0)$.
+
+This simpler ODE model allows for analytical analysis of the steady states, from which it can be shown that the pure stem cell steady state $(u,v)= (1,0)$ is a global attractor. Therefore, this model predicts that for long times the tumour will consist of only stem cells. Intermediate tumor consistency and steady state time are dependent on cell death rate $\alpha$. The convergence to $(1,0)$ is somewhat surprising as typically the CSC compartment is considered small comprising only 1-3% of the tumour [@bao2006]. However, the authors argue that this does not interfere with our analysis, since we are not interested in the long time dynamics ($t \rightarrow \infty$), but rather in the intermediate time dynamics of the tumor.
+
+### Stochastic model of CSC dynamics {#sec-stochastic-model}
+
+In [@turner2009], the authors first develop a stochastic model for the dynamics of CSCs and TCs, particularly for the case of brain cancer. This stochastic model is particular appropriate for situations in which small numbers of cells are present such as *in vitro* or in the early stages of tumour formation. In these cases stochastic fluctuations may have significant effects and cannot be neglected. To study larger populations the authors then derive a deterministic ODE model, based on the stochastic master equation, that describes the average number of CSCs and TCs.
+
+The model assumptions on CSCs and TCs are largely similar as those given previously in [@sec-agent-based-model; @enderling2009; @gao2013; @hillen2013]. However, it is assumed that CSCs are not immortal so have some probability of death. Defining $p(n_s, n_p,t)$ as the probability that there are exactly $n_s$ CSCs and $n_p$ TCs at time $t$, The stochastic master equation is given by
+
+$$
+\begin{aligned}
+\frac{dp(n_s,n_p,t)}{dt} = & \ \rho_s \left[r_1 (n_s - 1) p(n_s - 1, n_p, t) \right. \\
+& + r_2 n_p p(n_s, n_p - 1, t) \\
+& + r_3 (n_s + 1) p(n_s + 1, n_p - 2, t) \\
+& \left. - n_s p(n_s, n_p, t) \right] \\
+& + \Gamma_s \left[ (n_s + 1) p(n_s + 1, n_p, t) - n_s p(n_s, n_p, t) \right] \\
+& + \Gamma_p \left[ (n_p + 1) p(n_s, n_p + 1, t) - n_p p(n_s, n_p, t) \right].
+\end{aligned}
+$$ {#eq-stochastic-master-equation}
+
+The parameters $\Gamma_s$ and $\Gamma_p$ represent the rate of apoptosis for CSCs and TCs respectively. Due to the models stochastic nature, and the inclusion of a death rate for CSCs, it can be shown that The model predictions that the occurrence of a single cancer stem cell will not necessarily result in a tumour, even if the probability of self-renewal is greater than the probability of differentiation. This is in contrast to the previous models discussed [@enderling2009; @hillen2013] and to a deterministic version of this model (@eq-deterministic-master-equation) that would predict exponential growth of the tumour from a single CSC.
+
+For larger cellular populations it becomes more challenging to simulate such a stochastic model and it becomes pertinent to consider the equations for the average number of CSCs and TCs. Defining the mean cellular populations $S = <n_s>$, $P = <n_p>$ and $r = r_1 - r_3$, the deterministic model is given by
+
+$$
+\begin{aligned}
+\frac{dS}{dt} &= \rho_s r S - \Gamma_s S, \\
+\frac{dP}{dt} &= \rho_s (1-r) S - \Gamma_p P.
+\end{aligned}
+$$ {#eq-deterministic-master-equation}
+
+This model is largely similar to the ODE model presented in [@hillen2013], the slight differences that CSCs have a spontaneous death rate and TCs cannot themselves proliferate reflect the slightly different underlying assumptions of CSC dynamics between the two models.
+
+### A multispecies model of cell lineages\[#sec-multispecies-model-of-cell-lineages\]
+
+In [@youssefpour2012] the authors develop a multispecies PDE model for CSCs lineage dynamics, for a review of general multispecies models for modelling tumour dynamics see [@lowengrub2010]. This is the first model we have looked at that considers more than two cells types CSCs and TCs. Here the model is more complex and accounts for CSCs, committed progenitor cells, terminal cells, and dead cells. As with the previous models we have looked at it is assumed that differentiation and feedback processes link the cells lineage through self-renewal fractions and mitosis rates. However, in contrast to the previous models it contains endogenous production of differentiation promoter, denoted $T$, which is produced by the terminal cells and taken up by the CSCs. Additionally, endogenous production of self-renewal promoter, denoted $W$, and an its inhibitor, denoted $WI$, are assumed to be produced by all viable tumour cells (CSCs, progenitor cells, terminal cells). This allows for feedback mechanisms to that maintain the CSC population. The dependent variables in the model are the local volume fractions of the cell species $\phi_\text{CSC}, \phi_\text{CP}, \phi_\text{TC}, \phi_\text{DC}, as well as healthy cells and water \phi_\text{H}, \phi_\text{W}$. Assuming there are no voids the sum of the volume fractions equals 1 and each cell type follows a conservation equation of the form
+
+$$
+\frac{\partial \phi}{\partial t} = - \nabla \cdot J - \nabla \cdot (u_s \phi) + S
+$$ {#eq-youssefpour-multispecies}
+
+where $\psi$ denotes the volume fraction of the cell type, $J$ is generalized diffusion, $u_s$ is the mass-averaged velocity of the solid components, $S$ denotes the mass-exchange terms.
+
+## Models of differentiation therapy {#sec-models-of-differentiation-therapy}
+
+If, as with normal tissues, cellular phenotypic heterogeneity within tumors can be explained by a hierarchy of differentiation, with only a subset of stem-like cells capable of long-term self-renewal, this raises the prospect that signals promoting differentiation could be effective at driving malignant cells to a less aggressive and ideally post-mitotic differentiated state [@carén2016]. This differentiation therapy approach has seen success in acute promyelocytic leukemia (APL) where all-trans-retinoic acid (ATRA) can promote differentiation of CSCs and lead to complete remission [@yan2016; @dethé2018]. In GBM, bone morphogenetic protein 4 (BMP4), a member of the TGF-$\beta$ superfamily, has shown potential as a differentiation therapeutic agent. BMP4 has been shown to drive differentiation of GSCs towards a predominantly glial (astrocytic) fate, to reduce GBM tumor burden in vivo and to improve survival in a mouse model of GBM [@nayak2020; @piccirillo2006]. Despite its potential as a treatment option relatively few mathematical models have considered its possible effects on tumour growth [@youssefpour2012; @bachman2013; @turner2009].
+
+### Differentiation promoter and self-renewal promoter
+
+In [@youssefpour2012] they follow [@lander2009] and assume that the proliferation and differentiation of CSCs are regulated by factors in the tumour microenvironemnt that feedback on self-renewal fractions and mitosis rates. In particular, they denote the differentiation promoter $T$ (for TGF-beta superfamily members) that reduces the probability of self-renewal for CSCs. They also account for self-renewal promoter $W$ which increases the probability of self-renewal of CSCs, as well as an inhibitor of $W$ denoted $WI$, possible self-renewal promoters include WNTs, Notch and Shh [@pannuti2010; @bailey2007], they therefore define the CSC self-renewal fraction as
+
+$$
+P_s = P_\text{min} + (P_\text{max} - P_\text{min}) \left( \frac{\xi C_w}{1 + \xi C_W} \right)\left( \frac{1}{1 + \psi C_T} \right),
+$$ {#eq-youssefpour-Ps}
+
+where $P_\text{min}$ and $P_\text{max}$ are the minimum and maximum probability of CSC self-renewal, taken to be $0.2$ and $1$ respectively. $C_W$ and $C_T$ represent the concentrations of the self-renewal promoter and differentiation promoter respectively. The parameters $\xi$ and $\psi$ quantify the sensitivity of CSCs to the regulating proteins.
+
+The concentration of differentiation promoter and self-renewal promoter are then modeled as follows. It is assumed that $T$ is more diffuse than either $W$ or $WI$. Therefore, on the time scale of cellular proliferation they make the quasi-steady-state assumption that time derivatives and advection of $T$ can be neglected. Thus, the quasi-steady reaction-diffusion equation for $T$ is given by
+
+$$
+0 = \nabla \cdot (D_T \nabla C_T) - \left( \nu_{UT} \phi + \nu_{DT} \right) C_T + \nu_{PT}\phi_{TC}
+$$ {#eq-youssefpour-T}
+
+where $D_T$ is the diffusion coefficient, $\nu_{UT}$, $\nu_{DT}$ and $\nu_\text{PT}$ are the uptake rate by CSCs, the rate of decay and the rate of production by the TCs, respectively.
+
+To model the self-renewal promoter $W$ and its inhibitor $WI$ a generalized Gierer-Meinhard-Turing system of reaction diffusion equations is used, given by
+
+$$
+\begin{aligned}
+&\frac{\partial C_W}{\partial t} + \nabla \cdot (u_s C_W) = \nabla \cdot (D_W \nabla C_W) + f(C_W, C_{WI}), \\
+&\frac{\partial C_{WI}}{\partial t} + \nabla \cdot (u_s C_{WI}) = \nabla \cdot (D_{WI} \nabla C_{WI}) + g(C_W, C_{WI}),
+\end{aligned}
+$$ {#eq-youssefpour-W-WI}
+
+where
+
+$$
+\begin{aligned}
+f(C_W, C_{WI}) &= \nu_{PW} \frac{C^2_W}{C_{WI}}C_0 \phi_\text{CSC} - \nu_{DW} C_W + u_0C_0 (\phi_\text{CSC} + \phi_\text{CP} + \phi_\text{TC}), \\
+g(C_W, C_{WI}) &= \nu_\text{PWI}C^2_W C_0 \phi_\text{CSC} - \nu_\text{DWI} C_{WI}.
+\end{aligned}
+$$ {#eq-youssefpour-f-g}
+
+The parameters $D_W$ and $D_{WI}$ are the difusion coefficeints, $\nu_\text{PW}$, $\nu_\text{DW}$ and $\nu_\text{PWI}$, $\nu_\text{DWI}$ are the production and decay rates of $W$ and $WI$ respectively. The parameter $u_0$ represnts a low-level source of $W$ from all the tumour cells.
+
+To model differentiation therapy they fix $\psi = 0.5$ and introduce an external source of $T$ i.e., a constant source term is added to @eq-youssefpour-T.
+
+### No self-renewal promoter
+
+In [@bachman2013] they follow [@youssefpour2012] and model differentiation therapy through a relationship between the average level of differentiation promoter, which they denote $C_F$ and the probability of CSC self-renewal $P_s$. But hey do not include the effects of a CSC self-renewal promoting factor, thus
+
+$$
+P_s(t) = P_\text{min} + (P_\text{max} - P_\text{min}) \left( \frac{1}{1 + \psi C_F(t)} \right),
+$$ {#eq-bachman-Ps}
+
+where the notation is the same as in @eq-youssefpour-Ps. Since [@bachman2013] do not model endogenous production of differentiation promoter, $C_F$ solely represents the level of differentiation promoter prescribed during differentiation therpay. To address this lack of endogenous differentiation promoters they take $P_\text{max} = 0.505$ (which is equivalent to setting $\delta = 0.01$ as was done in [@hillen2013]) and $P_\text{min} = 0.2$, as is done in [@youssefpour2012].
+
+As [@bachman2013] use the ODE model developed in [@hillen2013] they must also develop a submodel for the average level of differentiation promoter. As it is an ODE model they consider the average level of differentiation promoter within a spatially homogeous tumour $C_F(t)$. It is assumed that the tumour resides within a spherical region of tissue and that differentiation promoter enters this area through the boundary. The differentaition promoter enters the region from the boundary and will diffuse very quickly and attain a steady state disttibution over this region. To compute the value of $C_F(t)$ they solve the problem of diffusion over a sphere of radius $R$ and avergae the solution over the volume of the sphere. We use the lower case letter to describ the radial symmetric solution $c_F(r,t)$ of the follwoing boundary value probalem
+
+$$
+\begin{aligned}
+\frac{\partial c_F}{\partial t} &= \omega \left( \frac{\partial}{\partial r} \left(\frac{\partial c_F}{\partial r} \right) + \frac{2}{r} \frac{\partial c_f}{\partial r}   \right) \\
+c_F(R,t) &= C_{F0}(t).
+\end{aligned}
+$$ {#eq-bachman-CF}
+
+Where $\omega$ is the effective diffusivity of the differentiation promoter. Before differentation therapy begins $C_{F0}(t)$ is 0, when differnetiation therapy begins the boundary condition on the sphere is set to $C_{F0}(t) = 1$, and the promoter diffuses into the sphere. When differentaition therapy ends, the bounayry condition is simply set to 0 and the promoter diffusies out of the sphere. They then set
+
+$$
+C_F(t) = \frac{3}{R^3} = \int^R_0 c_F (r,t) r^2 dr.
+$$ {#eq-bachman-CF2}
+
+### BMP4 in glioma
+
+In the previous models [@youssefpour2012; @hillen2013] they considered a gneral differentaition promoter, in [@turner2009] they consider a the specific differentaiton promter, BMP4 in GBM. As in the case for the general differentaiton promoter they interprest the effects of BMP4 as decrreasing the net symmetric division rate $r$ (following the notatiomn used in @sec-stochastic-model). Based on [@piccirillo2006] they estimate that from a pre-treatment value of $r = 0.1$ the effect of BMP4 is to reduce $r$ to $-0.1$, note that following the notation used in @sec-stochastic-model $r$ is defined as $r = r_1-r_3$ so a change of $r$ to negative represnts a both an increaese in the proportion of symmetric differentaiton divisions and a decrease in symetric slef-renewal divisions. To model differentaiton therapy the parameter value $r$ is simply swtiched beteen these two values for the duratio nof BMP4 exposure.
+
+### Summary of differentaition therpay results
+
+All the models compare 3 different tretament cases radiation alone, differentaition therapy alone and combination therpay. Importantly, as has been shown, all models assume that CSCs are less senstavie to radiation than TCs [@bao2006]. Despite the slight differences in implementation of the models, all models find similar result. Radiotherpy alone fails as some CSCs survive and are able to repopulate the tumour. In fact all models show an extention of the "tumour growth paradox" which we term the "tumour treatment paradox". When treating with radiation alone the fraction of CSCs increases and since the TCs die there is more room for CSCs this allows much more rapid re-grwoth of the tumour. This suggests that current standard of care treatment selects for the more resistant and turmourogenic CSCs thus treatment often fasicilitates more rapid and agressive tumour recurrace. Diffenrentiation therpy alone can succesfuly iradicate the tumour, however, given all models assume that CSCs can only transform into TCs through (asymmetric) cellualr divison, rather than direct transition, large intermediate values of total tumour size may be reached using this approach. Combination of differentiation and radiothery out perfomred eith single therapies often showing that the tumour can be driven to much smaller sizes and potentially extinction. This is because the differentiation agent induces CSCs to turn into TCs which then can be killed by traditional radiation therapy. This combination therapy can be considered a new class of strategies for cancer therapy known as evolutionary steeringvappraoches. Rather than reactively altering treatment as resitance is aqured we proactively slecet our treamtent to minimise resistantce and increase chance of extinction [@enriquez-navas2015; @acar2020].
+
+# Conclusion
+
+None of the models attempt to parameterise senstaitvit of cell lines to differentiation promoter. None model a specific feasible delivery strategy for differntiation promoter. None consider effects on cohorts of virtual populations and interactions between other parameters and differentiation therapy. In all cases it was assumed that CSCs can only transform into TCs through asymetric divison rather than any direct traistions from CSCs to TCs.
