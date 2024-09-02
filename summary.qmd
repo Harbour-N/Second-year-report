@@ -2,10 +2,16 @@
 
 This is the summary of main results and plan for thesis.
 
+what thesis is about
+Summary first of what done in last year,
+then current year IMO, data-thon, Mayo U54 trip, SMB 
+then thesis
+
 Plan for thesis: Thesis by papers?
 
 possible papers:
 - virtual clinical trials for BMP4.
-- Frontiers of young minds paper.
 - More math bio journal analysis of the model (some of the stuff Markus already stated look at with the model; nullclines, model reduction, also think looking at pde and ideas of tumour growth paradox).
-- More digital twin PI modeling using data from patinet view/Mayo. Incorporating uncertainty in DT model. corresponds with Turing institute placemnt.
+- More digital twin PI modeling using data from patient view/Mayo. Incorporating uncertainty in DT model. corresponds with Turing institute placement.
+- Stuff with monocle, cell cycle  
+- Frontiers of young minds paper.
