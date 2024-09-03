@@ -6,8 +6,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Nicholas Harbour">
+<meta name="author" content="Lee Curtin">
+<meta name="author" content="Matthew E Hubbard">
+<meta name="author" content="Pamela R. Jackson">
+<meta name="author" content="Vinitha Rani">
+<meta name="author" content="Rajappa S Kenchappa">
+<meta name="author" content="Virginea de Araujo Farias">
+<meta name="author" content="Anna Carrano">
+<meta name="author" content="Alfredo Quinones-Hinojosa">
+<meta name="author" content="Markus Owen">
+<meta name="author" content="Kristin R. Swanson">
+<meta name="dcterms.date" content="2024-09-03">
+<meta name="keywords" content="Glioblastoma, Glioma stem cells, BMP4, Mathematical oncology, Virtual clinical trial, Mathematical modelling, Digital twin">
 
-<title>3&nbsp; Preprint – Second year progress review</title>
+<title>3&nbsp; Virtual Clinical Trials of BMP4 Differentiation Therapy: Digital Twins to Aid Glioblastoma Trial Design – Second year progress review</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +33,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -116,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./preprint.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Preprint</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./preprint.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Virtual Clinical Trials of BMP4 Differentiation Therapy: Digital Twins to Aid Glioblastoma Trial Design</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -182,7 +215,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./preprint.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Preprint</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Virtual Clinical Trials of BMP4 Differentiation Therapy: Digital Twins to Aid Glioblastoma Trial Design</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -196,34 +229,947 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-introduction" id="toc-sec-introduction" class="nav-link active" data-scroll-target="#sec-introduction"><span class="header-section-number">3.1</span> Introduction</a></li>
+  <li><a href="#sec-materials-methods" id="toc-sec-materials-methods" class="nav-link" data-scroll-target="#sec-materials-methods"><span class="header-section-number">3.2</span> Materials and methods</a>
+  <ul>
+  <li><a href="#sec-pre-clinical-data" id="toc-sec-pre-clinical-data" class="nav-link" data-scroll-target="#sec-pre-clinical-data"><span class="header-section-number">3.2.1</span> Pre-clinical data</a></li>
+  <li><a href="#sec-model-assumptions" id="toc-sec-model-assumptions" class="nav-link" data-scroll-target="#sec-model-assumptions"><span class="header-section-number">3.2.2</span> Model assumptions and equations</a>
+  <ul>
+  <li><a href="#sec-differentiation-therapy" id="toc-sec-differentiation-therapy" class="nav-link" data-scroll-target="#sec-differentiation-therapy"><span class="header-section-number">3.2.2.1</span> Differentiation therapy with mesenchymal stem cell delivery model</a></li>
+  <li><a href="#sec-BMP4-model" id="toc-sec-BMP4-model" class="nav-link" data-scroll-target="#sec-BMP4-model"><span class="header-section-number">3.2.2.2</span> BMP4 model</a></li>
+  <li><a href="#sec-RT-model" id="toc-sec-RT-model" class="nav-link" data-scroll-target="#sec-RT-model"><span class="header-section-number">3.2.2.3</span> Radiotherapy model</a></li>
+  <li><a href="#sec-resection-model" id="toc-sec-resection-model" class="nav-link" data-scroll-target="#sec-resection-model"><span class="header-section-number">3.2.2.4</span> Resection model</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#sec-results" id="toc-sec-results" class="nav-link" data-scroll-target="#sec-results"><span class="header-section-number">3.3</span> Results</a>
+  <ul>
+  <li><a href="#sec-simulating-RT-experiments" id="toc-sec-simulating-RT-experiments" class="nav-link" data-scroll-target="#sec-simulating-RT-experiments"><span class="header-section-number">3.3.1</span> Simulating radiotherapy experiments</a></li>
+  <li><a href="#sec-model-sims" id="toc-sec-model-sims" class="nav-link" data-scroll-target="#sec-model-sims"><span class="header-section-number">3.3.2</span> Model simulations</a></li>
+  <li><a href="#sec-virtual-trial-pipeline" id="toc-sec-virtual-trial-pipeline" class="nav-link" data-scroll-target="#sec-virtual-trial-pipeline"><span class="header-section-number">3.3.3</span> Virtual clinical trial pipeline</a>
+  <ul>
+  <li><a href="#sec-unce-death-detect" id="toc-sec-unce-death-detect" class="nav-link" data-scroll-target="#sec-unce-death-detect"><span class="header-section-number">3.3.3.1</span> Uncertainty in tumor detection and death</a></li>
+  <li><a href="#sec-simulation-controls" id="toc-sec-simulation-controls" class="nav-link" data-scroll-target="#sec-simulation-controls"><span class="header-section-number">3.3.3.2</span> Simulated control virtual patient population</a></li>
+  <li><a href="#sec-phase-2-trial" id="toc-sec-phase-2-trial" class="nav-link" data-scroll-target="#sec-phase-2-trial"><span class="header-section-number">3.3.3.3</span> Simulated phase 2 trial</a></li>
+  <li><a href="#different-delivery-schedules-for-bmp4" id="toc-different-delivery-schedules-for-bmp4" class="nav-link" data-scroll-target="#different-delivery-schedules-for-bmp4"><span class="header-section-number">3.3.3.4</span> Different delivery schedules for BMP4</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#sec-discussion" id="toc-sec-discussion" class="nav-link" data-scroll-target="#sec-discussion"><span class="header-section-number">3.4</span> Discussion</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/Harbour-N/Second-year-report/edit/main/preprint.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Harbour-N/Second-year-report/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Preprint</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Virtual Clinical Trials of BMP4 Differentiation Therapy: Digital Twins to Aid Glioblastoma Trial Design</span></h1>
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliations</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Nicholas Harbour <a href="mailto:nicholas.harbour@nottingham.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0009-0008-2424-4516" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Centre for Mathematical Medicine and Biology, School of Mathematical Sciences, University of Nottingham, Nottingham, NG7 2RD, UK
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Lee Curtin <a href="https://orcid.org/0000-0002-4083-3803" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Mathematical Neuro-Oncology lab, Mayo Clinic Phoenix, AZ, 85054, USA
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Matthew E Hubbard </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            School of Mathematical Sciences, University of Nottingham, University Park, Nottingham, NG7 2RD, UK
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Pamela R. Jackson </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Mathematical Neuro-Oncology lab, Mayo Clinic Phoenix, AZ, 85054, USA
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Vinitha Rani </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Department of Neurosurgery, Mayo Clinic, Jacksonville, FL, 32224, USA
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Rajappa S Kenchappa </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Department of Neurosurgery, Mayo Clinic, Jacksonville, FL, 32224, USA
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Virginea de Araujo Farias </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Department of Neurosurgery, Mayo Clinic, Jacksonville, FL, 32224, USA
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Anna Carrano </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Department of Neurosurgery, Mayo Clinic, Jacksonville, FL, 32224, USA
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Alfredo Quinones-Hinojosa <a href="mailto:quinones-hinojosa.alfredo@mayo.edu" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Department of Neurosurgery, Mayo Clinic, Jacksonville, FL, 32224, USA
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Markus Owen <a href="mailto:markus.owen@nottingham.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-3028-9138" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Centre for Mathematical Medicine and Biology, School of Mathematical Sciences, University of Nottingham, Nottingham, NG7 2RD, UK
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Kristin R. Swanson <a href="mailto:swanson.kristin@mayo.edu" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-2464-6119" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Mathematical Neuro-Oncology lab, Mayo Clinic Phoenix, AZ, 85054, USA
+          </p>
+      </div>
+  </div>
 
 <div class="quarto-title-meta">
 
-    
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 3, 2024</p>
+    </div>
+  </div>
   
     
   </div>
   
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>We leverage an integrative mathematical modeling framework to translate the impact of preclinical findings in virtual clinical trials. We develop a virtual clinical trial pipeline to face the real-world problem of numerous of actual early phase clinical trials that have failed for glioma/glioblastoma, the most common primary brain tumor. Even with the most promising preclinical data, designing clinical trials is fraught with challenges, including controlling for the many parameters used to inform patient selection criteria. Here, we introduce a virtual trial pipeline that allows us to consider the variability from some of these criteria that can be used for future trials of novel therapies. As an example, we apply this to the proposed delivery of BMP4 to stem cell niches present in glioblastoma, the most aggressive glioma, known for its inter- and intra-patient heterogeneity. The proposed approach of BMP4 treatment, delivered through adipose-derived mesenchymal stem cells, aims to promote cellular differentiation away from the treatment-resistance stem cell niches towards a more treatment-vulnerable state. This pipeline will help us narrow down strategies for future trials, optimize timing of treatments relative to key standard-of-care treatments, and predict synergy amongst the developed treatments.</p>
+  </div>
+</div>
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>Glioblastoma, Glioma stem cells, BMP4, Mathematical oncology, Virtual clinical trial, Mathematical modelling, Digital twin</p>
+  </div>
+</div>
 
 </header>
 
 
-<p>This is the preprint it constitutes a substantial piece of work that will contribute to my thesis. The preprint can be found here <a href="https://www.biorxiv.org/content/10.1101/2024.08.22.609156v1.full" class="uri">https://www.biorxiv.org/content/10.1101/2024.08.22.609156v1.full</a> on bioR<span class="math inline">\(\chi\)</span>iv.</p>
+<p>This is the preprint it constitutes a substantial piece of work that will contribute to my thesis. The preprint can be found <a href="https://www.biorxiv.org/content/10.1101/2024.08.22.609156v1.full">here</a> on bioR<span class="math inline">\(\chi\)</span>iv.</p>
+<section id="sec-introduction" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-introduction"><span class="header-section-number">3.1</span> Introduction</h2>
+<p>Glioblastoma (GBM) is the most commonly diagnosed primary malignant brain cancer in adults. Current standard of care consists of maximal safe surgical resection followed by concurrent radiotherapy and chemotherapy (with temozolomide) <span class="citation" data-cites="stupp2005">(<a href="references.html#ref-stupp2005" role="doc-biblioref">Stupp et al. 2005</a>)</span>. Despite this aggressive treatment, outcomes remain poor with median survival of only 15 months <span class="citation" data-cites="ostrom2019">(<a href="references.html#ref-ostrom2019" role="doc-biblioref">Ostrom et al. 2019</a>)</span>. The aggressiveness and fatal outcomes of GBM can be attributed to its highly infiltrative nature and to its vast intra- and inter-patient heterogeneity. Malignant cells can be found infiltrating far into the peritumoral areas of the brain and are undetectable by conventional imaging and operative techniques. Furthermore, tumors contain an array of different cell types with distinct molecular and phenotypic characteristics, hindering therapy efficacy. In particular, previous studies have identified a sub-population of malignant glioma cells with stem-like characteristics known as glioma stem cells (GSCs) or brain tumor initiating cells (BTICs). These cells are highly resistant to both radio- and chemo-therapy and therefore contribute to treatment failure <span class="citation" data-cites="bao2006 singh2004">(<a href="references.html#ref-bao2006" role="doc-biblioref">Bao et al. 2006</a>; <a href="references.html#ref-singh2004" role="doc-biblioref">Singh et al. 2004</a>)</span>. Thus, if treatment outcomes are to be improved for patients with GBM, it is vital that therapeutics that specifically target these GSCs are developed.</p>
+<p>The existence of a population of cancer stem cells (CSCs) was first established in leukemia <span class="citation" data-cites="lapidot1994 bonnet1997">(<a href="references.html#ref-lapidot1994" role="doc-biblioref">Lapidot et al. 1994</a>; <a href="references.html#ref-bonnet1997" role="doc-biblioref">Bonnet and Dick 1997</a>)</span>. More recently CSCs have been identified in many solid tumors including breast, colon and brain <span class="citation" data-cites="al-hajj2003 ricci-vitiani2007 ignatova2002 hemmati2003 singh2004 galli2004">(<a href="references.html#ref-al-hajj2003" role="doc-biblioref">Al-Hajj et al. 2003</a>; <a href="references.html#ref-ricci-vitiani2007" role="doc-biblioref">Ricci-Vitiani et al. 2007</a>; <a href="references.html#ref-ignatova2002" role="doc-biblioref">Ignatova et al. 2002</a>; <a href="references.html#ref-hemmati2003" role="doc-biblioref">Hemmati et al. 2003</a>; <a href="references.html#ref-singh2004" role="doc-biblioref">Singh et al. 2004</a>; <a href="references.html#ref-galli2004" role="doc-biblioref">Galli et al. 2004</a>)</span>. In GBM, cells expressing the CD133 cell surface protein marker (also found on neural stem cells) have been identified as GSCs based on their exclusive ability to commence and support tumor growth <span class="citation" data-cites="singh2004">(<a href="references.html#ref-singh2004" role="doc-biblioref">Singh et al. 2004</a>)</span>. In addition to being tumor initiating, GSCs are highly resistant to both radio- and chemo-therapy as they are more efficient at inducing repair of damaged DNA <span class="citation" data-cites="bao2006 tang2021 rich2007 stiles2008 schonberg2014 turner2009 dirks2006">(<a href="references.html#ref-bao2006" role="doc-biblioref">Bao et al. 2006</a>; <a href="references.html#ref-tang2021" role="doc-biblioref">Tang et al. 2021</a>; <a href="references.html#ref-rich2007" role="doc-biblioref">Rich 2007</a>; <a href="references.html#ref-stiles2008" role="doc-biblioref">Stiles and Rowitch 2008</a>; <a href="references.html#ref-schonberg2014" role="doc-biblioref">Schonberg et al. 2014</a>; <a href="references.html#ref-turner2009" role="doc-biblioref">Turner et al. 2009</a>; <a href="references.html#ref-dirks2006" role="doc-biblioref">Dirks 2006</a>)</span>. Furthermore, they also engage in a synergistic relationship with the surrounding tumor microenvironment (TME) to promote angiogenesis, proliferation, migration, tumor survival, and immune evasion <span class="citation" data-cites="ma2018">(<a href="references.html#ref-ma2018" role="doc-biblioref">Ma et al. 2018</a>)</span>. Under the brain cancer stem cell hypothesis, it is becoming increasingly clear that while radiation may be transiently effective, treatment ultimately fails in the long run if any GSCs survive <span class="citation" data-cites="dingli2006">(<a href="references.html#ref-dingli2006" role="doc-biblioref">Dingli and Michor 2006</a>)</span>.</p>
+<p>If, as with normal tissues, cellular phenotypic heterogeneity within tumors can be explained by a hierarchy of differentiation, with only a subset of stem-like cells capable of long-term self-renewal <span class="citation" data-cites="carén2016">(<a href="references.html#ref-carén2016" role="doc-biblioref">Carén, Beck, and Pollard 2016</a>)</span>, this raises the prospect that signals promoting differentiation could be effective at driving malignant cells to a less aggressive and ideally post-mitotic differentiated state. This differentiation therapy approach has seen success in acute promyelocytic leukemia (APL) where all-trans-retinoic acid (ATRA) can promote differentiation of CSCs and lead to complete remission <span class="citation" data-cites="dethé2018 yan2016">(<a href="references.html#ref-dethé2018" role="doc-biblioref">De Thé 2018</a>; <a href="references.html#ref-yan2016" role="doc-biblioref">Yan and Liu 2016</a>)</span>. In GBM, bone morphogenetic protein 4 (BMP4), a member of the TGF-<span class="math inline">\(\beta\)</span> superfamily, has shown potential as a differentiation therapeutic agent. BMP4 has been shown to drive differentiation of GSCs towards a predominantly glial (astrocytic) fate, to reduce GBM tumor burden <em>in vivo</em> and to improve survival in a mouse model of GBM <span class="citation" data-cites="nayak2020 carén2016 piccirillo2006">(<a href="references.html#ref-nayak2020" role="doc-biblioref">Nayak et al. 2020</a>; <a href="references.html#ref-carén2016" role="doc-biblioref">Carén, Beck, and Pollard 2016</a>; <a href="references.html#ref-piccirillo2006" role="doc-biblioref">Piccirillo et al. 2006</a>)</span>. The precise mechanism through which BMP4 acts is unknown but a possible explanation is that it reduces the frequency of symmetric divisions of GSCs <span class="citation" data-cites="guerrero-cázares2014">(<a href="references.html#ref-guerrero-cázares2014" role="doc-biblioref">Guerrero-Cázares et al. 2014</a>)</span>, and previous mathematical models of differentiation therapy have assumed that differentiation promoters act in this way <span class="citation" data-cites="youssefpour2012 bachman2013">(<a href="references.html#ref-youssefpour2012" role="doc-biblioref">Youssefpour et al. 2012</a>; <a href="references.html#ref-bachman2013" role="doc-biblioref">Bachman and Hillen 2013</a>)</span>.</p>
+<p>Adipose derived mesenchymal stem cells (AMSCs) provide a possible alternative to traditional treatment, as these cells preferentially migrate toward areas of malignancy, and can be utilized to home towards the infiltrating glioma cells <span class="citation" data-cites="li2014 mangraviti2016 pendleton2013 smith2015 doucette2011">(<a href="references.html#ref-li2014" role="doc-biblioref">Li et al. 2014</a>; <a href="references.html#ref-mangraviti2016" role="doc-biblioref">Mangraviti et al. 2016</a>; <a href="references.html#ref-pendleton2013" role="doc-biblioref">Pendleton et al. 2013</a>; <a href="references.html#ref-smith2015" role="doc-biblioref">Smith et al. 2015</a>; <a href="references.html#ref-doucette2011" role="doc-biblioref">Doucette et al. 2011</a>)</span>. Additionally AMSCs can be engineered to secrete BMP4 for GBM therapy, and a migration assay showed that compared to controls, engineered AMSCs significantly retained their tropism and preferential migration towards GBM factors <span class="citation" data-cites="mangraviti2016 kim2020 guerrero-cázares2014 tzeng2011">(<a href="references.html#ref-mangraviti2016" role="doc-biblioref">Mangraviti et al. 2016</a>; <a href="references.html#ref-kim2020" role="doc-biblioref">J. Kim et al. 2020</a>; <a href="references.html#ref-guerrero-cázares2014" role="doc-biblioref">Guerrero-Cázares et al. 2014</a>; <a href="references.html#ref-tzeng2011" role="doc-biblioref">Tzeng et al. 2011</a>)</span>. It has been shown that nanoparticle-engineered AMSCs maintain their multi-potency characteristics and release their therapeutic cargo progressively, furthermore systemically-delivered engineered AMSCs can cross the blood-brain barrier and retain their preferential tropism towards gliomas <span class="citation" data-cites="mangraviti2016">(<a href="references.html#ref-mangraviti2016" role="doc-biblioref">Mangraviti et al. 2016</a>)</span>. Therefore, AMSCs delivery promises the ability to hone in on GSC niches and locally release treatment to these regions. BMP4-loaded AMSCS (BMP4-AMSCs) would theoretically migrate to GSCs, release BMP4, and increase the rate of their differentiation, reducing the number of GSCs and increasing sensitivity to standard treatments.</p>
+<p>Clinical trials typically consist of four phases in which a new intervention is investigated in human subjects to determine its safety and efficacy. This system is notoriously resource intensive and inefficient. The average cost per patient is $59,500 and takes more than 10 years, with only 10% of drugs in phase 1 studies eventually approved <span class="citation" data-cites="dowden2019 yankeelov2024">(<a href="references.html#ref-dowden2019" role="doc-biblioref">Dowden and Munro 2019</a>; <a href="references.html#ref-yankeelov2024" role="doc-biblioref">Yankeelov et al. 2024</a>)</span>. In GBM, the statistics are even worse; multiple recent phase 3 trials have failed to meet their prespecified primary endpoints <span class="citation" data-cites="bagley2022 reardon2020 cloughesy2020 weller2017 narita2019 roth2021">(<a href="references.html#ref-bagley2022" role="doc-biblioref">Bagley et al. 2022</a>; <a href="references.html#ref-reardon2020" role="doc-biblioref">Reardon et al. 2020</a>; <a href="references.html#ref-cloughesy2020" role="doc-biblioref">Cloughesy et al. 2020</a>; <a href="references.html#ref-weller2017" role="doc-biblioref">Weller et al. 2017</a>; <a href="references.html#ref-narita2019" role="doc-biblioref">Narita et al. 2019</a>; <a href="references.html#ref-roth2021" role="doc-biblioref">Roth et al. 2021</a>)</span>. Of course, there are many reasons for these failures including inter- and intra-patient variability, drug delivery limitations, paucity of control arms, overly stringent clinical eligibility, and beyond <span class="citation" data-cites="bagley2022">(<a href="references.html#ref-bagley2022" role="doc-biblioref">Bagley et al. 2022</a>)</span>.</p>
+<p>Increasingly, it is being realised that mathematical modelling and <em>in silico</em> clinical trials can assist in addressing a number of these problems. Subfields such as virtual clinical trials <span class="citation" data-cites="craig2023">(<a href="references.html#ref-craig2023" role="doc-biblioref">Craig et al. 2023</a>)</span>, phase <em>i</em> trials <span class="citation" data-cites="kim2016">(<a href="references.html#ref-kim2016" role="doc-biblioref">E. Kim et al. 2016</a>)</span>, and digital twins <span class="citation" data-cites="wu2022">(<a href="references.html#ref-wu2022" role="doc-biblioref">Wu et al. 2022</a>)</span> have evolved all with the aim to create simulated patients or patient cohorts that can be used as a surrogate to predict the effects of treatment on a more personalized level. This approach has been applied to a variety of cancers, including breast cancer <span class="citation" data-cites="wang2019 wang2020">(<a href="references.html#ref-wang2019" role="doc-biblioref">Wang et al. 2019</a>; <a href="references.html#ref-wang2020" role="doc-biblioref">Wang et al. 2020</a>)</span>, head and neck cancer <span class="citation" data-cites="zahid2021">(<a href="references.html#ref-zahid2021" role="doc-biblioref">Zahid et al. 2021</a>)</span>, melanoma <span class="citation" data-cites="kim2016">(<a href="references.html#ref-kim2016" role="doc-biblioref">E. Kim et al. 2016</a>)</span>, and ovarian cancer <span class="citation" data-cites="cardinal2022">(<a href="references.html#ref-cardinal2022" role="doc-biblioref">Cardinal et al. 2022</a>)</span>. Here, we take a similar <em>in silico</em> approach to glioblastoma and its proposed treatment with BMP4-AMSCs.</p>
+</section>
+<section id="sec-materials-methods" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-materials-methods"><span class="header-section-number">3.2</span> Materials and methods</h2>
+<p>We use mathematical modelling to simulate GSC-driven brain tumor growth. Our model describes the interplay of GSCs (<span class="math inline">\(s(t)\)</span>) and non-GSCs (<span class="math inline">\(v(t)\)</span>). To describe radiation therapy we use the well-established linear quadratic model <span class="citation" data-cites="rockne2009 mcmahon2018">(<a href="references.html#ref-rockne2009" role="doc-biblioref">R. Rockne et al. 2009</a>; <a href="references.html#ref-mcmahon2018" role="doc-biblioref">McMahon 2018</a>)</span> with realistic standard treatments (five treatments per week, weekends off, for six weeks) and with tissue-specific radiosensitivity parameters. Following <span class="citation" data-cites="bachman2013 youssefpour2012">(<a href="references.html#ref-bachman2013" role="doc-biblioref">Bachman and Hillen 2013</a>; <a href="references.html#ref-youssefpour2012" role="doc-biblioref">Youssefpour et al. 2012</a>)</span> we model differentiation therapy as decreasing the propensity for self-renewal of GSCs.</p>
+<section id="sec-pre-clinical-data" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="sec-pre-clinical-data"><span class="header-section-number">3.2.1</span> Pre-clinical data</h3>
+<p>To quantify the effect of BMP4 on sensitising GSCs, we used data collected from a clonogenic radiotherapy (RT) assay <span class="citation" data-cites="farias">(<a href="references.html#ref-farias" role="doc-biblioref">Farias et al., n.d.</a>)</span>. Five GSC cell lines were treated with either complete media (untreated control), BMP4 (100 ng/ml), BMP4-AMSCs conditioned media (100 ng/ml BMP4), or a similar volume of non-engineered AMSC conditioned media for a period of 48 hours, then seeded at 250-1250 cells per well in 96 well plates and treated with 0, 2, 4, 6 Gy of radiation, with six replicates in each case. After 14 days the colonies with more than 100 nm diameter were manually counted.</p>
+<p>Typically, the linear quadratic (LQ) model is used to describe the surviving fraction of cells after radiation. However, this assumes only one cell type is present <span class="citation" data-cites="rockne2009 mcmahon2018 yu2015">(<a href="references.html#ref-rockne2009" role="doc-biblioref">R. Rockne et al. 2009</a>; <a href="references.html#ref-mcmahon2018" role="doc-biblioref">McMahon 2018</a>; <a href="references.html#ref-yu2015" role="doc-biblioref">Yu et al. 2015</a>)</span>. In the control case, GSC lines are cultured in stem cell media, so we assume that cells will remain as GSCs unless any BMP4 or other differentiation promoter is present, thus the LQ model is applicable. However, when BMP4 is applied some amount of differentiation of GSCs will take place that explains the increased sensitivity to RT. To get an estimate for the amount of differentiation that took place over 48hr exposure, we fit a dual-linear quadratic (DLQ) model similar to that of <span class="citation" data-cites="yu2015">(<a href="references.html#ref-yu2015" role="doc-biblioref">Yu et al. 2015</a>)</span>, given by:</p>
+<p><span id="eq-DLQ"><span class="math display">\[
+  \gamma(d) = F \text{exp}(\eta(-\alpha d - \beta d^2)) + (1-F)\text{exp}(-\alpha d - \beta d^2)
+\tag{3.1}\]</span></span></p>
+<p>where <span class="math inline">\(d\)</span> is the RT dose, <span class="math inline">\(F\)</span> is the fraction of GSCs and <span class="math inline">\(\eta\)</span> is the protection factor for GSCs that accounts for the fact that GSCs are less sensitive to radiation than other cancer cells; previous experiments have estimated GSC radio-protection to be <span class="math inline">\(\eta = 0.1376\)</span> <span class="citation" data-cites="gao2013">(<a href="references.html#ref-gao2013" role="doc-biblioref">Gao et al. 2013</a>)</span>. We infer the radiobiological parameter from the cell line data in the following way. First, we assume that since the GSC lines are cultured in stem cell media no differentiation will take place, therefore we fit the LQ model to the control case for each cell line, assuming the ratio <span class="math inline">\(\alpha / \beta = 10\)</span> <span class="citation" data-cites="rockne2010">(<a href="references.html#ref-rockne2010" role="doc-biblioref">R. Rockne et al. 2010</a>)</span>, to get an estimate for <span class="math inline">\(\alpha\)</span>. These form the cell-line-specific radiosensitivity parameters. Using these parameters we fit the DLQ model to the BMP4 treated survival data, treating <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> as fixed constants for each cell line from the control case so that we are only fitting for <span class="math inline">\(F\)</span>. This allows us to get an estimate of the fraction of GSCs after 48hrs exposure to BMP4 in each cell line. The fitted <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(F\)</span> for all the cell lines are shown in <a href="#tbl-RT-data" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
+</section>
+<section id="sec-model-assumptions" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="sec-model-assumptions"><span class="header-section-number">3.2.2</span> Model assumptions and equations</h3>
+<ul>
+<li><p>GSCs have unlimited replicative potential.</p></li>
+<li><p>GSCs are capable of both self-renewing and differentiating. Using the same notation as <span class="citation" data-cites="youssefpour2012">(<a href="references.html#ref-youssefpour2012" role="doc-biblioref">Youssefpour et al. 2012</a>)</span> we denote the proportion of GSCs that self-renew by <span class="math inline">\(P_s\)</span>. This does not distinguish between symmetric and asymmetric division, but rather just considers the overall fraction of proliferating cells that self-renew (<span class="math inline">\(P_s\)</span>) and differentiate (<span class="math inline">\(1 - P_s\)</span>).</p></li>
+<li><p>Progenitor cells (PCs) have a limited replicative potential, this ensures that they are not tumor-initiating. Following <span class="citation" data-cites="enderling2009 gao2013">(<a href="references.html#ref-enderling2009" role="doc-biblioref">Enderling et al. 2009</a>; <a href="references.html#ref-gao2013" role="doc-biblioref">Gao et al. 2013</a>)</span>, the proliferative potential of PCs is set to a maximum of <span class="math inline">\(n = 10\)</span> divisions. Once PCs have divided <span class="math inline">\(n=10\)</span> times they become terminally differentiated (TC) and can no longer proliferate.</p></li>
+</ul>
+<p><a href="#fig-model_schematic" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> shows a schematic of this model. Following these assumptions, we derive the following equations,</p>
+<p><span id="eq-gsc-model"><span class="math display">\[
+\begin{aligned}
+  \underbrace{\frac{d s}{d t}}_{
+    \substack{\text{Rate of} \\ \text{change GSCs}}} &amp;=  \underbrace{(2P_s -1)  m_s s \left( 1 - \frac{N}{k}  \right)}_\text{Self-renewal of GSCs} - \underbrace{\delta_{s} s}_\text{Apoptosis}, \\
+  \underbrace{\frac{d v_1}{d t}}_{
+    \substack{\text{Rate of} \\ \text{change PCs}}} &amp;= \underbrace{2(1- P_s)  m_s s \left( 1 - \frac{N}{k}  \right)}_{
+    \substack{\text{Differentiation} \\ \text{of GSCs}}} - \underbrace{m_1 v_1 \left( 1 - \frac{N}{k} \right)}_\text{Proliferation of PCs} - \underbrace{\delta_{1} v_1}_\text{Apoptosis}, \\
+  \underbrace{\frac{d v_i}{d t}}_{
+    \substack{\text{Rate of} \\ \text{change PCs}}} &amp;= \underbrace{2 m_{i-1} v_{i-1} \left( 1 - \frac{N}{k}  \right)}_{
+    \substack{\text{Proliferation of} \\ \text{PCs}}} - \underbrace{m_i v_i \left( 1 - \frac{N}{k} \right)}_\text{Proliferation of PCs} - \underbrace{\delta_{i} v_i}_\text{Apoptosis}, \; i=2,...,n-1 \\
+  \underbrace{\frac{d v_n}{d t}}_{
+    \substack{\text{Rate of} \\ \text{change PCs}}} &amp;= \underbrace{2 m_{n-1} v_{n-1} \left( 1 - \frac{N}{k}  \right)}_{
+    \substack{\text{Differentiation} \\ \text{of PCs}}} - \underbrace{\delta_{n} v_n}_\text{Apoptosis}, \\
+\end{aligned}
+\tag{3.2}\]</span></span></p>
+<p>where <span class="math inline">\(s(t)\)</span> is the density of GSCs, <span class="math inline">\(v_i(t)\)</span> is the density of PCs (at proliferation level <span class="math inline">\(i\)</span>) and <span class="math inline">\(v_n(t)\)</span> are terminally differentiated cells. The total density of the tumor is given by <span class="math inline">\(N(t) = s + \sum_{i=1}^{n} v_i\)</span>. The apoptosis rate for GSCs is <span class="math inline">\(\delta_s\)</span> and for PCs are given by <span class="math inline">\(\delta_i\)</span>. The proliferation rates of GSCs and PCs are given by <span class="math inline">\(m_s\)</span>, <span class="math inline">\(m_i\)</span> respectively, where we assume all <span class="math inline">\(m_i\)</span> are equal. These proliferation rates are subject to a crowding response, represented by the term <span class="math inline">\(1 - N/k\)</span> where <span class="math inline">\(k\)</span> is the carrying capacity of the tumor.</p>
+<div id="fig-model_schematic" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A schematic of the model">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-model_schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/model_schema.png" class="img-fluid figure-img" alt="A schematic of the model">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model_schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Model schematic, showing how GSCs differentiate into progenitor cancer cells which can then divide a number of times, doubling in number each time (<a href="#eq-gsc-model" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>). Eventually, PCs become terminally differentiated and are no longer able to proliferate. Introduced AMSCs gradually die and release BMP4 (<a href="#eq-AMSC-BMP4-model" class="quarto-xref">Equation&nbsp;<span>3.3</span></a>) which modifies the self-renewal rate <span class="math inline">\(P_s\)</span> according to <a href="#eq-Ps" class="quarto-xref">Equation&nbsp;<span>3.4</span></a>. (created with BioRender.com)
+</figcaption>
+</figure>
+</div>
+<section id="sec-differentiation-therapy" class="level4" data-number="3.2.2.1">
+<h4 data-number="3.2.2.1" class="anchored" data-anchor-id="sec-differentiation-therapy"><span class="header-section-number">3.2.2.1</span> Differentiation therapy with mesenchymal stem cell delivery model</h4>
+<p>A possible delivery mechanism for BMP4 is via AMSCs. These could be implanted at the time of resection, or systemically with the ability to cross the blood-brain barrier and subsequently diffuse with preferential tropism towards glioma cells. We model AMSCs as simply decaying exponentially from an initial concentration at implantation. BMP4 is released from these AMSCs and taken up by GSCs. The equations for both the AMSC and BMP4 are thus given by.</p>
+<p><span id="eq-AMSC-BMP4-model"><span class="math display">\[
+\begin{aligned}
+    \underbrace{\frac{d m}{d t}}_{
+    \substack{\text{Rate of} \\ \text{change AMSCs}}} &amp;= \underbrace{-\delta_m m}_\text{Decay of AMSCs} \\
+    \underbrace{\frac{d B}{d t}}_{
+    \substack{\text{Rate of} \\ \text{change BMP4}}} &amp;=  \underbrace{C m}_\text{Release of BMP4} - \underbrace{u_sBs}_\text{uptake by GSCs} - \underbrace{\delta_B B}_\text{Decay of BMP4},
+\end{aligned}
+\tag{3.3}\]</span></span></p>
+<p>where <span class="math inline">\(\delta_m\)</span> is the decay rate of AMSCs, <span class="math inline">\(C\)</span> is the rate at which AMSCs release BMP4, <span class="math inline">\(u_s\)</span> is the uptake rate of BMP4 by GSCs and <span class="math inline">\(\delta_B\)</span> is the decay rate of BMP4. <em>In vivo</em> experiments have shown that AMSCs can survive for around 14 days in a rodent model and that BMP4 reaches its peak concentration at around 48hrs after initial implantation of AMSC <span class="citation" data-cites="li2014">(<a href="references.html#ref-li2014" role="doc-biblioref">Li et al. 2014</a>)</span>.</p>
+</section>
+<section id="sec-BMP4-model" class="level4" data-number="3.2.2.2">
+<h4 data-number="3.2.2.2" class="anchored" data-anchor-id="sec-BMP4-model"><span class="header-section-number">3.2.2.2</span> BMP4 model</h4>
+<p>Following <span class="citation" data-cites="bachman2013">(<a href="references.html#ref-bachman2013" role="doc-biblioref">Bachman and Hillen 2013</a>)</span>, we model differentiation therapy through a simple relationship between the level of differentiation promoter (BMP4), and the probability of GSC self-renewal, <span class="math inline">\(P_s\)</span>, and do not consider the effect of a GSC promoter such as WNT <span class="citation" data-cites="lee2016 youssefpour2012">(<a href="references.html#ref-lee2016" role="doc-biblioref">Lee et al. 2016</a>; <a href="references.html#ref-youssefpour2012" role="doc-biblioref">Youssefpour et al. 2012</a>)</span>. Therefore, the relationship between <span class="math inline">\(P_s\)</span> and BMP4 is given by</p>
+<p><span id="eq-Ps"><span class="math display">\[
+    P_s(t) = P_\text{min} + (P_\text{max} - P_\text{min})  \left( \frac{1}{1 +  \psi B(t)} \right),
+\tag{3.4}\]</span></span></p>
+<p>where <span class="math inline">\(P_\text{min}\)</span> and <span class="math inline">\(P_\text{max}\)</span> are the minimum and maximum self-renewal probabilities and <span class="math inline">\(B(t)\)</span> represents the concentration of BMP4. <span class="math inline">\(P_\text{max}\)</span> is attained if there is no BMP4 present, while <span class="math inline">\(P_\text{min}\)</span> is approached as <span class="math inline">\(B \rightarrow \infty\)</span>. We do not consider any endogenous production of BMP4 (or other differentiation promoter), therefore it is only present during differentiation therapy. The parameter <span class="math inline">\(\psi\)</span> represents the sensitivity of GSCs to BMP4, as <span class="math inline">\(\psi\)</span> increases (for the same concentration of BMP4) <span class="math inline">\(P_\text{min}\)</span> is approached faster. Any other potential effects of BMP4, for example on growth rates, are ignored as they are in <span class="citation" data-cites="youssefpour2012">(<a href="references.html#ref-youssefpour2012" role="doc-biblioref">Youssefpour et al. 2012</a>)</span> and <span class="citation" data-cites="bachman2013">(<a href="references.html#ref-bachman2013" role="doc-biblioref">Bachman and Hillen 2013</a>)</span>.</p>
+</section>
+<section id="sec-RT-model" class="level4" data-number="3.2.2.3">
+<h4 data-number="3.2.2.3" class="anchored" data-anchor-id="sec-RT-model"><span class="header-section-number">3.2.2.3</span> Radiotherapy model</h4>
+<p>We model the effects of radiotherapy using the linear quadratic (LQ) model, which is widely used in mathematical modelling of RT <span class="citation" data-cites="rockne2010 rockne2009 orourke2009 mcmahon2018">(<a href="references.html#ref-rockne2010" role="doc-biblioref">R. Rockne et al. 2010</a>; <a href="references.html#ref-rockne2009" role="doc-biblioref">R. Rockne et al. 2009</a>; <a href="references.html#ref-orourke2009" role="doc-biblioref">O’Rourke, McAneney, and Hillen 2009</a>; <a href="references.html#ref-mcmahon2018" role="doc-biblioref">McMahon 2018</a>)</span>. The fraction of cells that survive, <span class="math inline">\(\gamma_{\text{rad}}(d)\)</span> after a single fractional dose of, <span class="math inline">\(d\)</span> Grays (Gy) of radiation is given by</p>
+<p><span id="eq-LQ-model"><span class="math display">\[
+    \gamma_{\text{rad}}(d) = \text{exp}\left(-\eta \mu (\alpha d + \beta d^2)\right),
+\tag{3.5}\]</span></span></p>
+<p>where <span class="math inline">\(\alpha\)</span> can be interpreted as death from single-stranded breaks (linear component) and <span class="math inline">\(\beta\)</span> can be interpreted as death from double-strand breaks (quadratic component). It has been shown that the value of <span class="math inline">\(\alpha\)</span> correlates with the proliferation rate of the tumor. We can use this linear relationship to estimate <span class="math inline">\(\alpha\)</span> on a patient-specific level as <span class="math inline">\(\alpha = 0.05m_v\)</span> <span class="citation" data-cites="rockne2010">(<a href="references.html#ref-rockne2010" role="doc-biblioref">R. Rockne et al. 2010</a>)</span>. To account for the fact that GSCs are less sensitive to radiation than other cancer cells, we include the additional radio-protection parameter <span class="math inline">\(\eta\)</span>. Previous experiments have estimated GSC radio-protection to be <span class="math inline">\(\eta = 0.1376\)</span> <span class="citation" data-cites="gao2013 bao2006">(<a href="references.html#ref-gao2013" role="doc-biblioref">Gao et al. 2013</a>; <a href="references.html#ref-bao2006" role="doc-biblioref">Bao et al. 2006</a>)</span>. Additionally, the model contains cells that are terminally differentiated and so do not proliferate. RT primarily targets actively proliferating cells so is less effective against non-proliferating cells. We include <span class="math inline">\(\mu\)</span> to account for this radio-protection of non-proliferating cells, previous experiments have found this to be around <span class="math inline">\(\mu = 0.5\)</span> <span class="citation" data-cites="gao2013 griffin2006 potten1981">(<a href="references.html#ref-gao2013" role="doc-biblioref">Gao et al. 2013</a>; <a href="references.html#ref-griffin2006" role="doc-biblioref">Griffin 2006</a>; <a href="references.html#ref-potten1981" role="doc-biblioref">Potten 1981</a>)</span>.</p>
+<p>It is assumed that all effects of radiation on tumor cell density are instantaneous, and no delay or otherwise toxic effects of radiotherapy are considered. Nor are any effects on proliferation rate as a result of radiotherapy considered. Therefore, we model the effects of radiotherapy as an instantaneous reduction of tumor density. Considering each compartment of the model (<a href="#eq-gsc-model" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) separately we modify them by</p>
+<p><span id="eq-radiation_model"><span class="math display">\[
+  \begin{aligned}
+    s_\text{post-rad} = s_\text{pre-rad} \text{exp}(-\eta(\alpha d + \beta d^2)) \\
+    v_{i_\text{post-rad}} = v_{i_\text{pre-rad}} \text{exp}(-(\alpha d + \beta d^2)) \\
+    v_{n_\text{post-rad}} = v_{n_\text{pre-rad}} \text{exp}(-\mu(\alpha d + \beta d^2))
+  \end{aligned}
+\tag{3.6}\]</span></span></p>
+</section>
+<section id="sec-resection-model" class="level4" data-number="3.2.2.4">
+<h4 data-number="3.2.2.4" class="anchored" data-anchor-id="sec-resection-model"><span class="header-section-number">3.2.2.4</span> Resection model</h4>
+<p>Similarly to radiotherapy we model resection as an instantaneous loss of density, applied to each model compartment separately as</p>
+<p><span id="eq-resection_model"><span class="math display">\[
+  \begin{aligned}
+    s_\text{post-resect} = s_\text{pre-resect} \gamma_\text{res} \\
+    v_{i,\text{post-resect}} = v_{i,\text{pre-resect}} \gamma_\text{res} \\
+    v_{n,\text{post-resect}} = v_{n,\text{pre-resect}} \gamma_\text{res},
+  \end{aligned}
+\tag{3.7}\]</span></span></p>
+<p>where <span class="math inline">\(\gamma_{\text{res}}\)</span> is the surviving fraction after resection. Chaichana et al.&nbsp;investigated the efficacy of resection found that on average resection resulted in a <span class="math inline">\(91.7 \%\)</span> reduction in tumor volume, so we take <span class="math inline">\(\gamma_{\text{res}} = (1- 0.917)\)</span> <span class="citation" data-cites="chaichana2014">(<a href="references.html#ref-chaichana2014" role="doc-biblioref">Chaichana et al. 2014</a>)</span>.</p>
+</section>
+</section>
+</section>
+<section id="sec-results" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-results"><span class="header-section-number">3.3</span> Results</h2>
+<p>We explore the model for a range of different parameter values to help us identify possible strategies for patient selection in early phase clinical trials of BMP4 therapy, as well as explore different delivery schedules, to increase the likelihood of observing successful clinical trials. We parameterise our model to 5 GBM cell lines where we have known doubling times, radiotherapy response, and exposure to BMP4. This allows us to estimate reasonable values of sensitivity to BMP4. We develop a virtual clinical trial pipeline that allows us to assess the likelihood of observing a successful trial for different patient populations.</p>
+<section id="sec-simulating-RT-experiments" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="sec-simulating-RT-experiments"><span class="header-section-number">3.3.1</span> Simulating radiotherapy experiments</h3>
+<p>To parameterise the model we simulate the radiotherapy assay described in <a href="#sec-pre-clinical-data" class="quarto-xref"><span>Section 3.2.1</span></a>. In the assay a small number of cells were seeded and allowed to grow for 48hrs exposed to either CTRL (GSC media) or BMP4 (100ng/ml) then radiotherapy at 0,2,4,6 Gy was applied. The number of surviving colonies was then counted. To simulate this we initialise our model with a small density of GSCs. The cells are cultured in GSC media in the CTRL case so we assume no differentiation takes place before treatment (i.e.&nbsp;<span class="math inline">\(P_s = 1\)</span>). We simulate the BMP4 as a constant concentration for the 48hrs. From the DLQ model (<a href="#eq-DLQ" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>) we have an estimate for what the fraction of GSCs should be after the 48hrs and given that we also have the doubling time for each cell line we can fit the parameter <span class="math inline">\(\psi\)</span>, which tells us the change in GSC self-renewal (<span class="math inline">\(P_s\)</span>) over the 48hrs.</p>
+<p>The fitted <span class="math inline">\(\psi\)</span> values for each of the 5 cell lines are shown in <a href="#fig-psi_values_visualised" class="quarto-xref">Figure&nbsp;<span>3.2 (c)</span></a> and in <a href="#tbl-RT-data" class="quarto-xref">Table&nbsp;<span>3.1</span></a>. We find that each cell line has a distinct sensitivity to BMP4, in agreement with work in preparation <span class="citation" data-cites="farias">(<a href="references.html#ref-farias" role="doc-biblioref">Farias et al., n.d.</a>)</span> which shows that GBM1a, QNS657 and QNS120 are sensitive to BMP4 while QNS315 and QNS108 are resistant to BMP4 treatment.</p>
+<div id="fig-days_gained_example_sim" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-days_gained_example_sim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-days_gained_example_sim" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-sim_RT_assay_GBM1a" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An example simulation of the model following RT assay">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sim_RT_assay_GBM1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/simulated_RT_assay_GBM1a.png" id="fig-sim_RT_assay_GBM1a" class="img-fluid figure-img" data-ref-parent="fig-days_gained_example_sim" alt="An example simulation of the model following RT assay">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sim_RT_assay_GBM1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-days_gained_example_sim" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-sim_dose_response_GBM1a" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A graph showing simulated dose response to RT">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sim_dose_response_GBM1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/simulated_dose_response_GBM1a.png" id="fig-sim_dose_response_GBM1a" class="img-fluid figure-img" data-ref-parent="fig-days_gained_example_sim" alt="A graph showing simulated dose response to RT">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sim_dose_response_GBM1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-days_gained_example_sim" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-psi_values_visualised" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A graph showing the values of psi and effect on Ps">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-psi_values_visualised-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/psi_values_visualised.png" id="fig-psi_values_visualised" class="img-fluid figure-img" data-ref-parent="fig-days_gained_example_sim" alt="A graph showing the values of psi and effect on Ps">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-psi_values_visualised-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-days_gained_example_sim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: Simulated radiotherapy assay. (a) Initially a small number of cells were seeded (represented by a small density of tumor cells). These were grown for 2 days under either control or 100ng/ml BMP4. After 2 days, radiotherapy was applied at different dosages and the number of surviving colonies were counted. The red star indicates when RT was applied (48 hrs) and the green stars indicate the final measured density of tumor immediately after radiotherapy for different doses of radiation. (b) Simulated dose response to radiotherapy after fitting <span class="math inline">\(\psi\)</span> in the ODE model to provide the expected fraction of GSCs given the doubling time of the cell line. (c) Each of the cell lines has a distinct sensitivity to BMP4 denoted <span class="math inline">\(\psi\)</span>.
+</figcaption>
+</figure>
+</div>
+<div id="tbl-RT-data" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-RT-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.1: Fitted parameter values and metadata from cell lines. All cell lines are from primary tumor. It is assumed that <span class="math inline">\(\alpha/\beta = 10\)</span> is fixed for all cell lines.
+</figcaption>
+<div aria-describedby="tbl-RT-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cell line</th>
+<th><span class="math inline">\(\alpha\)</span></th>
+<th>F</th>
+<th>Doubling time (hrs)</th>
+<th>Sensitivity to BMP4 (<span class="math inline">\(\psi\)</span>)</th>
+<th>Sex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GBM1a</td>
+<td>0.338</td>
+<td>0.571</td>
+<td>54.7</td>
+<td>0.00850409</td>
+<td>Male</td>
+</tr>
+<tr class="even">
+<td>QNS120</td>
+<td>0.116</td>
+<td>0.770</td>
+<td>43.5</td>
+<td>0.002094342</td>
+<td>Male</td>
+</tr>
+<tr class="odd">
+<td>QNS108</td>
+<td>0.151</td>
+<td>0.949</td>
+<td>109</td>
+<td>0.000918066</td>
+<td>Male</td>
+</tr>
+<tr class="even">
+<td>QNS315</td>
+<td>0.0841</td>
+<td>1</td>
+<td>63.6</td>
+<td>0</td>
+<td>Female</td>
+</tr>
+<tr class="odd">
+<td>QNS657</td>
+<td>0.104</td>
+<td>0.707</td>
+<td>75.6</td>
+<td>0.006332659</td>
+<td>Female</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-model-sims" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="sec-model-sims"><span class="header-section-number">3.3.2</span> Model simulations</h3>
+<p>We simulate our model for a range of parameter values to explore the effect of BMP4 on tumor growth. Based on our fitted values of <span class="math inline">\(\psi\)</span> we consider a range from <span class="math inline">\([0,0.1]\)</span>, the full parameter values are given in <a href="#tbl-params" class="quarto-xref">Table&nbsp;<span>3.2</span></a>. To simulate treatment we allow the model to run until the total tumor size reaches <span class="math inline">\(0.2\)</span>, then initiate treatment. To evaluate the effect of BMP4, we compare two treatment arms: standard of care - resection (at the time of detection) followed by radiotherapy 30 days later, and BMP4 - standard of care with the addition of BMP4. To observe the effect of BMP4, we assume a fixed concentration of AMSCs, which release BMP4 at a constant rate, from the time of resection until the end of radiotherapy. In each case we record the number of days until the tumor reaches a size of <span class="math inline">\(0.6\)</span> and refer to this as time to progression. This allows us to calculate the fold change in time to progression to directly compare for each set of parameters how much the BMP4 prolonged survival. The results are shown in <a href="#fig-days_gained" class="quarto-xref">Figure&nbsp;<span>3.3 (b)</span></a>.</p>
+<p>Since GSCs are less sensitive to RT than other cells, the fraction of GSCs increases during RT; this is shown in our model in <a href="#fig-example_sims" class="quarto-xref">Figure&nbsp;<span>3.3 (a)</span></a>. In particular, radiotherapy is more effective against faster proliferating tumors <span class="citation" data-cites="rockne2010">(<a href="references.html#ref-rockne2010" role="doc-biblioref">R. Rockne et al. 2010</a>)</span> so this effect is particularly pronounced in these tumors. Enrichment of GSCs during RT not only highlights that there are some resistant cells not being targeted by radiotherapy but also since these are the most tumorigenic cells, with a large proportion of GSCs, a recurrent tumor is able to form rapidly (as compared to not at all if no GSCs were present). When we simulated the addition of BMP4 (the dashed lines in <a href="#fig-example_sims" class="quarto-xref">Figure&nbsp;<span>3.3 (a)</span></a>) we see that this peak in stem-cell fraction is reduced due to the induced differentiation of GSCs. This means that not only is the RT more effective as there are fewer resistant GSCs but also that the tumor will take longer to recur as there are fewer GSCs to drive regrowth. As the increase in GSC fraction is most pronounced in faster proliferating tumors, we see that the relative effect of BMP4 in delaying progression is also largest for these patients.</p>
+<div id="tbl-params" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-params-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.2: Table of parameter values used. When the value is fixed its value is given, if it is sampled from a distribution then the distribution is given.
+</figcaption>
+<div aria-describedby="tbl-params-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Meaning</th>
+<th>Value / distribution</th>
+<th>Units</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\delta_s\)</span></td>
+<td>death rate of GSCs</td>
+<td>0.001</td>
+<td>1 / year</td>
+<td>Estimated</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\delta_i\)</span></td>
+<td>death rate of PCs</td>
+<td>0.01</td>
+<td>1 / year</td>
+<td>Estimated</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\delta_n\)</span></td>
+<td>death rate of TCs</td>
+<td>0.1</td>
+<td>1 / year</td>
+<td>Estimated</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\delta_m\)</span></td>
+<td>death rate of AMSCs</td>
+<td>0.5</td>
+<td>1 / year</td>
+<td><span class="citation" data-cites="li2014">(<a href="references.html#ref-li2014" role="doc-biblioref">Li et al. 2014</a>)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\delta_B\)</span></td>
+<td>Decay rate of BMP4</td>
+<td>0.5</td>
+<td>1 / year</td>
+<td><span class="citation" data-cites="li2014">(<a href="references.html#ref-li2014" role="doc-biblioref">Li et al. 2014</a>)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(u_B\)</span></td>
+<td>Uptake rate of BMP4</td>
+<td>0.5</td>
+<td>1 / year</td>
+<td>Estimated</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C\)</span></td>
+<td>Release rate of BMP4 from AMSCs</td>
+<td>0.5</td>
+<td>1 / year</td>
+<td>Estimated</td>
+</tr>
+<tr class="even">
+<td>n</td>
+<td>Number of division of PCs</td>
+<td>10</td>
+<td>-</td>
+<td><span class="citation" data-cites="gao2013">(<a href="references.html#ref-gao2013" role="doc-biblioref">Gao et al. 2013</a>)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(m_i\)</span></td>
+<td>Proliferation rate of PCs</td>
+<td><span class="math inline">\(\text{log-N}(2.75,0.51)\)</span></td>
+<td>1 / year</td>
+<td><span class="citation" data-cites="yang2019">(<a href="references.html#ref-yang2019" role="doc-biblioref">Yang et al. 2019</a>)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(m_s\)</span></td>
+<td>Proliferation rate of GSCs</td>
+<td><span class="math inline">\(0.0345 m_i\)</span></td>
+<td>1 / year</td>
+<td>Estimated</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\alpha\)</span></td>
+<td>Radiosensitivity</td>
+<td><span class="math inline">\(0.05 m_i\)</span></td>
+<td>1 / Gy</td>
+<td><span class="citation" data-cites="rockne2010">(<a href="references.html#ref-rockne2010" role="doc-biblioref">R. Rockne et al. 2010</a>)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="fig-effect_BMP4" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-effect_BMP4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-effect_BMP4" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-example_sims" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An example simulation of the model">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-example_sims-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/example_sims.png" id="fig-example_sims" class="img-fluid figure-img" data-ref-parent="fig-effect_BMP4" alt="An example simulation of the model">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-example_sims-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-effect_BMP4" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-days_gained" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A graph days gained for different values of psi and proliferation rate">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-days_gained-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/days_gained.png" id="fig-days_gained" class="img-fluid figure-img" data-ref-parent="fig-effect_BMP4" alt="A graph days gained for different values of psi and proliferation rate">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-days_gained-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-effect_BMP4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Effect of BMP4 on tumor progression. (a) Example model simulations showing the total tumor density and fraction of GSCs. Red stars indicate when the tumor was detected at <span class="math inline">\(N=0.2\)</span> and the blue dot represents the start of radiotherapy (30 days later). Simulated standard of care (resection and radiotherapy) is plotted in solid lines and BMP4-AMSCs is in the dashed lines. During radiotherapy the fraction of GSCs is greatly increased as they are less sensitive than the non-GSCs. When BMP4 is added this enrichment in GSCs is reduced, delaying time for tumor regrowth. (b) Days gained surface. As we increase both the sensitivity to BMP4 (<span class="math inline">\(\psi\)</span>) and the proliferation rate the fold change in time to progression increases.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-virtual-trial-pipeline" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="sec-virtual-trial-pipeline"><span class="header-section-number">3.3.3</span> Virtual clinical trial pipeline</h3>
+<p>Firstly we simulate a large cohort of virtual patients with fix sensitivity to BMP4 based on the parameters identified in <a href="#sec-simulating-RT-experiments" class="quarto-xref"><span>Section 3.3.1</span></a>. We compare our simulated BMP4 patients to virtual controls to show that BMP4 can delay tumor growth. We then develop a pipeline for simulating early-phase 2 clinical trials and calculating the probability of observing a successful trial.</p>
+<section id="sec-unce-death-detect" class="level4" data-number="3.3.3.1">
+<h4 data-number="3.3.3.1" class="anchored" data-anchor-id="sec-unce-death-detect"><span class="header-section-number">3.3.3.1</span> Uncertainty in tumor detection and death</h4>
+<p>We assume that both detection of the tumor and death depend on tumor size in a random fashion for each virtual patient. Detection (death) is more likely the bigger a tumor is, but two tumors of equal size in two patients do not necessarily lead to detection (death) at the same times. Thus, we assume that the times of tumor detection and death, represented by the random variables <span class="math inline">\(T_{\text{detect}}\)</span> and <span class="math inline">\(T_{\text{death}}\)</span>, depend on total tumor density <span class="math inline">\(N(t)\)</span> according to the hazard function</p>
+<p><span id="eq-detect_death_hazard"><span class="math display">\[
+  P(T_d \in [t,t+\Delta t) | T_d&gt;t) = \lambda_d (N(t)) \Delta t + o(\Delta t), \quad d \in \{\text{detect},\text{death}\},
+\tag{3.8}\]</span></span></p>
+<p>where</p>
+<p><span id="eq-lambda_N"><span class="math display">\[
+  \lambda_d (N) = \frac{\lambda_{d,\text{max}}}{1 + e^{-m_d(N - N_d)}}.
+\tag{3.9}\]</span></span></p>
+<p>Here, <span class="math inline">\(\lambda_d(N)\)</span> is a shifted logistic function; <span class="math inline">\(\lambda_{d,\text{max}}\)</span> is the maximum rate of detection that we take to be 1, <span class="math inline">\(m_d\)</span> describes the steepness of the logistic function, which we set to be 100 in the detection case and 20 in the death case. The constant <span class="math inline">\(N_d\)</span> is a threshold parameter at which the probability rate of detection or death is half-maximal (each of these for <span class="math inline">\(d\in\{\text{detect},\text{death}\}\)</span>), we set this to be 0.2 and 0.7 in the detection and death cases respectively. <span class="math inline">\(\Delta t\)</span> is the timestep on which the model is solved numerically. This is similar to the approach of <span class="citation" data-cites="bartoszynski2001 plevritis2006">(<a href="references.html#ref-bartoszynski2001" role="doc-biblioref">Bartoszyński et al. 2001</a>; <a href="references.html#ref-plevritis2006" role="doc-biblioref">Plevritis et al. 2006</a>)</span>, apart from our choice of nonlinear dependence on tumor size. The shifted logistic function acts as a switch mechanism, meaning once <span class="math inline">\(N &gt; N_d\)</span> the rate of detection or death rapidly increases towards its maximum. <a href="#fig-detect_death" class="quarto-xref">Figure&nbsp;<span>3.4 (a)</span></a> shows the form of these functions with the parameters used in the virtual trials that follow.</p>
+</section>
+<section id="sec-simulation-controls" class="level4" data-number="3.3.3.2">
+<h4 data-number="3.3.3.2" class="anchored" data-anchor-id="sec-simulation-controls"><span class="header-section-number">3.3.3.2</span> Simulated control virtual patient population</h4>
+<p>To construct a group of control patients, we sample proliferation rates from a distribution consistent with measured proliferation rates of around 300 patients <span class="citation" data-cites="yang2019">(<a href="references.html#ref-yang2019" role="doc-biblioref">Yang et al. 2019</a>)</span>, from this distribution we sample 200 patients. We then simulate these patients undergoing resection and radiotherapy (standard of care); to consider the effect of BMP4 on survival we assume a constant concentration of 100ng/ml is maintained from detection until the end of radiotherapy and we consider two different sensitivities <span class="math inline">\(\psi = 0.0021\)</span> and <span class="math inline">\(\psi = 0.0085\)</span>, these values correspond with the cell lines QNS120 and GBM1a from <a href="#tbl-RT-data" class="quarto-xref">Table&nbsp;<span>3.1</span></a>. The results are shown in <a href="#fig-simulated-controls" class="quarto-xref">Figure&nbsp;<span>3.4</span></a>. We see that BMP4 improves simulated survival times and that as the sensitivity to BMP4 is increased the response is more pronounced.</p>
+<div id="fig-simulated-controls" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-simulated-controls-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-simulated-controls" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-detect_death" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-detect_death-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/detect_death.png" id="fig-detect_death" class="img-fluid figure-img" data-ref-parent="fig-simulated-controls">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-detect_death-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-simulated-controls" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-hist_data" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-hist_data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/hist_data.png" id="fig-hist_data" class="img-fluid figure-img" data-ref-parent="fig-simulated-controls">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-hist_data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-simulated-controls" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-example_sims_control" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-example_sims_control-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/sim_control_example_sims.png" id="fig-example_sims_control" class="img-fluid figure-img" data-ref-parent="fig-simulated-controls">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-example_sims_control-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-simulated-controls" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-simulated_control_KM" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-simulated_control_KM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/simulate_control_KM.png" id="fig-simulated_control_KM" class="img-fluid figure-img" data-ref-parent="fig-simulated-controls">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-simulated_control_KM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simulated-controls-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.4: Simulated virtual control patients. (a) Tumor detection and death are considered random events which increase in probability as tumor size increases. (b) Histogram of proliferation rates from <span class="citation" data-cites="yang2019">(<a href="references.html#ref-yang2019" role="doc-biblioref">Yang et al. 2019</a>)</span>, red line shows fitted log normal distribution (c) Example model simulation trajectories showing overall tumor density and fraction of stem cells. The red stars indicate when the tumor was detected and the blue dots when radiotherapy was started. (d) Comparison of survival times for simulated control patients (resection and radiotherapy) with BMP4 treatment, for two different sensitivities to BMP4.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-phase-2-trial" class="level4" data-number="3.3.3.3">
+<h4 data-number="3.3.3.3" class="anchored" data-anchor-id="sec-phase-2-trial"><span class="header-section-number">3.3.3.3</span> Simulated phase 2 trial</h4>
+<p>In practice a phase 2 trial will have only a small number of patients (typically around 20-40) and the population will be heterogeneous with respect to sensitivity to BMP4. We develop a virtual trial pipeline to consider the chance of observing a successful trial for different virtual populations. We have previously observed that proliferation rate can impact the efficacy of BMP4 treatment (<a href="#fig-days_gained" class="quarto-xref">Figure&nbsp;<span>3.3 (b)</span></a>). Therefore, we consider 3 stratifications of the population based on proliferation rate. We construct these by sampling twice as many virtual patients as we need for each trial (80) and then splitting them into either the top 50% fastest proliferators, the middle 50%, or the slowest 50%, so that each group has 40 virtual patients. We then split them via a stratified random split, so that both groups have similar distributions of proliferation rates, into control and treatment arms (20 in each), with parameters drawn from <a href="#tbl-params" class="quarto-xref">Table&nbsp;<span>3.2</span></a> and <span class="math inline">\(\psi\)</span> from a truncated normal distribution. This assumes knowledge of growth rates for patients enrolled in the trial, which is straightforward for our simulated virtual patients. For each group (fast, medium, slow) we perform 20 virtual trials, each one comprising a distinct set of 40 patients, giving us an idea of the chance of observing a successful trial.</p>
+<p>We assume a distribution of sensitivities drawn from a truncated normal distribution with mean sensitivity <span class="math inline">\(\psi_\text{mean} = 0.0085\)</span>, so that, according to our model fits this would be a population that has been identified as highly sensitive to BMP4. For this cohort of virtual patients we consider a possible delivery schedule of BMP4-AMSCs which we shall term ‘single-hit’, this consists of a single dose of AMSCs-BMP4 at the time of resection. This is a promising and practical option for BMP4-AMSCs delivery as they can be implanted directly into the tumor at the time of resection and means the patient is receiving some treatment in the time between resection and radiotherapy, when typically they receive none during this time. For this cohort of virtual patients, we implement a series of different concentrations of AMSCs-BMP4; in <a href="#fig-Identical_mid_KM" class="quarto-xref">Figure&nbsp;<span>3.5</span></a> we show average BMP4 concentration in ng/ml, to compare this to the radiotherapy assay in <a href="#sec-simulating-RT-experiments" class="quarto-xref"><span>Section 3.3.1</span></a>. An average concentration of 8ng/ml corresponds to a peak of 100ng/ml at the time of resection, the same concentration maintained for two days in the assay. We see that, for peak concentrations of BMP4 similar to that in the <em>in vitro</em> assay, no trials show statistically significant differences in survival curves (log-rank test, <span class="math inline">\(p&gt;0.05\)</span>). Indeed, according to these results a considerably higher total dose of BMP4 is required in order to see consistently successful trials (defined as rejecting the null hypothesis of identical survival curves between control and treatment arms). This may be because of the relatively rapid decay of AMSCs and BMP4; if ASMCs are delivered at the time of resection very few remain and BMP4 concentrations are low by the time RT begins.</p>
+<p>The results plotted in <a href="#fig-Identical_mid_KM" class="quarto-xref">Figure&nbsp;<span>3.5</span></a> are for the group of fast proliferators only as this was the only group which saw a significant response to BMP4 therapy. <a href="#fig-phase2_trial_summary" class="quarto-xref">Figure&nbsp;<span>3.5 (d)</span></a> shows a summary of the results for all the proliferation groups. This highlights the importance of considering other patient specific parameters when selecting potential patients for clinical trial.</p>
+<div id="fig-Identical_mid_KM" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Identical_mid_KM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-Identical_mid_KM" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-example2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-example2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/virtual_trial_BMP4_200_rho_case_5.png" id="fig-example2" class="img-fluid figure-img" data-ref-parent="fig-Identical_mid_KM">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-example2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-Identical_mid_KM" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-example3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-example3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/virtual_trial_BMP4_500_rho_case_5.png" id="fig-example3" class="img-fluid figure-img" data-ref-parent="fig-Identical_mid_KM">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-example3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-Identical_mid_KM" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ex-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ex-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/virtual_trial_BMP4_1000_rho_case_5.png" id="fig-ex-4" class="img-fluid figure-img" data-ref-parent="fig-Identical_mid_KM">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ex-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-Identical_mid_KM" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-phase2_trial_summary" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-phase2_trial_summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/prob_succ_strat.png" id="fig-phase2_trial_summary" class="img-fluid figure-img" data-ref-parent="fig-Identical_mid_KM">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-phase2_trial_summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Identical_mid_KM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.5: Survival curves for 20 simulated virtual trials for the fast proliferating stratification shaded by success (if BMP4 treatment arm is significantly different to the control arm) for four different concentrations of BMP4. (a) As expected, when BMP4 is low the control and treatment arms are similar in all 20 trials. (b) As BMP4 concentration increases, the fraction of successful trials increases. (c) For sufficiently high BMP4 (and hence a sufficiently strong treatment effect), almost all trials are successful. (d) Summary of the successful trial from phase 2. Orange, green and blue represent fast, medium and slow proliferation, respectively.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="different-delivery-schedules-for-bmp4" class="level4" data-number="3.3.3.4">
+<h4 data-number="3.3.3.4" class="anchored" data-anchor-id="different-delivery-schedules-for-bmp4"><span class="header-section-number">3.3.3.4</span> Different delivery schedules for BMP4</h4>
+<p>The high concentrations of BMP4 required in a single-hit approach identified in <a href="#sec-phase-2-trial" class="quarto-xref"><span>Section 3.3.3.3</span></a> motivates us to look at alternative dosing strategies, where similar or greater benefit may be observed for less average dose of BMP4. As the AMSCs only last for around 2 weeks (and BMP4 slightly less) only a small concentration is left by the time radiotherapy occurs in the single-hit approach. Since BMP4 increases the radiosensitivity of the tumor and reduces the enrichment of GSCs when radiotherapy occurs, delivering it in combination with radiotherapy may provide significantly improved responses even when a similar total dose of BMP4 is considered. Therefore, we consider 3 alternative treatment schedules: i) a single dose immediately before radiotherapy, ii) a continuous dose from resection until the end of RT and iii) periodic doses in combination with radiotherapy. These schedules are shown in <a href="#fig-delivery_schedule" class="quarto-xref">Figure&nbsp;<span>3.6 (a)</span></a>. In all cases, the same total dose of BMP4 (this corresponds to the same area under the curve in <a href="#fig-delivery_schedule" class="quarto-xref">Figure&nbsp;<span>3.6 (a)</span></a>) will be administered so the comparison is fair between delivery schedules.</p>
+<p>We use the same virtual trial pipeline outlined previously in <a href="#sec-virtual-trial-pipeline" class="quarto-xref"><span>Section 3.3.3</span></a>, applied to these three alternative dosing strategies. A summary of the results for the fast proliferating group is plotted in <a href="#fig-delivery_schedule_frac_succ" class="quarto-xref">Figure&nbsp;<span>3.6 (b)</span></a>. We see that the continuous delivery schedule is the most effective, with the highest number of successful trials with an average BMP4 concentration of around 10ng/ml required for almost all trials to be successful. This is closely followed by the periodic schedule. The shifted single dose appears to be largely similar in efficacy as the single dose at resection. These show that longer term exposure of BMP4 greatly increases its efficacy. This highlights the importance of designing the delivery schedule of BMP4 to maximise the effect of the treatment, and in future could be optimised on a patient-specific level.</p>
+<div id="fig-delivery_schedule_frac_succ_overall" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-delivery_schedule_frac_succ_overall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-delivery_schedule_frac_succ_overall" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-delivery_schedule" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-delivery_schedule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/BMP4_delivery_schedule.png" id="fig-delivery_schedule" class="img-fluid figure-img" data-ref-parent="fig-delivery_schedule_frac_succ_overall">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-delivery_schedule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-delivery_schedule_frac_succ_overall" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-delivery_schedule_frac_succ" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-delivery_schedule_frac_succ-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/diff_schedules_frac_succ.png" id="fig-delivery_schedule_frac_succ" class="img-fluid figure-img" data-ref-parent="fig-delivery_schedule_frac_succ_overall">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-delivery_schedule_frac_succ-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-delivery_schedule_frac_succ_overall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.6: Alternative delivery schedules have improved response to BPM4 for same total dose. (a) Different delivery schedules for BMP4. Here time 0 represents the time of detection and radiotherapy occurs 30 days after detection. (b) Summary of fraction of successful trails for different delivery schedules.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="sec-discussion" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sec-discussion"><span class="header-section-number">3.4</span> Discussion</h2>
+<p>In this study, we have developed a comprehensive mathematical model to simulate GSC-driven tumor growth, specifically focusing on the impact of BMP4 treatment. By parameterizing our model using experimental data from five distinct glioma stem cell lines exposed to BMP4, we were able to qualitatively estimate the sensitivity of these cell lines to BMP4. This approach provides valuable insights into the potential variability in treatment response among different glioma cell populations.</p>
+<p>A key limitation of our model lies in the inherent assumptions necessary for reducing the complex biology of glioblastoma/glioma to a system of ordinary differential equations (ODEs). While our model successfully encapsulates many aspects of tumor dynamics, it does not explicitly account for the spatial heterogeneity of glioblastoma. Future work could expand this model to incorporate spatial considerations, to better capture the intricate microenvironment and its influence on tumor behaviour. That said, we hope that capturing the essence of the proposed BMP4 treatment in the current model has highlighted key mechanisms by which impact on tumor growth may or may not be seen in the clinic.</p>
+<p>Moreover, our study primarily concentrated on the impact of BMP4-induced differentiation on radiosensitivity, leaving the direct effects of BMP4 on proliferation rates as an area for further exploration. Understanding how BMP4 modulates proliferation, in addition to differentiation, could provide a more comprehensive picture of its therapeutic potential and guide the development of more effective treatment strategies.</p>
+<p>Importantly, we have also demonstrated a virtual clinical trial pipeline to evaluate the potential of BMP4-AMSCs treatment for patients with GBM. Our simulations revealed that a significant amount of BMP4 would be required to achieve successful outcomes in a substantial proportion of patients. This finding underscores the importance of optimizing BMP4 dosage and delivery methods for future clinical applications. Additionally, our results suggest that patient stratification based on proliferation rates could enhance the likelihood of treatment success. By selecting patients with higher proliferation rates, we could potentially increase the observed efficacy of BMP4 in combination with radiotherapy.</p>
+<p>Furthermore, we explored various BMP4 delivery schedules and identified that alternative strategies could enhance the therapeutic synergy between BMP4 and radiotherapy. These findings indicate that the timing and duration of BMP4 administration, in particular in relation to the timing of radiotherapy, can be crucial factors that could be optimized to improve clinical outcomes. We have shown that prolonged exposure to BMP4 greatly increased it efficacy when compared to a ‘single-hit’ approach. Future studies could expand on this by investigating different delivery modalities and schedules, potentially in combination with other therapies, to maximize the therapeutic benefit of BMP4.</p>
+<p>In conclusion, our work provides a robust framework for virtual clinical trials, offering valuable predictions that can guide the clinical translation of BMP4-based therapies for GBM. By highlighting the need for high BMP4 levels, patient stratification, and optimized delivery strategies, we have laid the groundwork for future studies that can further refine and validate these approaches in a clinical context.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-al-hajj2003" class="csl-entry" role="listitem">
+Al-Hajj, Muhammad, Max S. Wicha, Adalberto Benito-Hernandez, Sean J. Morrison, and Michael F. Clarke. 2003. <span>“Prospective Identification of Tumorigenic Breast Cancer Cells.”</span> <em>Proceedings of the National Academy of Sciences</em> 100 (7): 3983–88. <a href="https://doi.org/10.1073/pnas.0530291100">https://doi.org/10.1073/pnas.0530291100</a>.
+</div>
+<div id="ref-bachman2013" class="csl-entry" role="listitem">
+Bachman, Jeff W. N., and Thomas Hillen. 2013. <span>“Mathematical Optimization of the Combination of Radiation and Differentiation Therapies for Cancer.”</span> <em>Frontiers in Oncology</em> 3. <a href="https://doi.org/10.3389/fonc.2013.00052">https://doi.org/10.3389/fonc.2013.00052</a>.
+</div>
+<div id="ref-bagley2022" class="csl-entry" role="listitem">
+Bagley, Stephen J., Shawn Kothari, Rifaquat Rahman, Eudocia Q. Lee, Gavin P. Dunn, Evanthia Galanis, Susan M. Chang, et al. 2022. <span>“Glioblastoma Clinical Trials: Current Landscape and Opportunities for Improvement.”</span> <em>Clinical Cancer Research</em> 28 (4): 594–602. <a href="https://doi.org/10.1158/1078-0432.CCR-21-2750">https://doi.org/10.1158/1078-0432.CCR-21-2750</a>.
+</div>
+<div id="ref-bao2006" class="csl-entry" role="listitem">
+Bao, Shideng, Qiulian Wu, Roger E. McLendon, Yueling Hao, Qing Shi, Anita B. Hjelmeland, Mark W. Dewhirst, Darell D. Bigner, and Jeremy N. Rich. 2006. <span>“Glioma Stem Cells Promote Radioresistance by Preferential Activation of the DNA Damage Response.”</span> <em>Nature</em> 444 (7120): 756–60. <a href="https://doi.org/10.1038/nature05236">https://doi.org/10.1038/nature05236</a>.
+</div>
+<div id="ref-bartoszynski2001" class="csl-entry" role="listitem">
+Bartoszyński, Robert, Lutz Edler, Leonid Hanin, Annette Kopp-Schneider, Lyudmila Pavlova, Alexander Tsodikov, Alexander Zorin, and Andrej Yu. Yakovlev. 2001. <span>“Modeling Cancer Detection: Tumor Size as a Source of Information on Unobservable Stages of Carcinogenesis.”</span> <em>Mathematical Biosciences</em> 171 (2): 113–42. <a href="https://doi.org/10.1016/s0025-5564(01)00058-x">https://doi.org/10.1016/s0025-5564(01)00058-x</a>.
+</div>
+<div id="ref-bonnet1997" class="csl-entry" role="listitem">
+Bonnet, Dominique, and John E. Dick. 1997. <span>“Human Acute Myeloid Leukemia Is Organized as a Hierarchy That Originates from a Primitive Hematopoietic Cell.”</span> <em>Nature Medicine</em> 3 (7): 730–37. <a href="https://doi.org/10.1038/nm0797-730">https://doi.org/10.1038/nm0797-730</a>.
+</div>
+<div id="ref-cardinal2022" class="csl-entry" role="listitem">
+Cardinal, Olivia, Chloé Burlot, Yangxin Fu, Powel Crosley, Mary Hitt, Morgan Craig, and Adrianne L. Jenner. 2022. <span>“Establishing Combination PAC<span>-</span>1 and TRAIL Regimens for Treating Ovarian Cancer Based on Patient<span>-</span>Specific Pharmacokinetic Profiles Using <span><em>in Silico</em></span> Clinical Trials.”</span> <em>Computational and Systems Oncology</em> 2 (2). <a href="https://doi.org/10.1002/cso2.1035">https://doi.org/10.1002/cso2.1035</a>.
+</div>
+<div id="ref-carén2016" class="csl-entry" role="listitem">
+Carén, Helena, Stephan Beck, and Steven M. Pollard. 2016. <span>“Differentiation Therapy for Glioblastoma <span></span> Too Many Obstacles?”</span> <em>Molecular &amp; Cellular Oncology</em> 3 (2): e1124174. <a href="https://doi.org/10.1080/23723556.2015.1124174">https://doi.org/10.1080/23723556.2015.1124174</a>.
+</div>
+<div id="ref-chaichana2014" class="csl-entry" role="listitem">
+Chaichana, Kaisorn L., Eibar Ernesto Cabrera-Aldana, Ignacio Jusue-Torres, Olindi Wijesekera, Alessandro Olivi, Maryam Rahman, and Alfredo Quinones-Hinojosa. 2014. <span>“When Gross Total Resection of a Glioblastoma Is Possible, How Much Resection Should Be Achieved?”</span> <em>World Neurosurgery</em> 82 (1-2): e257–65. <a href="https://doi.org/10.1016/j.wneu.2014.01.019">https://doi.org/10.1016/j.wneu.2014.01.019</a>.
+</div>
+<div id="ref-cloughesy2020" class="csl-entry" role="listitem">
+Cloughesy, Timothy F., Kevin Petrecca, Tobias Walbert, Nicholas Butowski, Michael Salacz, James Perry, Denise Damek, et al. 2020. <span>“Effect of Vocimagene Amiretrorepvec in Combination With Flucytosine Vs Standard of Care on Survival Following Tumor Resection in Patients With Recurrent High-Grade Glioma: A Randomized Clinical Trial.”</span> <em>JAMA Oncology</em> 6 (12): 1939. <a href="https://doi.org/10.1001/jamaoncol.2020.3161">https://doi.org/10.1001/jamaoncol.2020.3161</a>.
+</div>
+<div id="ref-craig2023" class="csl-entry" role="listitem">
+Craig, Morgan, Jana L. Gevertz, Irina Kareva, and Kathleen P. Wilkie. 2023. <span>“A Practical Guide for the Generation of Model-Based Virtual Clinical Trials.”</span> <em>Frontiers in Systems Biology</em> 3 (June). <a href="https://doi.org/10.3389/fsysb.2023.1174647">https://doi.org/10.3389/fsysb.2023.1174647</a>.
+</div>
+<div id="ref-dethé2018" class="csl-entry" role="listitem">
+De Thé, Hugues. 2018. <span>“Differentiation Therapy Revisited.”</span> <em>Nature Reviews Cancer</em> 18 (2): 117–27. <a href="https://doi.org/10.1038/nrc.2017.103">https://doi.org/10.1038/nrc.2017.103</a>.
+</div>
+<div id="ref-dingli2006" class="csl-entry" role="listitem">
+Dingli, David, and Franziska Michor. 2006. <span>“Successful Therapy Must Eradicate Cancer Stem Cells.”</span> <em>STEM CELLS</em> 24 (12): 2603–10. <a href="https://doi.org/10.1634/stemcells.2006-0136">https://doi.org/10.1634/stemcells.2006-0136</a>.
+</div>
+<div id="ref-dirks2006" class="csl-entry" role="listitem">
+Dirks, Peter B. 2006. <span>“Stem Cells and Brain Tumours.”</span> <em>Nature</em> 444 (7120): 687–88. <a href="https://doi.org/10.1038/444687a">https://doi.org/10.1038/444687a</a>.
+</div>
+<div id="ref-doucette2011" class="csl-entry" role="listitem">
+Doucette, Tiffany, Ganesh Rao, Yuhui Yang, Joy Gumin, Naoki Shinojima, B. Nebiyou Bekele, Wei Qiao, Wei Zhang, and Frederick F. Lang. 2011. <span>“Mesenchymal Stem Cells Display Tumor-Specific Tropism in an RCAS/Ntv-a Glioma Model.”</span> <em>Neoplasia</em> 13 (8): 716–25. <a href="https://doi.org/10.1593/neo.101680">https://doi.org/10.1593/neo.101680</a>.
+</div>
+<div id="ref-dowden2019" class="csl-entry" role="listitem">
+Dowden, Helen, and Jamie Munro. 2019. <span>“Trends in Clinical Success Rates and Therapeutic Focus.”</span> <em>Nature Reviews Drug Discovery</em> 18 (7): 495–96. <a href="https://doi.org/10.1038/d41573-019-00074-z">https://doi.org/10.1038/d41573-019-00074-z</a>.
+</div>
+<div id="ref-enderling2009" class="csl-entry" role="listitem">
+Enderling, Heiko, Alexander R. A. Anderson, Mark A. J. Chaplain, Afshin Beheshti, Lynn Hlatky, and Philip Hahnfeldt. 2009. <span>“Paradoxical Dependencies of Tumor Dormancy and Progression on Basic Cell Kinetics.”</span> <em>Cancer Research</em> 69 (22): 8814–21. <a href="https://doi.org/10.1158/0008-5472.CAN-09-2115">https://doi.org/10.1158/0008-5472.CAN-09-2115</a>.
+</div>
+<div id="ref-farias" class="csl-entry" role="listitem">
+Farias, Virgina, Vinitha Rani, Natanael Zacro, Mieu Brooks, Naveen Nagaiah, Henry Ruiz-Garcia, Rachel Sarabia-Estrada, et al. n.d. <span>“BMP4-Secreting MSCs Derived from Human Adipose Tissue Radiosensitize Glioblastoma Stem Cells via Downregulation of OLIG2 Signaling Pathway.”</span> <em>In Preparation</em>.
+</div>
+<div id="ref-galli2004" class="csl-entry" role="listitem">
+Galli, Rossella, Elena Binda, Ugo Orfanelli, Barbara Cipelletti, Angela Gritti, Simona De Vitis, Roberta Fiocco, Chiara Foroni, Francesco Dimeco, and Angelo Vescovi. 2004. <span>“Isolation and Characterization of Tumorigenic, Stem-Like Neural Precursors from Human Glioblastoma.”</span> <em>Cancer Research</em> 64 (19): 7011–21. <a href="https://doi.org/10.1158/0008-5472.CAN-04-1364">https://doi.org/10.1158/0008-5472.CAN-04-1364</a>.
+</div>
+<div id="ref-gao2013" class="csl-entry" role="listitem">
+Gao, Xuefeng, J. Tyson McDonald, Lynn Hlatky, and Heiko Enderling. 2013. <span>“Acute and Fractionated Irradiation Differentially Modulate Glioma Stem Cell Division Kinetics.”</span> <em>Cancer Research</em> 73 (5): 1481–90. <a href="https://doi.org/10.1158/0008-5472.CAN-12-3429">https://doi.org/10.1158/0008-5472.CAN-12-3429</a>.
+</div>
+<div id="ref-griffin2006" class="csl-entry" role="listitem">
+Griffin, Robert J. 2006. <span>“Radiobiology for the Radiologist, 6th Edition.”</span> <em>International Journal of Radiation Oncology*Biology*Physics</em> 66 (2): 627. <a href="https://doi.org/10.1016/j.ijrobp.2006.06.027">https://doi.org/10.1016/j.ijrobp.2006.06.027</a>.
+</div>
+<div id="ref-guerrero-cázares2014" class="csl-entry" role="listitem">
+Guerrero-Cázares, Hugo, Stephany Y. Tzeng, Noah P. Young, Ameer O. Abutaleb, Alfredo Quiñones-Hinojosa, and Jordan J. Green. 2014. <span>“Biodegradable Polymeric Nanoparticles Show High Efficacy and Specificity at DNA Delivery to Human Glioblastoma <span><em>in Vitro</em></span> and <span><em>in Vivo</em></span>.”</span> <em>ACS Nano</em> 8 (5): 5141–53. <a href="https://doi.org/10.1021/nn501197v">https://doi.org/10.1021/nn501197v</a>.
+</div>
+<div id="ref-hemmati2003" class="csl-entry" role="listitem">
+Hemmati, Houman D., Ichiro Nakano, Jorge A. Lazareff, Michael Masterman-Smith, Daniel H. Geschwind, Marianne Bronner-Fraser, and Harley I. Kornblum. 2003. <span>“Cancerous Stem Cells Can Arise from Pediatric Brain Tumors.”</span> <em>Proceedings of the National Academy of Sciences</em> 100 (25): 15178–83. <a href="https://doi.org/10.1073/pnas.2036535100">https://doi.org/10.1073/pnas.2036535100</a>.
+</div>
+<div id="ref-ignatova2002" class="csl-entry" role="listitem">
+Ignatova, Tatyana N., Valery G. Kukekov, Eric D. Laywell, Oleg N. Suslov, Frank D. Vrionis, and Dennis A. Steindler. 2002. <span>“Human Cortical Glial Tumors Contain Neural Stem<span>-</span>Like Cells Expressing Astroglial and Neuronal Markers in Vitro.”</span> <em>Glia</em> 39 (3): 193–206. <a href="https://doi.org/10.1002/glia.10094">https://doi.org/10.1002/glia.10094</a>.
+</div>
+<div id="ref-kim2016" class="csl-entry" role="listitem">
+Kim, Eunjung, Vito W. Rebecca, Keiran S. M. Smalley, and Alexander R. A. Anderson. 2016. <span>“Phase i Trials in Melanoma: A Framework to Translate Preclinical Findings to the Clinic.”</span> <em>European Journal of Cancer</em> 67 (November): 213–22. <a href="https://doi.org/10.1016/j.ejca.2016.07.024">https://doi.org/10.1016/j.ejca.2016.07.024</a>.
+</div>
+<div id="ref-kim2020" class="csl-entry" role="listitem">
+Kim, Jayoung, Sujan K. Mondal, Stephany Y. Tzeng, Yuan Rui, Rawan Al-kharboosh, Kristen K. Kozielski, Adip G. Bhargav, Cesar A. Garcia, Alfredo Quiñones-Hinojosa, and Jordan J. Green. 2020. <span>“Poly(ethylene Glycol)<span></span>Poly(beta-Amino Ester)-Based Nanoparticles for Suicide Gene Therapy Enhance Brain Penetration and Extend Survival in a Preclinical Human Glioblastoma Orthotopic Xenograft Model.”</span> <em>ACS Biomaterials Science &amp; Engineering</em> 6 (5): 2943–55. <a href="https://doi.org/10.1021/acsbiomaterials.0c00116">https://doi.org/10.1021/acsbiomaterials.0c00116</a>.
+</div>
+<div id="ref-lapidot1994" class="csl-entry" role="listitem">
+Lapidot, Tsvee, Christian Sirard, Josef Vormoor, Barbara Murdoch, Trang Hoang, Julio Caceres-Cortes, Mark Minden, Bruce Paterson, Michael A. Caligiuri, and John E. Dick. 1994. <span>“A Cell Initiating Human Acute Myeloid Leukaemia After Transplantation into SCID Mice.”</span> <em>Nature</em> 367 (6464): 645–48. <a href="https://doi.org/10.1038/367645a0">https://doi.org/10.1038/367645a0</a>.
+</div>
+<div id="ref-lee2016" class="csl-entry" role="listitem">
+Lee, Yeri, Jin-Ku Lee, Sun Hee Ahn, Jeongwu Lee, and Do-Hyun Nam. 2016. <span>“WNT Signaling in Glioblastoma and Therapeutic Opportunities.”</span> <em>Laboratory Investigation</em> 96 (2): 137–50. <a href="https://doi.org/10.1038/labinvest.2015.140">https://doi.org/10.1038/labinvest.2015.140</a>.
+</div>
+<div id="ref-li2014" class="csl-entry" role="listitem">
+Li, Qian, Olindi Wijesekera, Sussan J. Salas, Joanna Y. Wang, Mingxin Zhu, Colette Aprhys, Kaisorn L. Chaichana, et al. 2014. <span>“Mesenchymal Stem Cells from Human Fat Engineered to Secrete BMP4 Are Nononcogenic, Suppress Brain Cancer, and Prolong Survival.”</span> <em>Clinical Cancer Research</em> 20 (9): 2375–87. <a href="https://doi.org/10.1158/1078-0432.CCR-13-1415">https://doi.org/10.1158/1078-0432.CCR-13-1415</a>.
+</div>
+<div id="ref-ma2018" class="csl-entry" role="listitem">
+Ma, Qianquan, Wenyong Long, Changsheng Xing, Junjun Chu, Mei Luo, Helen Y. Wang, Qing Liu, and Rong-Fu Wang. 2018. <span>“Cancer Stem Cells and Immunosuppressive Microenvironment in Glioma.”</span> <em>Frontiers in Immunology</em> 9 (December): 2924. <a href="https://doi.org/10.3389/fimmu.2018.02924">https://doi.org/10.3389/fimmu.2018.02924</a>.
+</div>
+<div id="ref-mangraviti2016" class="csl-entry" role="listitem">
+Mangraviti, Antonella, Stephany Y. Tzeng, David Gullotti, Kristen L. Kozielski, Jennifer E. Kim, Michael Seng, Sara Abbadi, et al. 2016. <span>“Non-Virally Engineered Human Adipose Mesenchymal Stem Cells Produce BMP4, Target Brain Tumors, and Extend Survival.”</span> <em>Biomaterials</em> 100 (September): 53–66. <a href="https://doi.org/10.1016/j.biomaterials.2016.05.025">https://doi.org/10.1016/j.biomaterials.2016.05.025</a>.
+</div>
+<div id="ref-mcmahon2018" class="csl-entry" role="listitem">
+McMahon, Stephen Joseph. 2018. <span>“The Linear Quadratic Model: Usage, Interpretation and Challenges.”</span> <em>Physics in Medicine &amp; Biology</em> 64 (1): 01TR01. <a href="https://doi.org/10.1088/1361-6560/aaf26a">https://doi.org/10.1088/1361-6560/aaf26a</a>.
+</div>
+<div id="ref-narita2019" class="csl-entry" role="listitem">
+Narita, Yoshitaka, Yoshiki Arakawa, Fumiyuki Yamasaki, Ryo Nishikawa, Tomokazu Aoki, Masayuki Kanamori, Motoo Nagane, et al. 2019. <span>“A Randomized, Double-Blind, Phase III Trial of Personalized Peptide Vaccination for Recurrent Glioblastoma.”</span> <em>Neuro-Oncology</em> 21 (3): 348–59. <a href="https://doi.org/10.1093/neuonc/noy200">https://doi.org/10.1093/neuonc/noy200</a>.
+</div>
+<div id="ref-nayak2020" class="csl-entry" role="listitem">
+Nayak, Sonali, Ashorne Mahenthiran, Yongyong Yang, Mark McClendon, Barbara Mania-Farnell, Charles David James, John A. Kessler, et al. 2020. <span>“Bone Morphogenetic Protein 4 Targeting Glioma Stem-Like Cells for Malignant Glioma Treatment: Latest Advances and Implications for Clinical Application.”</span> <em>Cancers</em> 12 (2): 516. <a href="https://doi.org/10.3390/cancers12020516">https://doi.org/10.3390/cancers12020516</a>.
+</div>
+<div id="ref-orourke2009" class="csl-entry" role="listitem">
+O’Rourke, S. F. C., H. McAneney, and T. Hillen. 2009. <span>“Linear Quadratic and Tumour Control Probability Modelling in External Beam Radiotherapy.”</span> <em>Journal of Mathematical Biology</em> 58 (4-5): 799–817. <a href="https://doi.org/10.1007/s00285-008-0222-y">https://doi.org/10.1007/s00285-008-0222-y</a>.
+</div>
+<div id="ref-ostrom2019" class="csl-entry" role="listitem">
+Ostrom, Quinn T, Gino Cioffi, Haley Gittleman, Nirav Patil, Kristin Waite, Carol Kruchko, and Jill S Barnholtz-Sloan. 2019. <span>“CBTRUS Statistical Report: Primary Brain and Other Central Nervous System Tumors Diagnosed in the United States in 2012<span></span>2016.”</span> <em>Neuro-Oncology</em> 21 (Supplement<span>_</span>5): v1–100. <a href="https://doi.org/10.1093/neuonc/noz150">https://doi.org/10.1093/neuonc/noz150</a>.
+</div>
+<div id="ref-pendleton2013" class="csl-entry" role="listitem">
+Pendleton, Courtney, Qian Li, David A. Chesler, Kristy Yuan, Hugo Guerrero-Cazares, and Alfredo Quinones-Hinojosa. 2013. <span>“Mesenchymal Stem Cells Derived from Adipose Tissue Vs Bone Marrow: In Vitro Comparison of Their Tropism Towards Gliomas.”</span> Edited by Joseph Najbauer. <em>PLoS ONE</em> 8 (3): e58198. <a href="https://doi.org/10.1371/journal.pone.0058198">https://doi.org/10.1371/journal.pone.0058198</a>.
+</div>
+<div id="ref-piccirillo2006" class="csl-entry" role="listitem">
+Piccirillo, S. G. M., B. A. Reynolds, N. Zanetti, G. Lamorte, E. Binda, G. Broggi, H. Brem, A. Olivi, F. Dimeco, and A. L. Vescovi. 2006. <span>“Bone Morphogenetic Proteins Inhibit the Tumorigenic Potential of Human Brain Tumour-Initiating Cells.”</span> <em>Nature</em> 444 (7120): 761–65. <a href="https://doi.org/10.1038/nature05349">https://doi.org/10.1038/nature05349</a>.
+</div>
+<div id="ref-plevritis2006" class="csl-entry" role="listitem">
+Plevritis, Sylvia K., Peter Salzman, Bronislava M. Sigal, and Peter W. Glynn. 2006. <span>“A Natural History Model of Stage Progression Applied to Breast Cancer.”</span> <em>Statistics in Medicine</em> 26 (3): 581–95. <a href="https://doi.org/10.1002/sim.2550">https://doi.org/10.1002/sim.2550</a>.
+</div>
+<div id="ref-potten1981" class="csl-entry" role="listitem">
+Potten, C. S. 1981. <span>“The Cell Kinetic Mechanism for Radiation-Induced Cellular Depletion of Epithelial Tissue Based on Hierarchical Differences in Radiosensitivity.”</span> <em>International Journal of Radiation Biology and Related Studies in Physics, Chemistry and Medicine</em> 40 (2): 217–25. <a href="https://doi.org/10.1080/09553008114551101">https://doi.org/10.1080/09553008114551101</a>.
+</div>
+<div id="ref-reardon2020" class="csl-entry" role="listitem">
+Reardon, David A., Alba A. Brandes, Antonio Omuro, Paul Mulholland, Michael Lim, Antje Wick, Joachim Baehring, et al. 2020. <span>“Effect of Nivolumab Vs Bevacizumab in Patients With Recurrent Glioblastoma: The CheckMate 143 Phase 3 Randomized Clinical Trial.”</span> <em>JAMA Oncology</em> 6 (7): 1003. <a href="https://doi.org/10.1001/jamaoncol.2020.1024">https://doi.org/10.1001/jamaoncol.2020.1024</a>.
+</div>
+<div id="ref-ricci-vitiani2007" class="csl-entry" role="listitem">
+Ricci-Vitiani, Lucia, Dario G. Lombardi, Emanuela Pilozzi, Mauro Biffoni, Matilde Todaro, Cesare Peschle, and Ruggero De Maria. 2007. <span>“Identification and Expansion of Human Colon-Cancer-Initiating Cells.”</span> <em>Nature</em> 445 (7123): 111–15. <a href="https://doi.org/10.1038/nature05384">https://doi.org/10.1038/nature05384</a>.
+</div>
+<div id="ref-rich2007" class="csl-entry" role="listitem">
+Rich, Jeremy N. 2007. <span>“Cancer Stem Cells in Radiation Resistance.”</span> <em>Cancer Research</em> 67 (19): 8980–84. <a href="https://doi.org/10.1158/0008-5472.CAN-07-0895">https://doi.org/10.1158/0008-5472.CAN-07-0895</a>.
+</div>
+<div id="ref-rockne2009" class="csl-entry" role="listitem">
+Rockne, R., E. C. Alvord, J. K. Rockhill, and K. R. Swanson. 2009. <span>“A Mathematical Model for Brain Tumor Response to Radiation Therapy.”</span> <em>Journal of Mathematical Biology</em> 58 (4-5): 561. <a href="https://doi.org/10.1007/s00285-008-0219-6">https://doi.org/10.1007/s00285-008-0219-6</a>.
+</div>
+<div id="ref-rockne2010" class="csl-entry" role="listitem">
+Rockne, R, J K Rockhill, M Mrugala, A M Spence, I Kalet, K Hendrickson, A Lai, T Cloughesy, E C Alvord, and K R Swanson. 2010. <span>“Predicting the Efficacy of Radiotherapy in Individual Glioblastoma Patients <span><em>in Vivo:</em></span> A Mathematical Modeling Approach.”</span> <em>Physics in Medicine and Biology</em> 55 (12): 3271–85. <a href="https://doi.org/10.1088/0031-9155/55/12/001">https://doi.org/10.1088/0031-9155/55/12/001</a>.
+</div>
+<div id="ref-roth2021" class="csl-entry" role="listitem">
+Roth, Patrick, Thierry Gorlia, Jaap C. Reijneveld, Filip Yves Francine Leon De Vos, Ahmed Idbaih, Jean-Sebastien Frenel, Emilie Le Rhun, et al. 2021. <span>“EORTC 1709/CCTG CE.8: A Phase III Trial of Marizomib in Combination with Temozolomide-Based Radiochemotherapy Versus Temozolomide-Based Radiochemotherapy Alone in Patients with Newly Diagnosed Glioblastoma.”</span> <em>Journal of Clinical Oncology</em> 39 (15<span>_</span>suppl): 2004–4. <a href="https://doi.org/10.1200/JCO.2021.39.15_suppl.2004">https://doi.org/10.1200/JCO.2021.39.15_suppl.2004</a>.
+</div>
+<div id="ref-schonberg2014" class="csl-entry" role="listitem">
+Schonberg, David L., Daniel Lubelski, Tyler E. Miller, and Jeremy N. Rich. 2014. <span>“Brain Tumor Stem Cells: Molecular Characteristics and Their Impact on Therapy.”</span> <em>Molecular Aspects of Medicine</em> 39 (October): 82–101. <a href="https://doi.org/10.1016/j.mam.2013.06.004">https://doi.org/10.1016/j.mam.2013.06.004</a>.
+</div>
+<div id="ref-singh2004" class="csl-entry" role="listitem">
+Singh, Sheila K., Cynthia Hawkins, Ian D. Clarke, Jeremy A. Squire, Jane Bayani, Takuichiro Hide, R. Mark Henkelman, Michael D. Cusimano, and Peter B. Dirks. 2004. <span>“Identification of Human Brain Tumour Initiating Cells.”</span> <em>Nature</em> 432 (7015): 396–401. <a href="https://doi.org/10.1038/nature03128">https://doi.org/10.1038/nature03128</a>.
+</div>
+<div id="ref-smith2015" class="csl-entry" role="listitem">
+Smith, Chris L., Kaisorn L. Chaichana, Young M. Lee, Benjamin Lin, Kevin M. Stanko, Thomas O’Donnell, Saksham Gupta, et al. 2015. <span>“Pre-Exposure of Human Adipose Mesenchymal Stem Cells to Soluble Factors Enhances Their Homing to Brain Cancer.”</span> <em>Stem Cells Translational Medicine</em> 4 (3): 239–51. <a href="https://doi.org/10.5966/sctm.2014-0149">https://doi.org/10.5966/sctm.2014-0149</a>.
+</div>
+<div id="ref-stiles2008" class="csl-entry" role="listitem">
+Stiles, Charles D., and David H. Rowitch. 2008. <span>“Glioma Stem Cells: A Midterm Exam.”</span> <em>Neuron</em> 58 (6): 832–46. <a href="https://doi.org/10.1016/j.neuron.2008.05.031">https://doi.org/10.1016/j.neuron.2008.05.031</a>.
+</div>
+<div id="ref-stupp2005" class="csl-entry" role="listitem">
+Stupp, Roger, Warren P. Mason, Martin J. Van Den Bent, Michael Weller, Barbara Fisher, Martin J. B. Taphoorn, Karl Belanger, et al. 2005. <span>“Radiotherapy Plus Concomitant and Adjuvant Temozolomide for Glioblastoma.”</span> <em>New England Journal of Medicine</em> 352 (10): 987–96. <a href="https://doi.org/10.1056/NEJMoa043330">https://doi.org/10.1056/NEJMoa043330</a>.
+</div>
+<div id="ref-tang2021" class="csl-entry" role="listitem">
+Tang, Xuejia, Chenghai Zuo, Pengchao Fang, Guojing Liu, Yongyi Qiu, Yi Huang, and Rongrui Tang. 2021. <span>“Targeting Glioblastoma Stem Cells: A Review on Biomarkers, Signal Pathways and Targeted Therapy.”</span> <em>Frontiers in Oncology</em> 11 (July): 701291. <a href="https://doi.org/10.3389/fonc.2021.701291">https://doi.org/10.3389/fonc.2021.701291</a>.
+</div>
+<div id="ref-turner2009" class="csl-entry" role="listitem">
+Turner, C., A. R. Stinchcombe, M. Kohandel, S. Singh, and S. Sivaloganathan. 2009. <span>“Characterization of Brain Cancer Stem Cells: A Mathematical Approach.”</span> <em>Cell Proliferation</em> 42 (4): 529–40. <a href="https://doi.org/10.1111/j.1365-2184.2009.00619.x">https://doi.org/10.1111/j.1365-2184.2009.00619.x</a>.
+</div>
+<div id="ref-tzeng2011" class="csl-entry" role="listitem">
+Tzeng, Stephany Y., Hugo Guerrero-Cázares, Elliott E. Martinez, Joel C. Sunshine, Alfredo Quiñones-Hinojosa, and Jordan J. Green. 2011. <span>“Non-Viral Gene Delivery Nanoparticles Based on Poly(beta-Amino Esters) for Treatment of Glioblastoma.”</span> <em>Biomaterials</em> 32 (23): 5402–10. <a href="https://doi.org/10.1016/j.biomaterials.2011.04.016">https://doi.org/10.1016/j.biomaterials.2011.04.016</a>.
+</div>
+<div id="ref-wang2019" class="csl-entry" role="listitem">
+Wang, Hanwen, Oleg Milberg, Imke H. Bartelink, Paolo Vicini, Bing Wang, Rajesh Narwal, Lorin Roskos, Cesar A. Santa-Maria, and Aleksander S. Popel. 2019. <span>“<span><em>In Silico</em></span> Simulation of a Clinical Trial with Anti-CTLA-4 and Anti-PD-L1 Immunotherapies in Metastatic Breast Cancer Using a Systems Pharmacology Model.”</span> <em>Royal Society Open Science</em> 6 (5): 190366. <a href="https://doi.org/10.1098/rsos.190366">https://doi.org/10.1098/rsos.190366</a>.
+</div>
+<div id="ref-wang2020" class="csl-entry" role="listitem">
+Wang, Hanwen, Richard J. Sové, Mohammad Jafarnejad, Sondra Rahmeh, Elizabeth M. Jaffee, Vered Stearns, Evanthia T. Roussos Torres, Roisin M. Connolly, and Aleksander S. Popel. 2020. <span>“Conducting a Virtual Clinical Trial in HER2-Negative Breast Cancer Using a Quantitative Systems Pharmacology Model with an Epigenetic Modulator and Immune Checkpoint Inhibitors.”</span> <em>Frontiers in Bioengineering and Biotechnology</em> 8 (February). <a href="https://doi.org/10.3389/fbioe.2020.00141">https://doi.org/10.3389/fbioe.2020.00141</a>.
+</div>
+<div id="ref-weller2017" class="csl-entry" role="listitem">
+Weller, Michael, Nicholas Butowski, David D Tran, Lawrence D Recht, Michael Lim, Hal Hirte, Lynn Ashby, et al. 2017. <span>“Rindopepimut with Temozolomide for Patients with Newly Diagnosed, EGFRvIII-Expressing Glioblastoma (ACT IV): A Randomised, Double-Blind, International Phase 3 Trial.”</span> <em>The Lancet Oncology</em> 18 (10): 1373–85. <a href="https://doi.org/10.1016/S1470-2045(17)30517-X">https://doi.org/10.1016/S1470-2045(17)30517-X</a>.
+</div>
+<div id="ref-wu2022" class="csl-entry" role="listitem">
+Wu, Chengyue, Guillermo Lorenzo, David A. Hormuth, Ernesto A. B. F. Lima, Kalina P. Slavkova, Julie C. DiCarlo, John Virostko, et al. 2022. <span>“Integrating Mechanism-Based Modeling with Biomedical Imaging to Build Practical Digital Twins for Clinical Oncology.”</span> <em>Biophysics Reviews</em> 3 (2). <a href="https://doi.org/10.1063/5.0086789">https://doi.org/10.1063/5.0086789</a>.
+</div>
+<div id="ref-yan2016" class="csl-entry" role="listitem">
+Yan, Min, and Quentin Liu. 2016. <span>“Differentiation Therapy: A Promising Strategy for Cancer Treatment.”</span> <em>Chinese Journal of Cancer</em> 35 (1): 3. <a href="https://doi.org/10.1186/s40880-015-0059-x">https://doi.org/10.1186/s40880-015-0059-x</a>.
+</div>
+<div id="ref-yang2019" class="csl-entry" role="listitem">
+Yang, Wei, Nicole M. Warrington, Sara J. Taylor, Paula Whitmire, Eduardo Carrasco, Kyle W. Singleton, Ningying Wu, et al. 2019. <span>“Sex Differences in GBM Revealed by Analysis of Patient Imaging, Transcriptome, and Survival Data.”</span> <em>Science Translational Medicine</em> 11 (473): eaao5253. <a href="https://doi.org/10.1126/scitranslmed.aao5253">https://doi.org/10.1126/scitranslmed.aao5253</a>.
+</div>
+<div id="ref-yankeelov2024" class="csl-entry" role="listitem">
+Yankeelov, Thomas E., David A. Hormuth, Ernesto A. B. F. Lima, Guillermo Lorenzo, Chengyue Wu, Lois C. Okereke, Gaiane M. Rauch, Aradhana M. Venkatesan, and Caroline Chung. 2024. <span>“Designing Clinical Trials for Patients Who Are Not Average.”</span> <em>iScience</em> 27 (1): 108589. <a href="https://doi.org/10.1016/j.isci.2023.108589">https://doi.org/10.1016/j.isci.2023.108589</a>.
+</div>
+<div id="ref-youssefpour2012" class="csl-entry" role="listitem">
+Youssefpour, H., X. Li, A. D. Lander, and J. S. Lowengrub. 2012. <span>“Multispecies Model of Cell Lineages and Feedback Control in Solid Tumors.”</span> <em>Journal of Theoretical Biology</em> 304 (July): 39–59. <a href="https://doi.org/10.1016/j.jtbi.2012.02.030">https://doi.org/10.1016/j.jtbi.2012.02.030</a>.
+</div>
+<div id="ref-yu2015" class="csl-entry" role="listitem">
+Yu, Victoria Y., Dan Nguyen, Frank Pajonk, Patrick Kupelian, Tania Kaprealian, Michael Selch, Daniel A. Low, and Ke Sheng. 2015. <span>“Incorporating Cancer Stem Cells in Radiation Therapy Treatment Response Modeling and the Implication in Glioblastoma Multiforme Treatment Resistance.”</span> <em>International Journal of Radiation Oncology*Biology*Physics</em> 91 (4): 866–75. <a href="https://doi.org/10.1016/j.ijrobp.2014.12.004">https://doi.org/10.1016/j.ijrobp.2014.12.004</a>.
+</div>
+<div id="ref-zahid2021" class="csl-entry" role="listitem">
+Zahid, Mohammad U., Abdallah S. R. Mohamed, Jimmy J. Caudell, Louis B. Harrison, Clifton D. Fuller, Eduardo G. Moros, and Heiko Enderling. 2021. <span>“Dynamics-Adapted Radiotherapy Dose (DARD) for Head and Neck Cancer Radiotherapy Dose Personalization.”</span> <em>Journal of Personalized Medicine</em> 11 (11): 1124. <a href="https://doi.org/10.3390/jpm11111124">https://doi.org/10.3390/jpm11111124</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -666,7 +1612,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/Harbour-N/Second-year-report/edit/main/preprint.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Harbour-N/Second-year-report/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Harbour-N/Second-year-report/edit/main/preprint.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Harbour-N/Second-year-report/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

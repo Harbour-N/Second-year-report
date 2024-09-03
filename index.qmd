@@ -1,7 +1,5 @@
 # Preface {.unnumbered}
 
-Thanks to my supervisors: Markus Owen and Matthew Hubbard!!
-
 This is a Quarto book, to view it as HTML you can go here: <https://harbour-n.github.io/Second-year-report/>.
 
-The report is structured as follows. In the first chapter I give a summary of the results in my PhD over the first two years, then I outline a brief plan for the remaining time of my PhD. In hte second chapter I present a literature review specifically focusing on cancer stems cell modeling. In the third chapter I present my preprint "Virtual Clinical Trials of BMP4 Differentiation Therapy: Digital Twins to Aid Glioblastoma Trial Design", this constitutes the largest part of my that will for a significant chapter of my thesis.
+The report is structured as follows. In the first chapter I give a summary of the main results in my PhD over the first two years, I then outline a brief plan for the remaining time of my PhD. In the second chapter I present a literature review specifically focusing on cancer stems cell modeling, the primary focus of my second year. In the third chapter I present my preprint [Virtual Clinical Trials of BMP4 Differentiation Therapy: Digital Twins to Aid Glioblastoma Trial Design](https://www.biorxiv.org/content/10.1101/2024.08.22.609156v1.abstract), this constitutes the largest part of work that will for a significant chapter of my thesis.
