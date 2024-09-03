@@ -13,8 +13,9 @@ $endif$
 \vspace{12ex}
 $for(by-author)$
 {\Large\bfseries $by-author.name.literal$ \par}
-\vspace{3ex}
+{\Large Student ID: $student-id$ \par}
 {\Large ORCID: $by-author.orcid$ \par}
+{\Large Supervised by: $for(supervisors)$$supervisors.name$$sep$ and $endfor$\par}
 {\bfseries\large $date$ \par}
 \vspace{12ex}
 $for(by-author.affiliations)$%
@@ -24,7 +25,5 @@ $if(it.department)$%
 $endif$%
 {\bfseries\large $it.name$ \par}
 $endfor$$endfor$%
-\vspace{12ex}
-{\small Supervised by: $for(supervisors)$$supervisors.name$$sep$ and $endfor$\par}
 }
 $endif$

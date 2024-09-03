@@ -13,6 +13,7 @@ book:
     affiliations:
       - "Centre for Mathematical Medicine and Biology, School of Mathematical Sciences, University of Nottingham, Nottingham, NG7 2RD, UK"
   date: today
+  date-format: long
   chapters:
     - index.qmd
     - summary.qmd
@@ -38,6 +39,7 @@ supervisors:
   - name: Markus Owen
   - name: Matthew Hubbard
 
+student-id: "14330088"
 
 format:
   html:
