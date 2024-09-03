@@ -87,14 +87,14 @@ key-points:
   - GSCs must be eliminated
   - combination therapy is more effective
   - simulate virtual trials
-date: last-modified
+date: 08/23/2024
+date-format: long
 bibliography: references.bib
 citation:
   container-title: bioRxiv
 toc-depth: 5
+doi: https://doi.org/10.1101/2024.08.22.609156
 ---
-
-This is the preprint it constitutes a substantial piece of work that will contribute to my thesis. The preprint can be found [here](https://www.biorxiv.org/content/10.1101/2024.08.22.609156v1.full) on bioR$\chi$iv.
 
 ## Introduction {#sec-introduction}
 
